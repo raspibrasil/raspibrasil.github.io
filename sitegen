@@ -61,7 +61,9 @@ def convert(page, targetdir):
 
     os.chdir(targetdir)
 
-    with open(page.replace(".md",".html"), 'w') as newpage:
+    with open(
+              os.path.realpath(targetdir) + '/' + page.replace(".md",".html"), 
+              'w') as newpage:
         finalpage = template_contents % (pagetitle, contents)
         newpage.write(finalpage)
         print('Page "%s" converted successfully.' % pagetitle)

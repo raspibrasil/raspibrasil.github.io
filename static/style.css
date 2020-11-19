@@ -1,12 +1,15 @@
 /*
 
- Simple, unobtrusive CSS that adds value instead of page weight is the best!
+Styles for RaspberryPi Brasil.
 
  */
+
+@charset "utf-8";
+
 body {
     font-family: "Arial", "Helvetica", sans-serif;
     font-size: 1.2em;
-    background: #d16c32;
+    background: #F5AA3B;
     margin: 0;
     line-height: 1.2em;
 }
@@ -26,7 +29,7 @@ li {
 
 header {
     padding: 2em;
-    background: #F5AA3B;
+    line-height: 1.4em;
 }
 
 header h1 {
@@ -78,6 +81,8 @@ pre.qrcode {
 
 section#main {
     background: #fcf2de;
+    font-size: 1.2em;
+    line-height: 1.5em;
     margin: 0;
     padding: 3em 2em;
 }
@@ -122,9 +127,4 @@ section.status img {
 footer {
     text-align: center;
     padding: 4em 2em;
-    background: #F5AA3B;
-}
-
-footer a {
-    color: #65F2F4;
 }
