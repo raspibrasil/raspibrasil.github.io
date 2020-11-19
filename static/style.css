@@ -1,0 +1,130 @@
+/*
+
+ Simple, unobtrusive CSS that adds value instead of page weight is the best!
+
+ */
+body {
+    font-family: "Arial", "Helvetica", sans-serif;
+    font-size: 1.2em;
+    background: #d16c32;
+    margin: 0;
+    line-height: 1.2em;
+}
+
+a {
+    color: #1b8dc1;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+li {
+    margin-bottom: .5em;
+}
+
+header {
+    padding: 2em;
+    background: #F5AA3B;
+}
+
+header h1 {
+    font-family: courier, monospace;
+}
+
+header img {
+    float: right;
+}
+
+header img:after {
+    float: none;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    display: inline-block;
+    padding: 1em;
+    text-decoration: none;
+    background: #bc2109;
+    color: #ddd;
+}
+
+nav ul li a:hover {
+    text-decoration: none;
+    background: #e8e812;
+    color: #000
+}
+
+blockquote {
+    background: #fee;
+    border-left: 5px solid #f55;
+    padding: .5em 1em;
+    font-size: 1.1em;
+    line-height: 1.2em;
+}
+
+pre.qrcode {
+    line-height: 1em;
+}
+
+section#main {
+    background: #fcf2de;
+    margin: 0;
+    padding: 3em 2em;
+}
+
+section#main img {
+    display: block;
+    text-align: center;
+}
+
+section.status {
+    padding-bottom: 1em;
+    border-bottom: 2px solid black;
+}
+
+section.status img {
+    max-width: 100%;
+    display: block;
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+@media screen and (max-width: 500px) {
+    header img {
+        float: none;
+    }
+
+    blockquote {
+        font-size: 1em;
+        line-height: 1em;
+        margin: 0;
+    }
+
+    section#main {
+        padding: 2em 1em;
+    }
+
+    section#main img {
+        width: 100%;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 4em 2em;
+    background: #F5AA3B;
+}
+
+footer a {
+    color: #65F2F4;
+}

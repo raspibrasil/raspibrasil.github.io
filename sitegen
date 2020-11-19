@@ -1,0 +1,137 @@
+#!/usr/bin/env python3
+#
+# A static site generator, but written in python rather than bash for better
+# portability and readability.
+#
+# For use in places such as github static sites and tilde.town that don't have
+# another way to publish content.
+#
+# Requirements: python markdown module. 
+#   Install it either via `pip install markdown` or through your system.
+
+'''
+Usage: sitegen INPUT.md [OPTIONS]
+
+INPUT must be a Markdown file (.md)
+
+OPTIONS are:
+ -h: provides this help information
+ -d DIRECTORY: publishes the file in specified DIRECTORY
+
+If no DIRECTORY specified with -d, it will create file named INPUT.html in the
+same directory as here as INPUT.
+
+This is experimental and, as such, there might be bugs still left. Please 
+keep this in mind.
+'''
+
+import os
+import sys
+
+from markdown import markdown
+
+# Change this into the template you wish to use. 
+# See the example one provided in the repo for more information.
+TEMPLATE=os.path.realpath("template.html")
+
+START_DIR=os.path.realpath('.')
+
+# Helps when developing:
+DEBUG = True
+
+def convert(page, targetdir):
+    '''
+    Converts a markdown file into HTML by "baking" it into the template.
+
+    Templates always have 2 holes on it: a <title> tag and the main content 
+    '''
+    global TEMPLATE
+    global START_DIR
+
+    # Suck data from our available stuff:
+    with open(TEMPLATE,'r') as template:
+        template_contents = template.read()
+
+    with open(page,'r') as original:
+        raw_content = original.read()
+
+    # Assume first H1 is also the page's title (makes sense in Markdown)
+    pagetitle = raw_content.split('\n')[0][2:]
+    contents = markdown(raw_content)
+
+    os.chdir(targetdir)
+
+    with open(page.replace(".md",".html"), 'w') as newpage:
+        finalpage = template_contents % (pagetitle, contents)
+        newpage.write(finalpage)
+        print('Page "%s" converted successfully.' % pagetitle)
+
+    os.chdir(START_DIR)
+
+def make_index(pagelist, page, targetdir):
+    '''
+    Make an index.html-like page, which links out to every page in the 
+    category
+    '''
+    global TEMPLATE
+    global START_DIR
+    
+    # Finish by adding a list of posts, updates, etc
+
+
+def helper():
+    '''
+    Instructions for this program.
+    '''
+    print(__doc__)
+
+if __name__ == "__main__":
+    # Argument parser, always fun to do!
+    args = sys.argv
+
+    # I always have to do this little routine. Is there a better way?
+    args.reverse()
+    args.pop()
+    args.reverse() # now the arguments exclude the program name!
+
+    filelist = []
+    pubdir = './'
+    
+    counter = 0
+    while counter < len(args):
+        argument = args[counter]
+        if argument[0] == "-":
+            if argument == "--help" or argument == "-h":
+                helper()
+                sys.exit(0)
+            elif argument == "-d" or argument == "--directory":
+                try:
+                    pubdir = args[counter + 1]
+                    counter += 1
+                except IndexError:
+                    print("Error: no directory specified after -d")
+                    sys.exit(1)
+            else:
+                print("Error: unknown option %s" % argument)
+                helper()
+                sys.exit(1)
+        else:
+            # Must be a file to be converted!
+            filelist.append(argument)
+        counter += 1
+
+    # dry-run to see if arguments are correctly parsed:
+    if DEBUG:
+        print("Publication directory: %s" % pubdir)
+        print("Files:")
+        for i in filelist:
+            print(" - %s" % i)
+
+    if len(filelist) == 0:
+        print("Error: no files given to convert!")
+        sys.exit(1)
+
+    for page in filelist:
+        convert(page, pubdir)
+        
+    sys.exit(0)
