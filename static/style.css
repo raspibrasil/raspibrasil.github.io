@@ -54,12 +54,22 @@ nav ul {
     margin: 0
 }
 
+nav ul:after {
+    display: block;
+    content: ".";
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
 nav ul li {
     display: inline-block;
+    float: left;
+    margin-right: 4px;
 }
 
 nav ul li a {
-    display: inline-block;
+    display: block;
     padding: 1em;
     text-decoration: none;
     background: #bc2109;
@@ -93,7 +103,7 @@ section#main {
 }
 
 section#main h1, section#main h2, section#main h3 {
-    font-family: "Kreon";
+    font-family: "Kreon", "Helvetica", "Arial", sans-serif;
 }
 
 section#main img {
