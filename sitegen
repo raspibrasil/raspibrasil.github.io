@@ -17,9 +17,10 @@ INPUT must be a Markdown file (.md)
 OPTIONS are:
  -h: provides this help information
  -d DIRECTORY: publishes the file in specified DIRECTORY
+ -a: publishes an article, including a last modified timestamp
 
 If no DIRECTORY specified with -d, it will create file named INPUT.html in the
-same directory as here as INPUT.
+same directory as INPUT.
 
 This is experimental and, as such, there might be bugs still left. Please 
 keep this in mind.
@@ -27,6 +28,7 @@ keep this in mind.
 
 import os
 import sys
+import datetime
 
 from markdown import markdown
 
@@ -39,7 +41,7 @@ START_DIR=os.path.realpath('.')
 # Helps when developing:
 DEBUG = True
 
-def convert(page, targetdir):
+def convert(page, targetdir, is_article=False):
     '''
     Converts a markdown file into HTML by "baking" it into the template.
 
@@ -57,8 +59,18 @@ def convert(page, targetdir):
 
     # Assume first H1 is also the page's title (makes sense in Markdown)
     pagetitle = raw_content.split('\n')[0][2:]
-    contents = markdown(raw_content)
 
+    # If we're publishing a blog article (in contrast to a generic page) also
+    # append the last modified date into it:
+    if is_article:
+        pubdate = datetime.datetime.utcnow()
+        raw_content += '''
+
+*Última atualização em %s*
+''' % pubdate.date()
+
+    # Bake everything
+    contents = markdown(raw_content)
     os.chdir(targetdir)
 
     with open(
@@ -70,16 +82,76 @@ def convert(page, targetdir):
 
     os.chdir(START_DIR)
 
-def make_index(pagelist, page, targetdir):
+def make_index(pagelist, targetdir):
     '''
     Make an index.html-like page, which links out to every page in the 
     category
+    
+    pagelist - a list of .md files
+    targetdir - the publishing directory
     '''
     global TEMPLATE
     global START_DIR
     
     # Finish by adding a list of posts, updates, etc
+    
+    # Suck data from our available stuff:
+    with open(TEMPLATE,'r') as template:
+        template_contents = template.read()
 
+    raw_content = """
+# Artigos
+
+Estes são todos os artigos publicados no nosso blog até agora:
+
+"""
+    # We need to sort them by published date (newer to older). Use this:
+    artlist = []
+
+    for page in pagelist:
+        with open(page,'r') as original:
+
+            # This is the timestamp of publication:
+            timestamp = os.stat(page).st_ctime
+
+            # Get the title information and the URL to link out to.
+            raw = original.read()
+            pagetitle = raw.split('\n')[0][2:]
+            print("Title of page is: %s" % pagetitle)
+
+            # Get the "blurb" of the article (first two paragraphs):
+            blurb = raw.split('\n')[2]
+            blurb += '\n\n'
+            blurb += raw.split('\n')[4]
+
+            url = page.replace('.md', '.html')
+            print("URL of page is: %s" % url)
+
+            # Append it as a tuple, so we can sort by timestamp:
+            article_tuple = (timestamp, pagetitle, url, blurb)
+            artlist.append(article_tuple)
+
+    print("We got %s articles in here" % len(artlist))
+    artlist.sort(reverse=True) # newer first.
+        
+    for page in artlist:
+        raw_content += '<section class="article">'
+        raw_content += markdown("""
+### [%s](/%s) 
+
+%s
+
+*Publicado em %s*
+""" % (page[1], page[2], page[3], datetime.datetime.fromtimestamp(page[0]).date()))
+        raw_content += '</section>'
+
+    raw_content += "\n"
+    
+    # Bake the content at the directory
+    content = markdown(raw_content)
+
+    with open(targetdir + 'index.html', 'w') as indexfile:
+        indexfile.write(template_contents % ("Índice de artigos", content))
 
 def helper():
     '''
@@ -98,6 +170,8 @@ if __name__ == "__main__":
 
     filelist = []
     pubdir = './'
+    article = False
+    index = False
     
     counter = 0
     while counter < len(args):
@@ -113,6 +187,10 @@ if __name__ == "__main__":
                 except IndexError:
                     print("Error: no directory specified after -d")
                     sys.exit(1)
+            elif argument == "-a" or argument == "--article":
+                article = True
+            elif argument == "-i" or argument == "--index":
+                index = True
             else:
                 print("Error: unknown option %s" % argument)
                 helper()
@@ -133,7 +211,11 @@ if __name__ == "__main__":
         print("Error: no files given to convert!")
         sys.exit(1)
 
-    for page in filelist:
-        convert(page, pubdir)
+    if index:
+        make_index(filelist, pubdir)
+
+    else:
+        for page in filelist:
+            convert(page, pubdir, article)
         
     sys.exit(0)
