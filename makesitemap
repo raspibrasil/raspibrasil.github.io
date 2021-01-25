@@ -1,0 +1,117 @@
+#!/usr/bin/env python3
+#
+# This script will automatically make a sitemap from every .html file in the
+# website repository. It will travel every subdirectory (including things 
+# like /static/) searching for HTML files, so you don't have to manually 
+# enter them in the script.
+#
+# Perhaps we'll merge it with sitegen, but not right now.
+#
+
+import os
+import sys
+from datetime import datetime
+
+'''
+This is the final XML implementation of the sitemap we're looking to build:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>https://maluaraujoenglish.github.io/</loc>
+      <lastmod>2021-01-24</lastmod>
+      <changefreq>monthly</changefreq>
+   </url>
+</urlset>
+
+All <url> elements will be inserted automatically.
+'''
+
+# Set this to your site's domain WITHOUT a trailing slash
+BASE_URL = "https://raspibrasil.github.io"
+
+# How often does the site get updated?
+# Available options are daily, weekly, monthly
+DEFAULT_UPDATE_FREQ = "monthly"
+
+class SiteMapper:
+    def __init__(self):
+        self.paths = []
+
+    def crawl(self, debug=False):
+        '''
+        Walk across the directory structure, adding every HTML file to
+        the list of found pages (self.paths list).
+
+        Data stored is the path and the created date.
+
+        The os.walk() method returns tuples of (directory, [], [files]).
+        '''
+        for directory in os.walk('.'):
+            for element in directory[2]:
+                if ".html" in element:
+                    # Skip the reserved template page... 
+                    if element == "template.html":
+                        continue
+                    # strip the leading '.' from the walk() method 
+                    curdir = directory[0].lstrip('.')
+
+                    if debug:
+                        print("Current directory: %s" % curdir)
+
+                    # What's the pubdate of the page? dtime is a datetime
+                    # object
+                    dtime = datetime.fromtimestamp(
+                        os.stat(directory[0] + '/' + element).st_ctime)
+                    
+                    # Serialize it into the format we need (YYYY-MM-DD)
+                    created = str(dtime.date())
+
+                    # if the page name is index.html, append only the
+                    # directory path. Otherwise, full path.
+                    if element == "index.html":
+                        pagename = curdir
+                    else:
+                        if curdir == '/':
+                            pagename = curdir + element
+                        else:
+                            pagename = curdir + '/' + element
+
+                    self.paths.append((BASE_URL + pagename, created))
+
+
+        if debug:
+            print("%s pages found." % len(self.paths))
+            for i in self.paths:
+                print(i)
+
+    def makesitemap(self):
+        '''
+        Creates the sitemap from the stored URLs in self.paths
+        '''
+        self.sitemap = '''<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+'''
+        for row in self.paths:
+            self.sitemap += """    <url>
+        <loc>%s</loc>
+        <lastmod>%s</lastmod>
+        <changefreq>%s</changefreq>
+    </url>
+""" % (row[0], row[1], DEFAULT_UPDATE_FREQ)
+
+        # close <urlset> element:
+        self.sitemap += "</urlset>"
+
+        print(self.sitemap)
+
+
+def main():
+    sm = SiteMapper()
+    sm.crawl()
+    sm.makesitemap()
+    return
+
+if __name__ == "__main__":
+    main()
+    sys.exit(0)
