@@ -1,5 +1,7 @@
 # Quais os melhores acessórios e periféricos para o Raspbery Pi?
 
+Anteriormente no blog, exploramos os [vários tipos e modelos do Raspberry Pi](/blog/como_escolher_seu_raspberry_pi.html)  que podem te servir melhor para cada um dos seus objetivos em explorar o mundo dos *Single Board Computers*. Quando tínhamos um desses
+
 Embora utilizável por si próprio, a performance e experiência do Raspberry Pi podem ser melhoradas com a adição de alguns periféricos que extendem sua utilização e oferecem proteção ao equipamento. 
 
 ## Case de proteção
@@ -32,9 +34,9 @@ Outros essencialmente são como [ventiladores externos com entrada USB](https://
 
 Particularmente, se você pretende utilizar o seu Raspberry Pi como um desktop, com várias aplicações gráficas e um navegador sendo utilizados simultaneamente, a demanda causa o dispositivo a se sobreaquecer rapidamente, podendo chegar a temperaturas até mesmo danosas ao CPU. Neste caso, o uso de refrigeração ativa é altamente recomendado.
 
-## Fonte
+## Fonte de alimentação
 
-O Raspberry Pi e a maioria dos outros SBCs são designados para funcionar com uma fonte de Smartphone comum, operando a 5V e utilizando saídas MicroUSB ou USB-C para alimentação. Porém, a partir do modelo Raspberry Pi 4, o Raspberry Pi Foundation aumentou os requerimentos de alimentação, tornando a maioria das fontes de Smartphone incompatíveis com este modelo.
+O Raspberry Pi e a maioria dos outros SBCs são designados para funcionar com uma fonte de Smartphone comum, operando a 5V DC e utilizando saídas MicroUSB ou USB-C para alimentação. Porém, a partir do modelo Raspberry Pi 4, o Raspberry Pi Foundation aumentou os requerimentos de alimentação, tornando a maioria das fontes de Smartphone incompatíveis com este modelo.
 
 Como resultado, o Raspberry Pi 4 (e possivelmente os modelos futuros) precisam da [fonte oficial específica](https://amzn.to/3nEGcRG) com a amperagem correta para funcionar corretamente. A não utilização desta fonte poderá acarretar na danificação do dispositivo.
 

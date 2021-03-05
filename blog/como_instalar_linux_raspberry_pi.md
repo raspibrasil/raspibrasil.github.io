@@ -22,7 +22,7 @@ Primeiramente, sistemas Linux (chamados de *Distribuições Linux*) são [Softwa
 
 A liberdade de modificação também significa que os sistemas Linux podem ter componentes não-essenciais removidos ou refatorados, tornando-os muito mais leves e rápidos ao serem utilizados. Em computadores com recursos limitados como o [Raspberry Pi 3](https://amzn.to/3qlUOqH), ou anteriores, esta diferença é crucial para uma experiência suave e prazerosa, ao contrário de um sistema pesado e lento.
 
-Além da leveza e a flexibilidade do sistema, o Linux também é geralmente considerado um sistema mais seguro do que o onipresente Windows.
+Além da leveza e a flexibilidade do sistema, o Linux também é geralmente considerado um sistema mais seguro do que o onipresente Windows. Este é um ponto importantíssimo quando se 
 
 ## Como o processo de instalação funciona no Raspberry Pi
 
