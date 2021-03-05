@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>kzimmermann's articles</title>
+    <link href="https://raspibrasil.github.io//articles/atom.xml" rel="self" />
+    <link href="https://raspibrasil.github.io//articles/" />
+    <updated>2021-03-05T15:17:03.131431Z</updated>
+    <author>
+        <name>Klaus J Zimmermann - @kzimmermann@fosstodon.org</name>
+    </author>
+    
+    <entry>
+        <title>Hello World! O que é o Raspberry Pi e o Software livre?</title>
+        <link href="https://tilde.town/~kzimmermann/articles/blog/bem_vindo_ao_raspberrypi_brasil.html" />
+        <updated>2021-03-03T20:21:05.627362Z</updated>
+        <content type="xhtml">
+            <div xmlns="http://www.w3.org/1999/xhtml">
+                <h1>Hello World! O que é o Raspberry Pi e o Software livre?</h1>
+<p><code>Hello world!</code></p>
+<p>Somos a comunidade brasileira do Software Livre e dos <em>single board computers</em> como o Raspberry Pi. Neste blog, buscamos explorar e reportar todas as notícias sobre a computação de porte pequeno e de baixo consumo de energia, e sobre como o <a href="https://www.gnu.org/philosophy/free-sw.en.html">Software Livre</a> como o GNU/Linux pode expandí-lo para obter qualquer solução que você precisar.</p>
+<p>Embora alguns estejam familiarizados com estes termos, iniciantes podem se confundir com alguns dos termos que utilizamos aqui. Este post inicial servirá como clarificação e explicação inicial sobre todos os termos mais técnicos que aqui utilizamos. Venha conosco aprender mais!</p>
+<h2>O que é o Raspberry Pi? Como ele difere de um computador tradicional?</h2>
+<p>O Raspberry Pi é um tipo de <em>single board computer</em> (<a href="https://pt.wikipedia.org/wiki/Computador_de_placa_%C3%BAnica">computador de placa única</a>, no Português) - ou SBC - desenvolvido pela <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a> na Inglaterra. O propósito principal do projeto desde sua concepção em 2012 foi de instruir e educar pessoas sobre a ciência da computação através de um computador financeiramente acessível e altamente configurável.</p>
+<p>Como todo SBC, o Raspberry Pi é um computador completo construído numa única placa de silicone com todos os componentes - ex: CPU, Placa de Vídeo, saídas USB, placa de rede e adaptador WiFi - estão disponíveis no mesmo espaço compacto, que geralmente pode ser colocado facilmente numa <a href="https://amzn.to/2WD8h0I">caixinha protetora</a>. Acompanhado de uma fonte DC 5V -  equivalente a um carregador de smartphone Android comum - e periféricos como mouse e teclado USB e um monitor HDMI, um Raspberry Pi funciona perfeitamente como um pequeno computador desktop.</p>
+<p><img alt="Utilizando um raspberry Pi como um Desktop, completo com monitor e HD externo" src="/static/images/raspberry_pi_as_desktop_pc.jpg" /></p>
+<p>Porém, antes de jogar o seu PC fora e procurar o SBC mais próximo, saiba que o Raspberry Pi não é uma bala de prata e uma alternativa 100% a alguns tradicionais computador desktop (ainda). Na maioria das vezes, a limitação maior são os recursos como memória e capacidade do processador. </p>
+<p>A versão mais atual do Raspberry Pi (no momento desta publicação em Dezembro de 2020) por exemplo é o <a href="https://amzn.to/34zoLuV">Raspberry Pi 4B</a>, que possui 4GB de memória RAM e um processador ARMv8 quad-core 1.5GHz. Estas são especificações impressionantes para um SBC alimentado por fonte de celular, mas que provavelmente deixam um pouco a desejar para usuários mais <em>power users</em> ou que almejam utilizar seu computador para tarefas mais arrojadas como edição de vídeo ou áudio, ou jogos. </p>
+<p>Em comparação a um laptop, o Raspberry Pi também pode deixar a desejar em quesito de mobilidade, pois não possui bateria nem os acessórios periféricos como a tela ou teclado embutidos. Há projetos de hardware que buscam resolver estes dois casos, com talvez o mais famoso deles sendo o <a href="https://www.pine64.org/">PINE64</a>, que monta laptops e até smartphones utilizando a placa do Raspberry Pi como base.</p>
+<p>Outra limitação é que o próprio hardware do Raspberry Pi, que utiliza um processador da <a href="https://www.arm.com/why-arm/architecture">arquitetura ARM</a>, não suporta ainda todos os sistemas operacionais existentes. Estes frequentemente focam na arquitetura x86, popularizada pela instalação do <em>Personal Computer</em> desde os anos 90, e ainda dominam o mercado. Software como jogos ou aplicativos proprietários específicos ainda não suportam esta plataforma amplamente.</p>
+<p>Felizmente quase todo o software livre suporta a arquitetura ARM e roda muito bem no Raspberry Pi. Pelo menos cinco das <a href="https://distrowatch.com/dwres.php?resource=major">maiores distribuições Linux</a> oficialmente suportam a arquitetura ARM, podendo ser instaladas no Raspberry Pi. Isto nos leva ao nosso próximo ponto: por quê você <em>deve</em> utilizar software livre em conjunto com ele.</p>
+<h2>O que é o Software Livre e porque ele é a melhor escolha para o Raspberry Pi?</h2>
+<p>Se o hardware do nosso computador é um carro, o software certamente é o motor que lhe dá vida. A escolha do software que você instala e roda no computador é altamente responsável pela sua performance e a experiência que você tira ao utilizá-lo. </p>
+<p>Quantas vezes não nos frustramos com algum software que "dá pau" de vez em quando, ou que é extremamente lento para performar? Você acha que comprar um computador novo é a solução? Acredite, nossos computadores <em>não</em> envelhecem com o tempo - é o software que instalamos neles que se torna cada vez maior e menos eficiente. Quando utilizamos software não-livre como o Windows, que são proprietários e distribuidos somente pela Microsoft, não temos como nos livrar deste destino, senão por aceitá-lo e trocar de computador com frequência.</p>
+<p>Embora não podemos controlar 100% a forma que o software é criado e atualizado, o <a href="https://www.gnu.org/philosophy/free-sw.pt-br.html">Software Livre</a> oferece uma alternativa ao software que é desenvolvido atrás de portas fechadas e que ninguém consegue dizer ao certo como funciona, ou por que ele funciona de uma certa maneira. Quando o software é livre, <a href="https://www.gnu.org/philosophy/free-sw.html">temos a liberdade</a> de utilizá-lo, modificá-lo (ou solicitar a modificação) e distribuí-lo como quisermos.</p>
+<p><img alt="The four software freedoms - Credit: Free Software Magazine" src="http://freesoftwaremagazine.com/articles/rule_1_hold_on_loosely/c20080905_four_freedoms.jpg" /></p>
+<p>Estas liberdades, combinada com o fato que o Software Livre frequentemente é mais seguro e eficiente do que o proprietário, tornam o Software Livre a implementação perfeita para ser utilizada com o seu Raspberry Pi. É através deste software que iremos torná-lo um computador que fará tudo o que desejamos dele no nosso dia-a-dia, seja um Desktop, servidor caseiro, servidor para um site pessoal hospedado na sua própria casa, drive de rede, ou servidor VPN para bloquear anúncios.</p>
+<p>Quais Sistemas operacionais livres você deve usar, então? A escolha, como sempre, é sua, mas nossa recomendação é o <a href="https://ubuntu.com/download/raspberry-pi">Ubuntu Linux</a>, por ser simples e familiar de se utilizar e configurar, mas outras distribuições e o FreeBSD também são ótimos candidatos.</p>
+<p>Combinando o Raspberry Pi e o Software Livre, temos uma plataforma de computação verdadeiramente completa para resolver todos os problemas que você tiver.</p>
+<h2>Quais são os próximos passos para começar com o Raspberry Pi?</h2>
+<p>Se você leu até aqui e está interessado em aprender mais, assine o feed deste blog para não perder nenhum artigo que postamos aqui.</p>
+<p>Seus próximos passos lógicos são escolher um modelo de Raspberry Pi (ou outro SBC) e feito isso, escolher qual Sistema Operacional irá instalar nele, e colocar a mão na massa! Falaremos mais sobre cada um destes passos nos nossos próximos posts.</p>
+<p>O que você achou de começar a utilizar o Raspberry Pi? Conhece outros SBCs que também são interessantes? <a href="https://qoto.org/@raspibrasil">Siga-nos no Mastodon</a> e nos conte o que achou!</p>
+<p>Abraços!</p>
+<p><em>Publicado em 22 de Dezembro de 2020</em></p>
+            </div>
+        </content>
+    </entry>
+
+    <entry>
+        <title>Como escolher o seu primeiro Raspberry Pi?</title>
+        <link href="https://tilde.town/~kzimmermann/articles/blog/como_escolher_seu_raspberry_pi.html" />
+        <updated>2021-03-03T20:21:05.627747Z</updated>
+        <content type="xhtml">
+            <div xmlns="http://www.w3.org/1999/xhtml">
+                <h1>Como escolher o seu primeiro Raspberry Pi?</h1>
+<p>Olá mundo, e feliz ano novo atrasado! Desde que publicamos <a href="/blog/bem_vindo_ao_raspberrypi_brasil.html">nosso primeiro artigo explicando o que são o Raspberry Pi, SBCs e o Software Livre</a>, a grande pergunta que ficou foi: diante de tantos modelos de SBCs (e do próprio Raspberry Pi)  existentes, como escolher aquele que é o melhor para nós?</p>
+<p>Pensando nesta dúvida frequente entre os iniciantes no Single Board Computing, elaboramos este artigo para tirar suas dúvidas e informá-lo da melhor maneira possível para dar o seu primeiro passo neste mundo incrível de aprendizado e realização.</p>
+<p>Venha conosco!</p>
+<h2>Objetivos e Recursos</h2>
+<p>A sua decisão em qual SBC é o melhor para você provém principalmente de duas grandes variáveis: o seu <strong>objetivo</strong> em usar o dispositivo, e quanto de <strong>recursos</strong> você necessitará.</p>
+<p>O seu objetivo pretendido ao utilizar o seu Raspberry Pi ou SBC poderá afetar significantemente a sua escolha final. Por exemplo: você pretende utilizá-lo mais como um computador Desktop, conectando um monitor, teclado e mouse nele? Ou pretende utilizá-lo mais como um servidor em rede, instalando-o em algum lugar remoto na casa e administrando-o através da rede? Ou está pensando em sair um pouco do mundo do software e quer montar máquinas e mexer com hardware?</p>
+<p>Embora seja possível alcançar cada um dos objetivos acima com qualquer SBC, alguns são mais apropriados para cada uma destas tarefas.</p>
+<h3>Desktop</h3>
+<p>Versões recentes do Raspberry Pi, especialmente a partir do <a href="https://amzn.to/3slgdlW">modelo 4</a>, são análogas a um computador desktop e em muitos casos possuem especificações iguais ou melhores que alguns deles. Nossa recomendação é que pelo menos 4 GB de memória RAM sejam dedicados para o uso de um SBC como uma alternativa a um computador Desktop, e com bastante conectividade USB ou sem fio para conectar periféricos.</p>
+<p>Com 4 a 8 GB de memória, o <a href="https://amzn.to/3slgdlW">Raspberry Pi 4</a> funciona bem como uma reposição de um computador Desktop, consumindo significante menos energia e apresentando uma interface gráfica familiar e eficiente quando combinado com o poder do <a href="/blog/bem_vindo_ao_raspberrypi_brasil.html">Software Livre</a>. A presença de WiFi e Bluetooth integrada no chip torna-o ainda mais poderoso, possibilitando você a conectar seus periféricos sem fio facilmente, e conectar a uma rede caseira sem fio com facilidade.</p>
+<p>Um outro projeto de SBC projetado pela Asus, o <a href="https://www.asus.com/us/Single-Board-Computer/Tinker-Board/">Asus Tinkerboard</a> possui especificações parecidas com Desktops tradicionais, podendo até mesmo exibir vídeo em resolução 4K. É uma alternativa interessante ao Raspberry Pi como um Desktop.</p>
+<h3>Servidor</h3>
+<p>O Raspberry Pi também funciona bem como um servidor em rede por conta do seu baixo consumo de energia, tamanho compacto e suas especificações bem-posicionadas para pequenos servidores. Por conta do consumo relativamente menor de recursos em comparação aos computadores desktops atuais, até modelos mais antigos do Raspberry Pi, como o <a href="https://amzn.to/3qlUOqH">Raspberry Pi 3</a> com 1GB de memória, podem ser suficientes nestes casos.</p>
+<p>Graças à eficiência e dos sistemas operacionais livres disponíveis para servidores, é possível colocar um SBC com recursos relativamente modestos performando bem como um servidor pessoal. Como resultado, o consumo de energia e a geração de calor também são bastante reduzidos, podendo algumas vezes não precisar de refrigeração para serem mantidos.</p>
+<p>Outras alternativas para esta forma de utilização incluem outros fabricantes de SBCs como o <a href="https://en.wikipedia.org/wiki/Banana_Pi">Banana Pi</a>, ou o <a href="https://amzn.to/35GN62I">BeagleBone</a>.</p>
+<h3>Integração de Hardware e IoT</h3>
+<p>Quando se trata de projetos com foco em Hardware - por exemplo: sensores, controle remoto, Internet of Things (IOT) - ainda é possível utilizar o Raspberry Pi para diversos projetos, dado suas interfaces diversas de comunicação, e a possibilidade de extendê-lo através da <a href="https://en.wikipedia.org/wiki/PCI_Express">interface PCI Express</a> com periféricos extras de forma compacta. Porém, neste campo o campeão indiscutível é o projeto <a href="https://www.arduino.cc/">Arduino</a>.</p>
+<p>Não há apenas um único "modelo" de Arduino: você adquire as placas contendo o CPU e as arruma conforme as suas necessidades de hardware. É possível integrá-lo com <a href="https://amzn.to/3bEImOT">sensores de ambiente</a>, <a href="https://amzn.to/3oMeofz">motores</a>, e <a href="https://amzn.to/3bGXjje">inúmeros outros periféricos</a> para adaptá-lo perfeitamente às suas necessidades.</p>
+<p>O Arduino também integra o lado do software em seus produtos, com todos os componentes sendo programáveis através de linguagens de programação como o C ou <a href="https://amzn.to/3qnhcju">Python</a>. É uma forma prática de trazer um projeto de software para a vida real.</p>
+<h2>Apetrechos e periféricos</h2>
+<p>Embora utilizável por si próprio, a performance e experiência do Raspberry Pi podem ser melhoradas com a adição de alguns periféricos que extendem sua utilização e oferecem proteção ao equipamento. </p>
+<p>Como recomendação mínima, recomendamos a utilização pelo menos de um <a href="https://amzn.to/3qjZ7Ty">case de proteção</a> para a frágil placa do Raspberry Pi e, no caso do Raspberry Pi 4, a <a href="https://amzn.to/3nEGcRG">fonte oficial do Raspberry Pi Foundation</a>, já que modelos a partir desta versão possuem uma amperagem um pouco maior do que as fontes de celular comuns. E se utilizado como um computador desktop, recomendamos também a compra de um <a href="https://amzn.to/35JxY4x"><em>heatsink</em></a> por conta do calor gerado por ele.</p>
+<p>Falaremos mais sobre estes equipamentos extras num post futuro.</p>
+<h2>Guia rápido de escolha</h2>
+<p>Sumarizando o post e para facilitar a sua escolha, segue abaixo um guia rápido descrevendo as escolhas recomendadas para o seu primeiro SBC dependendo do seu caso de uso:</p>
+<ul>
+<li><strong>Desktop</strong>: <a href="https://amzn.to/3slgdlW">Raspberry Pi 4</a>, de 4 a 8GB de RAM, ou Asus Tinkerboard.</li>
+<li><strong>Apenas como servidor</strong>: <a href="https://amzn.to/3qlUOqH">Rasberry Pi 3B</a>, <a href="https://amzn.to/35GN62I">BeagleBone</a>.</li>
+<li><strong>Projetos de IOT ou customização de hardware</strong>: <a href="https://amzn.to/3bGXjje">Arduino</a>.</li>
+</ul>
+<p>Estas três categorias provavelmente cobrirão a maior parte dos casos de uso, mas dada a abundância de alternativas é possível ter combinações bem variadas de hardware na sua jornada.</p>
+<p>E para você, qual é o melhor SBC para cada tipo de uso e por quê? Escreva sua resposta para a nossa <a href="https://qoto.org/@raspibrasil">conta no Mastodon</a>!</p>
+<p>Abraços e até o nosso próximo post!</p>
+<p>Equipe Raspberry Pi Brasil</p>
+            </div>
+        </content>
+    </entry>
+
+    <entry>
+        <title>Quais os melhores acessórios e periféricos para o Raspbery Pi?</title>
+        <link href="https://tilde.town/~kzimmermann/articles/blog/melhores_acessorios_raspberry_pi.html" />
+        <updated>2021-03-05T21:42:07.548437Z</updated>
+        <content type="xhtml">
+            <div xmlns="http://www.w3.org/1999/xhtml">
+                <h1>Quais os melhores acessórios e periféricos para o Raspbery Pi?</h1>
+<p>Anteriormente no blog, exploramos os <a href="/blog/como_escolher_seu_raspberry_pi.html">vários tipos e modelos do Raspberry Pi</a>  que podem te servir melhor para cada um dos seus objetivos em explorar o mundo dos <em>Single Board Computers</em>. Seja como Desktop ou Servidor, ou para as suas próximas invenções de IoT, existe um modelo de Raspberry Pi ou outro SBC que é perfeito para o seu próximo projeto.</p>
+<p>Embora por si próprio um computador completo e inteiramente funcional (afinal, esta é a essência de um SBC), a performance e experiência de utilizar um Raspberry Pi podem ser muito melhoradas com a adição de alguns periféricos que extendem a capacidade e oferecem proteção ao equipamento. Afinal, o dispositivo é um SBC, e não um <em>All-in-one computer</em>... <code>;)</code> Mais capacidade, refrigeração, e algumas vezes proteção física contra os elementos são qualidades desejáveis à qualquer computador, e felizmente você pode oferecê-las ao Raspberry Pi através de alguns acessórios-chave. Neste post, detalharemos alguns dos acessórios que consideramos recomendados, ou algumas vezes indispensáveis para o seu Raspberry Pi. Venha com a gente!</p>
+<h2>Case de proteção</h2>
+<p>O primeiro acessório recomendado é o <a href="https://amzn.to/3qjZ7Ty">case de proteção</a> do Raspberry Pi. A placa dele é pequena e frágil, podendo ser danificada facilmente por conta de impacto, ou humidade demais. Um case provém uma proteção simples e eficaz ao seu Raspberry Pi, evitando que ele seja danificado acidentalmente.</p>
+<p>O <a href="https://amzn.to/3qjZ7Ty">case oficial do Raspberry Pi Foundation</a> torna o dispositivo claramente identificável com suas cores branca e vermelha e a logo estampada na tampa de maneira ainda bem compacta - o dispositivo continua cabendo na palma da mão:</p>
+<p><img alt="Comparação do tamanho do Raspberry Pi 4 - ele cabe na palma da mão" src="/static/images/raspi4_palm_size.jpg" /></p>
+<p>Existem ainda outros cases não-oficiais que também cabem no Raspberry Pi. Alguns são feitos de <a href="https://amzn.to/39w6Abn">outros materiais como alumínio</a> que além de mais resistentes possuem um efeito de refrigeração passiva, além de outros designs e materiais (como <a href="https://amzn.to/3icPvqV">acrílico</a>) e tamanhos. Todos são eficientes na hora de proteger seu Raspberry Pi.</p>
+<h2>Heatsink e refrigeração</h2>
+<p>Embora possua baixo consumo de energia e poder computacional, o Raspberry Pi gera uma quantidade considerável de calor durante a utilização e, por conta da ausência de um sistema de arrefecimento, não consegue dispersar o calor tão eficientemente quanto um computador ou servidor tradicional. </p>
+<p>Portanto, a depender da temperatura do ambiente (quase sempre verdadeiro para o Brasil) ou da intensidade de uso, um sistema de refrigeração ou <em>heatsink</em> para seu Raspberry Pi pode se tornar necessário.</p>
+<p><em>Heatsinks</em> funcionam de forma passiva, sendo simplesmente peças que conduzem rapidamente o calor a fim de carregá-lo para fora do CPU por condução. Alguns cases possuem esta função embutida, especialmente se feitos de materiais metálicos, mas é possível comprar <a href="https://amzn.to/35JxY4x"><em>heatsinks</em> extras</a> de alumínio para serem encaixadas dentro de cases existentes. Para usos de pouca intensidade como um servidor pequeno, um bom <em>heatsink</em> pode ser suficiente.</p>
+<p><a href="https://amzn.to/35JxY4x"><img alt="Heatsink com o Raspberry Pi" src="/static/images/raspberry_pi_heatsink.jpg" /></a></p>
+<p>Existem também sistemas ativos de refrigeração, que são um ventilador interno que refrigera o dispositivo similarmente aos de um computador tradicional. Alguns deles podem ser <a href="https://amzn.to/2Ly1h3b">montados diretamente na placa do Raspberry Pi</a> através das interfaces PCIe, não sendo necessário a utilização das portas USB, e mantendo o conjunto de forma compacta. </p>
+<p><a href="https://amzn.to/2Ly1h3b"><img alt="Resfriamento ativo via PCIe" src="/static/images/raspberry_pi_active_cooling.jpg" /></a></p>
+<p>Outros essencialmente são como <a href="https://amzn.to/3srtCZx">ventiladores externos com entrada USB</a>, que você pode colocar por cima dele e ligá-los utilizando uma das saídas USB disponíveis. Um pouco menos organizado, mas ainda assim eficiente.</p>
+<p><a href="/static/images/external_fan_usb.jpg"><img alt="ventilador externo USB" src="/static/images/external_fan_usb.jpg" /></a></p>
+<p>Particularmente, se você pretende utilizar o seu Raspberry Pi como um desktop, com várias aplicações gráficas e um navegador sendo utilizados simultaneamente, a demanda causa o dispositivo a se sobreaquecer rapidamente, podendo chegar a temperaturas até mesmo danosas ao CPU. Neste caso, o uso de refrigeração ativa é altamente recomendado.</p>
+<h2>Fonte de alimentação</h2>
+<p>O Raspberry Pi e a maioria dos outros SBCs são designados para funcionar com uma fonte de Smartphone comum, operando a 5V DC e utilizando saídas MicroUSB ou USB-C para alimentação. Porém, a partir do modelo Raspberry Pi 4, o Raspberry Pi Foundation aumentou os requerimentos de alimentação, tornando a maioria das fontes de Smartphone incompatíveis com este modelo.</p>
+<p>Como resultado, o Raspberry Pi 4 (e possivelmente os modelos futuros) precisam da <a href="https://amzn.to/3nEGcRG">fonte oficial específica</a> com a amperagem correta para funcionar corretamente. A não utilização desta fonte poderá acarretar na danificação do dispositivo.</p>
+<h2>Armazenamento</h2>
+<p>O Raspberry Pi precisa pelo menos de um cartão MicroSD para conseguir rodar um sistema operacional. Ao passo que estes se tornaram muito mais populares recentemente graças à popularização dos Smartphones Android, quando se trata de um SBC, são necessárias algumas considerações extras.</p>
+<p>Primeiramente, a maior parte dos cartões MicroSDs antigos possui uma velocidade de leitura muito lenta em comparação a um HD ou outra mídia de armazenamento tradicional, o que reflete na performance do Raspberry Pi se utilizados (o computador parece "travar" de vez em quando, quando na verdade está apenas esperando os dados serem copiados).</p>
+<p>Portanto, ao invés de abrir a gaveta e pegar o primeiro cartão SD que achar para instalar, é recomendado utilizar um <a href="https://amzn.to/3oNsn4y">cartão MicroSD de alta velocidade</a>, como aqueles que conformam aos <a href="https://en.wikipedia.org/wiki/SD_card#Class">padrões modernos do MicroSD</a>, como UHS-I ou UHS-II.</p>
+<p>A segunda consideração é quanto ao tamanho do armazenamento. Enquanto a maior parte dos sistemas operacionais livres como Linux e FreeBSD cabem tranquilamente dentro de 8GB de espaço, pode ser necessário um espaço extra para armazenamento de dados e arquivos conforme o gosto e necessidades do usuário. Nossa recomendação é de pelo menos 32GB de espaço.</p>
+<p>Porém, por conta das limitações e durabilidade reduzida dos cartões MicroSD, é melhor reservar ao cartão apenas o espaço necessário para o sistema operacional, e conectar qualquer capacidade adicional externamente, via saídas USB. Dependendo do seu caso de uso, você poderá utilizar desde <a href="https://amzn.to/2KgjXnn">Pendrives comuns USB</a> de alta capacidade ou, quando baixa latência for requisito, <a href="https://amzn.to/3sqMUy6">um HD externo</a> pode ser a única solução.</p>
+<h2>As opções são inúmeras</h2>
+<p>E para você, qual é o melhor SBC para cada tipo de uso e por quê? Escreva sua resposta para a nossa <a href="https://qoto.org/@raspibrasil">conta no Mastodon</a>!</p>
+<p>Abraços e até o nosso próximo post!</p>
+<p>Equipe Raspberry Pi Brasil</p>
+            </div>
+        </content>
+    </entry>
+
+</feed>

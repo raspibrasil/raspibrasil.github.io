@@ -42,9 +42,9 @@ O Arduino também integra o lado do software em seus produtos, com todos os comp
 
 Embora utilizável por si próprio, a performance e experiência do Raspberry Pi podem ser melhoradas com a adição de alguns periféricos que extendem sua utilização e oferecem proteção ao equipamento. 
 
-Como recomendação mínima, recomendamos a utilização pelo menos de um [case de proteção](https://amzn.to/3qjZ7Ty) para a frágil placa do Raspberry Pi e, no caso do Raspberry Pi 4, a [fonte oficial do Raspberry Pi Foundation](https://amzn.to/3nEGcRG), já que modelos a partir desta versão possuem uma amperagem um pouco maior do que as fontes de celular comuns. E se utilizado como um computador desktop, recomendamos também a compra de um [*heatsink*](https://amzn.to/35JxY4x) por conta do calor gerado por ele.
+Como recomendação mínima, recomendamos a utilização pelo menos de um [case de proteção](https://amzn.to/3qjZ7Ty) para a frágil placa do Raspberry Pi e, no caso do Raspberry Pi 4, a [fonte oficial do Raspberry Pi Foundation](https://amzn.to/3nEGcRG), já que modelos a partir desta versão possuem uma amperagem um pouco maior do que as fontes de celular comuns. E se utilizado como um computador desktop, recomendamos também a compra de um [*heatsink*](https://amzn.to/35JxY4x) por conta do calor gerado por seu processador mais poderoso.
 
-Falaremos mais sobre estes equipamentos extras num post futuro.
+Para saber mais sobre os diversos acessórios para complementar e melhorar a experiência do Raspberry Pi, preparamos para você um post exclusivo sobre o assunto: [Quais os melhores acessórios e periféricos para o Raspberry Pi?](/blog/melhores_acessorios_raspberry_pi.html)
 
 ## Guia rápido de escolha
 
