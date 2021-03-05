@@ -1,8 +1,8 @@
 # Quais os melhores acessórios e periféricos para o Raspbery Pi?
 
-Anteriormente no blog, exploramos os [vários tipos e modelos do Raspberry Pi](/blog/como_escolher_seu_raspberry_pi.html)  que podem te servir melhor para cada um dos seus objetivos em explorar o mundo dos *Single Board Computers*. Quando tínhamos um desses
+Anteriormente no blog, exploramos os [vários tipos e modelos do Raspberry Pi](/blog/como_escolher_seu_raspberry_pi.html)  que podem te servir melhor para cada um dos seus objetivos em explorar o mundo dos *Single Board Computers*. Seja como Desktop ou Servidor, ou para as suas próximas invenções de IoT, existe um modelo de Raspberry Pi ou outro SBC que é perfeito para o seu próximo projeto.
 
-Embora utilizável por si próprio, a performance e experiência do Raspberry Pi podem ser melhoradas com a adição de alguns periféricos que extendem sua utilização e oferecem proteção ao equipamento. 
+Embora por si próprio um computador completo e inteiramente funcional (afinal, esta é a essência de um SBC), a performance e experiência de utilizar um Raspberry Pi podem ser muito melhoradas com a adição de alguns periféricos que extendem a capacidade e oferecem proteção ao equipamento. Afinal, o dispositivo é um SBC, e não um *All-in-one computer*... `;)` Mais capacidade, refrigeração, e algumas vezes proteção física contra os elementos são qualidades desejáveis à qualquer computador, e felizmente você pode oferecê-las ao Raspberry Pi através de alguns acessórios-chave. Neste post, detalharemos alguns dos acessórios que consideramos recomendados, ou algumas vezes indispensáveis para o seu Raspberry Pi. Venha com a gente!
 
 ## Case de proteção
 
