@@ -2,17 +2,18 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>kzimmermann's articles</title>
-    <link href="https://raspibrasil.github.io//articles/atom.xml" rel="self" />
-    <link href="https://raspibrasil.github.io//articles/" />
-    <updated>2021-03-05T15:17:03.131431Z</updated>
+    <link href="https://raspibrasil.github.io/articles/atom.xml" rel="self" />
+    <link href="https://raspibrasil.github.io/articles/" />
+    <updated>2021-03-06T07:55:36.908349Z</updated>
     <author>
-        <name>Klaus J Zimmermann - @kzimmermann@fosstodon.org</name>
+        <name>Equipe Raspberry Pi Brasil - @raspibrasil@qoto.org</name>
     </author>
+    <id>urn:uuid:3b25749c-8528-33b2-9fb6-e1f02633295f</id>
     
     <entry>
         <title>Hello World! O que é o Raspberry Pi e o Software livre?</title>
-        <link href="https://tilde.town/~kzimmermann/articles/blog/bem_vindo_ao_raspberrypi_brasil.html" />
-        <updated>2021-03-03T20:21:05.627362Z</updated>
+        <link href="https://raspibrasil.github.io/blog/bem_vindo_ao_raspberrypi_brasil.html" />
+        <updated>2020-12-22T18:28:47.160529Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Hello World! O que é o Raspberry Pi e o Software livre?</h1>
@@ -48,8 +49,8 @@
 
     <entry>
         <title>Como escolher o seu primeiro Raspberry Pi?</title>
-        <link href="https://tilde.town/~kzimmermann/articles/blog/como_escolher_seu_raspberry_pi.html" />
-        <updated>2021-03-03T20:21:05.627747Z</updated>
+        <link href="https://raspibrasil.github.io/blog/como_escolher_seu_raspberry_pi.html" />
+        <updated>2021-03-06T12:11:51.073210Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Como escolher o seu primeiro Raspberry Pi?</h1>
@@ -74,8 +75,8 @@
 <p>O Arduino também integra o lado do software em seus produtos, com todos os componentes sendo programáveis através de linguagens de programação como o C ou <a href="https://amzn.to/3qnhcju">Python</a>. É uma forma prática de trazer um projeto de software para a vida real.</p>
 <h2>Apetrechos e periféricos</h2>
 <p>Embora utilizável por si próprio, a performance e experiência do Raspberry Pi podem ser melhoradas com a adição de alguns periféricos que extendem sua utilização e oferecem proteção ao equipamento. </p>
-<p>Como recomendação mínima, recomendamos a utilização pelo menos de um <a href="https://amzn.to/3qjZ7Ty">case de proteção</a> para a frágil placa do Raspberry Pi e, no caso do Raspberry Pi 4, a <a href="https://amzn.to/3nEGcRG">fonte oficial do Raspberry Pi Foundation</a>, já que modelos a partir desta versão possuem uma amperagem um pouco maior do que as fontes de celular comuns. E se utilizado como um computador desktop, recomendamos também a compra de um <a href="https://amzn.to/35JxY4x"><em>heatsink</em></a> por conta do calor gerado por ele.</p>
-<p>Falaremos mais sobre estes equipamentos extras num post futuro.</p>
+<p>Como recomendação mínima, recomendamos a utilização pelo menos de um <a href="https://amzn.to/3qjZ7Ty">case de proteção</a> para a frágil placa do Raspberry Pi e, no caso do Raspberry Pi 4, a <a href="https://amzn.to/3nEGcRG">fonte oficial do Raspberry Pi Foundation</a>, já que modelos a partir desta versão possuem uma amperagem um pouco maior do que as fontes de celular comuns. E se utilizado como um computador desktop, recomendamos também a compra de um <a href="https://amzn.to/35JxY4x"><em>heatsink</em></a> por conta do calor gerado por seu processador mais poderoso.</p>
+<p>Para saber mais sobre os diversos acessórios para complementar e melhorar a experiência do Raspberry Pi, preparamos para você um post exclusivo sobre o assunto: <a href="/blog/melhores_acessorios_raspberry_pi.html">Quais os melhores acessórios e periféricos para o Raspberry Pi?</a></p>
 <h2>Guia rápido de escolha</h2>
 <p>Sumarizando o post e para facilitar a sua escolha, segue abaixo um guia rápido descrevendo as escolhas recomendadas para o seu primeiro SBC dependendo do seu caso de uso:</p>
 <ul>
@@ -93,8 +94,8 @@
 
     <entry>
         <title>Quais os melhores acessórios e periféricos para o Raspbery Pi?</title>
-        <link href="https://tilde.town/~kzimmermann/articles/blog/melhores_acessorios_raspberry_pi.html" />
-        <updated>2021-03-05T21:42:07.548437Z</updated>
+        <link href="https://raspibrasil.github.io/blog/melhores_acessorios_raspberry_pi.html" />
+        <updated>2021-03-06T12:11:51.073210Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Quais os melhores acessórios e periféricos para o Raspbery Pi?</h1>
