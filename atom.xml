@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>kzimmermann's articles</title>
-    <link href="https://raspibrasil.github.io/articles/atom.xml" rel="self" />
-    <link href="https://raspibrasil.github.io/articles/" />
-    <updated>2021-03-06T07:55:36.908349Z</updated>
+    <title>Raspberry Pi Brasil</title>
+    <link href="https://raspibrasil.github.io/atom.xml" rel="self" />
+    <link href="https://raspibrasil.github.io/" />
+    <updated>2021-03-06T08:45:17.231385Z</updated>
     <author>
         <name>Equipe Raspberry Pi Brasil - @raspibrasil@qoto.org</name>
     </author>
@@ -13,6 +12,7 @@
     <entry>
         <title>Hello World! O que é o Raspberry Pi e o Software livre?</title>
         <link href="https://raspibrasil.github.io/blog/bem_vindo_ao_raspberrypi_brasil.html" />
+        <id>urn:uuid:4c299e69-41f6-5007-9e31-22fb00c47ffb</id>
         <updated>2020-12-22T18:28:47.160529Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
@@ -50,6 +50,7 @@
     <entry>
         <title>Como escolher o seu primeiro Raspberry Pi?</title>
         <link href="https://raspibrasil.github.io/blog/como_escolher_seu_raspberry_pi.html" />
+        <id>urn:uuid:7193470b-5721-562e-8ce7-3d063ecf5d7f</id>
         <updated>2021-03-06T12:11:51.073210Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
@@ -95,6 +96,7 @@
     <entry>
         <title>Quais os melhores acessórios e periféricos para o Raspbery Pi?</title>
         <link href="https://raspibrasil.github.io/blog/melhores_acessorios_raspberry_pi.html" />
+        <id>urn:uuid:bd8bbb48-5546-58d0-9cac-29cd7e6619d9</id>
         <updated>2021-03-06T12:11:51.073210Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">

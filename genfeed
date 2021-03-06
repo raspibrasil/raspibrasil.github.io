@@ -13,6 +13,9 @@
 
 import os
 import sys
+import uuid
+import hashlib
+
 from datetime import datetime
 from markdown import markdown
 
@@ -29,11 +32,10 @@ PUB_DIR = "./"
 SITE_ROOT = "https://" + DOMAIN
 # The following are bits and pieces that compose the final feed:
 template_body = '''<?xml version="1.0" encoding="utf-8"?>
-
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>kzimmermann's articles</title>
-    <link href="%s/articles/atom.xml" rel="self" />
-    <link href="%s/articles/" />
+    <title>Raspberry Pi Brasil</title>
+    <link href="%s/atom.xml" rel="self" />
+    <link href="%s/" />
     <updated>%sZ</updated>
     <author>
         <name>Equipe Raspberry Pi Brasil - @raspibrasil@qoto.org</name>
@@ -43,10 +45,14 @@ template_body = '''<?xml version="1.0" encoding="utf-8"?>
 </feed>
 ''' 
 
+# Note: each <entry> element has to have an ID associated with it as well.
+#       Not so sure about how we must generate it, so hell, let's just hash
+#       the damn url...
 template_entries = '''
     <entry>
         <title>%s</title>
         <link href="%s" />
+        <id>urn:uuid:%s</id>
         <updated>%sZ</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
@@ -67,6 +73,11 @@ def create_entry(postname):
     title = raw_post.split('\n')[0][2:]
     link = SITE_ROOT + "/" + postname.replace(".md", ".html")
 
+    # How should we generate a *truly* unique identifier across pages edited
+    # all across the internet? Well, hashing the whole URL is a way...
+    url_hash = hashlib.sha1(link.encode()).hexdigest()
+    id = uuid.uuid5(uuid.NAMESPACE_DNS, url_hash)
+
     # Getting the last updated time requires some work...
     last_mod = datetime.fromtimestamp(os.path.getmtime(postname))
     updated = datetime.isoformat(last_mod) # this is the one we'll use.
@@ -74,7 +85,7 @@ def create_entry(postname):
     content = markdown(raw_post)
 
     # Fill in the blanks
-    entry = template_entries % (title, link, updated, content)
+    entry = template_entries % (title, link, id, updated, content)
     return entry
 
 
