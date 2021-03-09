@@ -1,48 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://raspibrasil.github.io</loc>
+        <loc>https://www.raspberrypibrasil.com</loc>
         <lastmod>2021-03-06</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://raspibrasil.github.io/test.html</loc>
-        <lastmod>2021-03-03</lastmod>
+        <loc>https://www.raspberrypibrasil.com/blog/melhores_acessorios_raspberry_pi.html</loc>
+        <lastmod>2021-03-06</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://raspibrasil.github.io/sobre</loc>
-        <lastmod>2021-03-03</lastmod>
+        <loc>https://www.raspberrypibrasil.com/blog/bem_vindo_ao_raspberrypi_brasil.html</loc>
+        <lastmod>2021-03-06</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://raspibrasil.github.io/blog/bem_vindo_ao_raspberrypi_brasil.html</loc>
-        <lastmod>2021-03-03</lastmod>
+        <loc>https://www.raspberrypibrasil.com/blog</loc>
+        <lastmod>2021-03-06</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://raspibrasil.github.io/blog/como_escolher_seu_raspberry_pi.html</loc>
-        <lastmod>2021-03-03</lastmod>
+        <loc>https://www.raspberrypibrasil.com/blog/como_escolher_seu_raspberry_pi.html</loc>
+        <lastmod>2021-03-06</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://raspibrasil.github.io/blog/melhores_acessorios_raspberry_pi.html</loc>
-        <lastmod>2021-03-05</lastmod>
+        <loc>https://www.raspberrypibrasil.com/sobre</loc>
+        <lastmod>2021-03-06</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://raspibrasil.github.io/blog</loc>
-        <lastmod>2021-03-05</lastmod>
+        <loc>https://www.raspberrypibrasil.com/contato</loc>
+        <lastmod>2021-03-06</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://raspibrasil.github.io/privacidade</loc>
-        <lastmod>2021-03-03</lastmod>
-        <changefreq>monthly</changefreq>
-    </url>
-    <url>
-        <loc>https://raspibrasil.github.io/contato</loc>
-        <lastmod>2021-03-03</lastmod>
+        <loc>https://www.raspberrypibrasil.com/privacidade</loc>
+        <lastmod>2021-03-06</lastmod>
         <changefreq>monthly</changefreq>
     </url>
 </urlset>

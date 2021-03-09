@@ -28,7 +28,7 @@ All <url> elements will be inserted automatically.
 '''
 
 # Set this to your site's domain WITHOUT a trailing slash
-BASE_URL = "https://raspibrasil.github.io"
+BASE_URL = "https://www.raspberrypibrasil.com"
 
 # How often does the site get updated?
 # Available options are daily, weekly, monthly
