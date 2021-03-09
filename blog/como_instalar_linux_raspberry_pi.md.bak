@@ -30,6 +30,10 @@ Seguindo em frente, vejamos como instalar um sistema operacional no Raspberry Pi
 
 ## Como o processo de instalação funciona no Raspberry Pi
 
-Diferente da instalação num computador tradicional, onde primeiro insere-se a mídia de instalação do sistema operacional e os dados são copiados para a mídia de armazenamento,
+Diferente da instalação num computador tradicional, onde primeiro insere-se a mídia de instalação do sistema operacional e os dados são depois copiados para o disco rígido, no Raspberry Pi o processo é um pouco mais integrado, embora similar em conceito.
+
+Para instalar qualquer sistema operacional no Raspberry Pi, você precisa copiar uma imagem já pré-configurada deste sistema no cartão MicroSD que será utilizado nele. Se você nunca utilizou Linux antes (onde este é o processo padrão para criação de *Live Media*), este conceito pode parecer um pouco estranho, mas felizmente existem ferramentas didáticas que tornam o processo simples e rápido.
+
+Se você usa Windows ou não está acostumado a lidar com a linha de comandos do terminal do Linux, o aplicativo [Raspberry Pi Imager](https://github.com/raspberrypi/imagewriter) desenvolvido pela Raspberry Pi Foundation é a maneira recomendada para fazer a instalação. Você pode baixá-lo para Windows ou sua distribuição Linux, e simplesmente seguir as instruções na tela.
 
 ## Instalando o Raspbian no Raspberry Pi
