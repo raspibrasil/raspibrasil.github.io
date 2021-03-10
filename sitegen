@@ -82,12 +82,15 @@ def convert(page, targetdir, is_article=False):
 
     os.chdir(START_DIR)
 
-def make_index(pagelist, targetdir):
+# Makes index of a directory, like a blog:
+def make_index(targetdir):
     '''
     Make an index.html-like page, which links out to every page in the 
-    category
-    
-    pagelist - a list of .md files
+    category.
+
+    If subpages with an index.html, points to parent
+
+    Parameters:
     targetdir - the publishing directory
     '''
     global TEMPLATE
@@ -105,44 +108,99 @@ def make_index(pagelist, targetdir):
 Estes são todos os artigos publicados no nosso blog até agora:
 
 """
+    # move to referred directory to start indexing:
+    os.chdir(targetdir)
+    if DEBUG:
+        print("Changed to %s" % os.path.realpath('.'))
+
     # We need to sort them by published date (newer to older). Use this:
     artlist = []
 
-    for page in pagelist:
-        with open(page,'r') as original:
+    # categories to sort articles out afterwards:
+    cat_list = []
 
-            # This is the timestamp of publication:
-            timestamp = os.stat(page).st_ctime
+    for item in os.listdir('.'):
+        # We might have directories, or loose HTML files here. Scan:
+        if DEBUG:
+            print("Found item %s " % item)
+        if os.path.isdir(item):
+            if DEBUG:
+                print("Changing into %s" % item)
+            os.chdir(item)
 
-            # Get the title information and the URL to link out to.
-            raw = original.read()
-            pagetitle = raw.split('\n')[0][2:]
-            print("Title of page is: %s" % pagetitle)
+            # is there a published article here? If not, move to the next
+            if not os.path.isfile('index.md'):
+                if DEBUG:
+                    print("There isn't a finished .md file here. Skipping.")
+                os.chdir('..')
+                continue 
 
-            # Get the "blurb" of the article (first two paragraphs):
-            blurb = raw.split('\n')[2]
-            blurb += '\n\n'
-            blurb += raw.split('\n')[4]
+            # blog page directory has index.md, pubdate and categories:
+            with open('index.md','r') as original:
 
-            url = page.replace('.md', '.html')
-            print("URL of page is: %s" % url)
+                # Get the title information and the URL to link out to.
+                raw = original.read()
+                pagetitle = raw.split('\n')[0][2:]
+                if DEBUG:
+                    print("Title of page is: %s" % pagetitle)
 
-            # Append it as a tuple, so we can sort by timestamp:
-            article_tuple = (timestamp, pagetitle, url, blurb)
+                # Get the "blurb" of the article (first two paragraphs):
+                blurb = raw.split('\n')[2]
+                blurb += '\n\n'
+                blurb += raw.split('\n')[4]
+
+                # the url is the directory, since we're dealing with index
+                url = "/blog/" + item + '/'
+                if DEBUG:
+                    print("URL of page is: %s" % url)
+
+            # The pubdate comes from 'pubdate' file (duh?)
+            with open('pubdate', 'r') as pubdate:
+                timestamp = pubdate.read()
+
+            # Categories are one on each line, a little more tricky:
+            with open('categories', 'r') as catsfile:
+                raw = catsfile.read()
+                categories = raw.split('\n')
+
+            # There's always a pesky newline. Get rid of it:
+            categories.pop()
+
+            # Append everthing as a tuple, so we can sort by timestamp:
+            article_tuple = (timestamp, pagetitle, url, blurb, categories)
             artlist.append(article_tuple)
+
+            # now that everything is searched inside the directory, move out
+            os.chdir('..')
+
+        else:
+            if DEBUG:
+                print("Skipping non-directory '%s'" % item)
+        
+    # Done sorting through the blog directory? Excellent. Move back!
+    os.chdir('..')
+    if DEBUG:
+        print("Finished searching for articles. Moving to %s" % os.path.realpath('.'))
 
     print("We got %s articles in here" % len(artlist))
     artlist.sort(reverse=True) # newer first.
         
     for page in artlist:
+        # "stretch" the category list into a string:
+        categories = ""
+        for cat in page[4]:
+            categories += ("[" + cat + "](/blog/tags/" + cat + ") ")
+        if DEBUG:
+            print("Categories are %s" % categories)
+
         raw_content += '<section class="article">'
         raw_content += markdown("""
-### [%s](/%s) 
+### [%s](%s) 
 
 %s
 
-*Publicado em %s*
-""" % (page[1], page[2], page[3], datetime.datetime.fromtimestamp(page[0]).date()))
+Publicado em %s em: %s
+""" % (page[1], page[2], page[3], page[0], categories))
         raw_content += '</section>'
 
     raw_content += "\n"
@@ -207,12 +265,12 @@ if __name__ == "__main__":
         for i in filelist:
             print(" - %s" % i)
 
-    if len(filelist) == 0:
+    if not index and len(filelist) == 0:
         print("Error: no files given to convert!")
         sys.exit(1)
 
     if index:
-        make_index(filelist, pubdir)
+        make_index(pubdir)
 
     else:
         for page in filelist:

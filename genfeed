@@ -22,7 +22,7 @@ from markdown import markdown
 # --- SETTINGS --- 
 # Change this to your site's domain (no http, etc):
 # Example: DOMAIN = "tilde.town/~kzimmermann"
-DOMAIN = "raspberrypibrasil.com"
+DOMAIN = "www.raspberrypibrasil.com"
 
 # change this to where you'd like to save the final feed file
 PUB_DIR = "./"
@@ -71,7 +71,15 @@ def create_entry(postname):
 
     # Use the first line (minus the two first characters) as the title
     title = raw_post.split('\n')[0][2:]
-    link = SITE_ROOT + "/" + postname.replace(".md", ".html")
+
+    # if this is an index file, serve the parent / address:
+    if postname.split('/')[-1] == "index.md":
+        tmp = postname.split('/')
+        tmp.pop()
+
+        link = SITE_ROOT + "/" + "/".join(tmp) + '/'
+    else:
+        link = SITE_ROOT + "/" + postname.replace(".md", ".html")
 
     # How should we generate a *truly* unique identifier across pages edited
     # all across the internet? Well, hashing the whole URL is a way...

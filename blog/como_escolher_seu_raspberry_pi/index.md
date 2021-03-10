@@ -1,6 +1,6 @@
 # Como escolher o seu primeiro Raspberry Pi?
 
-Olá mundo, e feliz ano novo atrasado! Desde que publicamos [nosso primeiro artigo explicando o que são o Raspberry Pi, SBCs e o Software Livre](/blog/bem_vindo_ao_raspberrypi_brasil.html), a grande pergunta que ficou foi: diante de tantos modelos de SBCs (e do próprio Raspberry Pi)  existentes, como escolher aquele que é o melhor para nós?
+Olá mundo, e feliz ano novo atrasado! Desde que publicamos [nosso primeiro artigo explicando o que são o Raspberry Pi, SBCs e o Software Livre](/blog/bem_vindo_ao_raspberrypi_brasil/), a grande pergunta que ficou foi: diante de tantos modelos de SBCs (e do próprio Raspberry Pi)  existentes, como escolher aquele que é o melhor para nós?
 
 Pensando nesta dúvida frequente entre os iniciantes no Single Board Computing, elaboramos este artigo para tirar suas dúvidas e informá-lo da melhor maneira possível para dar o seu primeiro passo neste mundo incrível de aprendizado e realização.
 

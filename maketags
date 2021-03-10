@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+#
+# Creates the tag link structure under /blog/tag/*
+#
+# This script is standalone, just run ./maketags in the root of the website
+# and everything should be good to go.
+#
+
+import os
+import sys
+
+from markdown import markdown
+
+'''
+Creates the tag system that blog posts use, under the following structure:
+
+/blog
+  |--/tag
+      |--/tag1 (index for all posts with tag1)
+           |-- link to pageX
+      |--/tag2
+      |--/tag3
+      ...
+      |--/tag4
+
+Usage: just run straight as a program. You may import and create a TagMaker
+instance manually otherwise.
+'''
+
+#-- Settings --
+
+# The blog's Root url.
+BLOG = "blog/"
+
+# Your template file
+TEMPLATE = 'template.html'
+
+#-- Settings --
+
+class TagMaker:
+    '''
+    An object that creates and handles the tag detection and structure.
+    '''
+
+    def __init__(self):
+        self._taglist = []
+        self.tagrelation = []
+
+    def get_taglist(self):
+        return self._taglist
+
+    def detect_tags(self):
+        '''
+        Detect tags in the BLOG directory by reading the 'categories' files
+        in each post, and squashing duplicates.
+        '''
+        os.chdir(BLOG)
+
+        raw_list = ''        
+        for item in os.walk('.'):
+            if 'categories' in item[2]:
+                ind = item[2].index('categories')
+                catfile = item[0] + '/' + item[2][ind]
+                with open(catfile, 'r') as cats:
+                    raw = cats.read()
+                    raw_list += raw
+                
+                # Make the relation between tags and posts:
+                raw_tags = raw.split("\n")
+                raw_tags.pop()
+
+                with open(item[0] + '/' + 'index.md', 'r') as post:
+                    raw = post.read()
+                    title = raw.split("\n")[0][2:]
+                self.tagrelation.append((item[0][2:], raw_tags, title))
+
+        # Raw list populated with all tag material. Remove duplicates
+        for line in raw_list.split('\n'):
+            if line not in self._taglist:
+                self._taglist.append(line)
+
+        # Remove empty category from end of stack:
+        self._taglist.pop()
+        os.chdir('../')
+
+    def build_dir(self):
+        '''
+        Makes the tag directory with links for each tagged post.
+        '''
+        if self._taglist == []:
+            raise OSError("your tag list is empty. Please run detect_tags()")
+
+        # suck template data into this variable. ALWAYS copy from now on
+        raw_content = ''
+        with open(TEMPLATE, 'r') as template:
+            raw_content = template.read()
+
+        for tag in self._taglist:
+
+            # Begin work:
+            # TODO: a way to remove everything before creating
+            tagdir = BLOG + '/tags/' + tag
+            os.mkdir(tagdir)
+            os.chdir(tagdir)
+
+            postlist = []
+            for item in self.tagrelation:
+                if tag in item[1]:
+                    postlist.append((item[0], item[2]))
+
+            pagetitle = "Posts tagged '%s'" % tag
+            filler = """# All posts tagged with '%s':
+""" % tag
+            for post in postlist:
+                filler += """
+ - [%s](/%s)
+""" % (post[1], BLOG + post[0])
+
+            filler += '''
+[Back to all tags](../)
+'''
+
+            cont = markdown(filler)
+            with open('index.html', 'w') as index:
+                index.write(raw_content % 
+                    (pagetitle, cont))
+            print("***Built directory under tag '%s'" % tag)
+            os.chdir('../../../')
+            # tag pages are now built.
+
+        # Now build the "tag index" under /blog/tags
+        os.chdir(BLOG + '/tags/')
+        pagetitle = "All content tags"
+        filler = """# Conteúdo por tags
+
+Atualmente, todos os nossos posts estão distrubuídos nas seguintes *tags*:
+
+"""
+        for directory in os.listdir('.'):
+            filler += """ - [%s](/%s)
+""" % (directory, BLOG + '/tags/' + directory)
+        
+        cont = markdown(filler)
+        with open('index.html', 'w') as index:
+            index.write(raw_content % 
+                (pagetitle, cont))
+
+        print("***Built tag index page.")
+        os.chdir('../../')
+
+if __name__ == "__main__":
+    tm = TagMaker()
+    tm.detect_tags()
+    tm.build_dir()
+
+    sys.exit(0)

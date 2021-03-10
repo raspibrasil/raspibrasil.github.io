@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Raspberry Pi Brasil</title>
-    <link href="https://raspberrypibrasil.com/atom.xml" rel="self" />
-    <link href="https://raspberrypibrasil.com/" />
-    <updated>2021-03-06T13:23:33.961013Z</updated>
+    <link href="https://www.raspberrypibrasil.com/atom.xml" rel="self" />
+    <link href="https://www.raspberrypibrasil.com/" />
+    <updated>2021-03-10T02:53:09.298742Z</updated>
     <author>
         <name>Equipe Raspberry Pi Brasil - @raspibrasil@qoto.org</name>
     </author>
@@ -11,8 +11,8 @@
     
     <entry>
         <title>Hello World! O que é o Raspberry Pi e o Software livre?</title>
-        <link href="https://raspberrypibrasil.com/blog/bem_vindo_ao_raspberrypi_brasil.html" />
-        <id>urn:uuid:2ba07117-e518-5b72-bd8b-f4f9824149d7</id>
+        <link href="https://www.raspberrypibrasil.com/blog/bem_vindo_ao_raspberrypi_brasil/" />
+        <id>urn:uuid:1affbe74-5365-501a-b239-ff5aa5a99e6e</id>
         <updated>2020-12-22T18:28:47.160529Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
@@ -49,13 +49,13 @@
 
     <entry>
         <title>Como escolher o seu primeiro Raspberry Pi?</title>
-        <link href="https://raspberrypibrasil.com/blog/como_escolher_seu_raspberry_pi.html" />
-        <id>urn:uuid:9148937b-718d-5dc5-b08f-527f5715e046</id>
-        <updated>2021-03-06T12:11:51.073210Z</updated>
+        <link href="https://www.raspberrypibrasil.com/blog/como_escolher_seu_raspberry_pi/" />
+        <id>urn:uuid:bf6b4a81-aadb-5d8a-81ed-dc7992d7cb47</id>
+        <updated>2021-03-10T11:16:56.350554Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Como escolher o seu primeiro Raspberry Pi?</h1>
-<p>Olá mundo, e feliz ano novo atrasado! Desde que publicamos <a href="/blog/bem_vindo_ao_raspberrypi_brasil.html">nosso primeiro artigo explicando o que são o Raspberry Pi, SBCs e o Software Livre</a>, a grande pergunta que ficou foi: diante de tantos modelos de SBCs (e do próprio Raspberry Pi)  existentes, como escolher aquele que é o melhor para nós?</p>
+<p>Olá mundo, e feliz ano novo atrasado! Desde que publicamos <a href="/blog/bem_vindo_ao_raspberrypi_brasil/">nosso primeiro artigo explicando o que são o Raspberry Pi, SBCs e o Software Livre</a>, a grande pergunta que ficou foi: diante de tantos modelos de SBCs (e do próprio Raspberry Pi)  existentes, como escolher aquele que é o melhor para nós?</p>
 <p>Pensando nesta dúvida frequente entre os iniciantes no Single Board Computing, elaboramos este artigo para tirar suas dúvidas e informá-lo da melhor maneira possível para dar o seu primeiro passo neste mundo incrível de aprendizado e realização.</p>
 <p>Venha conosco!</p>
 <h2>Objetivos e Recursos</h2>
@@ -95,13 +95,13 @@
 
     <entry>
         <title>Quais os melhores acessórios e periféricos para o Raspbery Pi?</title>
-        <link href="https://raspberrypibrasil.com/blog/melhores_acessorios_raspberry_pi.html" />
-        <id>urn:uuid:b714164d-af0f-524e-a3b2-b48671f562eb</id>
-        <updated>2021-03-06T12:11:51.073210Z</updated>
+        <link href="https://www.raspberrypibrasil.com/blog/melhores_acessorios_raspberry_pi/" />
+        <id>urn:uuid:d70e0e14-04de-574c-b6dd-6892d9b92261</id>
+        <updated>2021-03-10T11:16:32.750553Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Quais os melhores acessórios e periféricos para o Raspbery Pi?</h1>
-<p>Anteriormente no blog, exploramos os <a href="/blog/como_escolher_seu_raspberry_pi.html">vários tipos e modelos do Raspberry Pi</a>  que podem te servir melhor para cada um dos seus objetivos em explorar o mundo dos <em>Single Board Computers</em>. Seja como Desktop ou Servidor, ou para as suas próximas invenções de IoT, existe um modelo de Raspberry Pi ou outro SBC que é perfeito para o seu próximo projeto.</p>
+<p>Anteriormente no blog, exploramos os <a href="/blog/como_escolher_seu_raspberry_pi/">vários tipos e modelos do Raspberry Pi</a>  que podem te servir melhor para cada um dos seus objetivos em explorar o mundo dos <em>Single Board Computers</em>. Seja como Desktop ou Servidor, ou para as suas próximas invenções de IoT, existe um modelo de Raspberry Pi ou outro SBC que é perfeito para o seu próximo projeto.</p>
 <p>Embora por si próprio um computador completo e inteiramente funcional (afinal, esta é a essência de um SBC), a performance e experiência de utilizar um Raspberry Pi podem ser muito melhoradas com a adição de alguns periféricos que extendem a capacidade e oferecem proteção ao equipamento. Afinal, o dispositivo é um SBC, e não um <em>All-in-one computer</em>... <code>;)</code> Mais capacidade, refrigeração, e algumas vezes proteção física contra os elementos são qualidades desejáveis à qualquer computador, e felizmente você pode oferecê-las ao Raspberry Pi através de alguns acessórios-chave. Neste post, detalharemos alguns dos acessórios que consideramos recomendados, ou algumas vezes indispensáveis para o seu Raspberry Pi. Venha com a gente!</p>
 <h2>Case de proteção</h2>
 <p>O primeiro acessório recomendado é o <a href="https://amzn.to/3qjZ7Ty">case de proteção</a> do Raspberry Pi. A placa dele é pequena e frágil, podendo ser danificada facilmente por conta de impacto, ou humidade demais. Um case provém uma proteção simples e eficaz ao seu Raspberry Pi, evitando que ele seja danificado acidentalmente.</p>
