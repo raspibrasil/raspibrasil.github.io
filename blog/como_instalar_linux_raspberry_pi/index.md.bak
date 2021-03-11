@@ -33,12 +33,20 @@ Seguindo em frente, vejamos como instalar um sistema operacional no Raspberry Pi
 Diferente da instalação num computador tradicional, onde primeiro insere-se a mídia de instalação do sistema operacional e os dados são depois copiados para o disco rígido, no Raspberry Pi o processo é um pouco mais integrado, embora similar em conceito.
 
 <figure>
-  <img src="/static/images/!LINK.jpg" alt="" style="width:100%">
+  <img src="/static/images/!LINK.jpg" alt="Exemplo de MicroSD Card" style="width:100%">
   <figcaption>Ao contrário dos computadores tradicionais, no Raspberry Pi você precisa extrair a imagem de instalação diretamente na sua mídia de armazenação</figcaption>
 </figure>
 
 Para instalar qualquer sistema operacional no Raspberry Pi, você precisa copiar uma imagem já pré-configurada deste sistema num [cartão MicroSD](https://amzn.to/3rA6QxW) que será utilizado nele. Se você nunca utilizou Linux antes (onde este é o processo padrão para criação de *Live Media*), este conceito pode parecer um pouco estranho, mas felizmente existem ferramentas didáticas que tornam o processo simples e rápido.
 
-Se você usa Windows ou não está acostumado a lidar com a linha de comandos do terminal do Linux, o aplicativo [Raspberry Pi Imager](https://github.com/raspberrypi/imagewriter) desenvolvido pela Raspberry Pi Foundation é a maneira recomendada para fazer a instalação. Você pode baixá-lo para Windows ou sua distribuição Linux.
+Se você usa Windows ou não está acostumado a lidar com a linha de comandos do terminal do Linux, o aplicativo [Raspberry Pi Imager](https://github.com/raspberrypi/imagewriter) desenvolvido pela Raspberry Pi Foundation é a maneira recomendada para fazer a instalação. Você pode baixá-lo para Windows, Mac e algumas das principais distribuições Linux como o Ubuntu e Debian. Felizmente, mesmo se a sua distribuição Linux não for suportada, ainda é possível instalar a imagem utilizando o comando `dd` do Linux, que veremos mais à frente.
 
-## Instalando o Raspbian no Raspberry Pi
+Com um cartão MicroSD em mãos, vejamos na próxima seção como instalar o Raspbian no Raspberry Pi.
+
+## Instalando o Raspbian no através do Raspberry Pi Imager
+
+Primeiramente, baixe o Raspberry Pi Imager do repositório do [Raspberry Pi Foundation](!LINK) para a sua plataforma. Uma vez instalada, abra o programa e verá a seguinte mensagem:
+
+!LINK home
+
+O Raspberry Pi Imager pode tanto baixar uma imagem de uma lista pré-inclusa nas suas opções (Raspbian e Ubuntu Server Edition) e extraí-la para o seu cartão MicroSD ou utilizar uma imagem que você já baixou para o seu computador para extraí-la ao cartão MicroSD.
