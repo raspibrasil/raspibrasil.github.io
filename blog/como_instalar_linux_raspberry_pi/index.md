@@ -32,7 +32,7 @@ Seguindo em frente, vejamos como instalar um sistema operacional no Raspberry Pi
 Diferente da instalação num computador tradicional, onde primeiro insere-se a mídia de instalação do sistema operacional e os dados são depois copiados para o disco rígido, no Raspberry Pi o processo é um pouco mais integrado, embora similar em conceito.
 
 <figure>
-  <a href="https://amzn.to/3l3UOuh"><img src="/static/images/sd_card.jpg" alt="Exemplo de MicroSD Card"></a>
+  <a href="https://amzn.to/3l3UOuh"><img src="/static/images/sd_card.jpg" alt="Exemplo de MicroSD Card" /></a>
   <figcaption>Ao contrário dos computadores tradicionais, no Raspberry Pi você precisa extrair a imagem de instalação diretamente na sua mídia de armazenação</figcaption>
 </figure>
 

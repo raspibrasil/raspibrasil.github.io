@@ -3,7 +3,7 @@
     <title>Raspberry Pi Brasil</title>
     <link href="https://www.raspberrypibrasil.com/atom.xml" rel="self" />
     <link href="https://www.raspberrypibrasil.com/" />
-    <updated>2021-03-10T02:53:09.298742Z</updated>
+    <updated>2021-03-12T06:38:04.333125Z</updated>
     <author>
         <name>Equipe Raspberry Pi Brasil - @raspibrasil@qoto.org</name>
     </author>
@@ -89,6 +89,91 @@
 <p>E para você, qual é o melhor SBC para cada tipo de uso e por quê? Escreva sua resposta para a nossa <a href="https://qoto.org/@raspibrasil">conta no Mastodon</a>!</p>
 <p>Abraços e até o nosso próximo post!</p>
 <p>Equipe Raspberry Pi Brasil</p>
+            </div>
+        </content>
+    </entry>
+
+    <entry>
+        <title>Como instalar Linux no Raspberry Pi?</title>
+        <link href="https://www.raspberrypibrasil.com/blog/como_instalar_linux_raspberry_pi/" />
+        <id>urn:uuid:4ec43c75-3893-56be-90ed-a304c2f0bdc6</id>
+        <updated>2021-03-12T15:38:01.977923Z</updated>
+        <content type="xhtml">
+            <div xmlns="http://www.w3.org/1999/xhtml">
+                <h1>Como instalar Linux no Raspberry Pi?</h1>
+<p>Quando se trata de trabalho com <em>Single Board Computers</em>, <a href="/blog/como_escolher_seu_raspberry_pi/">escolher o hardware</a> é apenas metade da questão. Além da variedade de modelos que se encontram à disposição, escolher o <a href="https://pt.wikipedia.org/wiki/Sistema_operativo">sistema operacional</a> (OS em Inglês), que proverá todo o suporte para o seu trabalho no seu SBC, é essencial.</p>
+<p>A diversidade de sistemas operacionais disponíveis para SBCs como o Raspberry Pi é enorme, maior ainda que a de hardware, e a escolha de qual sistema utilizar pode ser um pouco confusa, especialmente se você nunca trabalhou com outro OS fora do Windows. Adicionalmente, a instalação de um OS no Raspberry Pi não segue um procedimento padrão de instalação onde se clica em menus e botões para avançar para os próximos passos e finalizar o processo. Felizmente, esta tarefa não precisa ser difícil; de fato, mostraremos passo a passo o processo.</p>
+<p>Para os propósitos deste post, detalharemos o processo de instalação do sistema operacional <a href="https://en.wikipedia.org/wiki/Raspberry_Pi_OS">Raspberry Pi OS</a> (previamente conhecido como Raspbian), uma distribuição Linux baseada no <a href="https://www.debian.org">Debian</a> e desenvolvida oficialmente pela <a href="https://www.raspberrypi.org/software/operating-systems/">Raspberry Pi Foundation</a>. Embora Raspberry Pi OS seja um dos sistemas mais populares utilizados no Raspberry Pi, ele certamente não é o único, e diversas outras distribuições de Linux podem ser instaladas com este processo, que como você verá, não é complicado.</p>
+<p>Vamos em frente.</p>
+<h2>Por que Linux?</h2>
+<figure>
+    <img src="/static/images/tux.png" alt="Tux, o mascote do Linux"/>
+    <figcaption>Tux, o pinguim mascote do Linux</figcaption>
+</figure>
+
+<p>Este artigo, tal como o site em geral, foca no Linux porque acreditamos que este é o sistema mais eficiente para um computador pessoal ou servidor com recursos limitados. As razões por trás desta decisão são várias.</p>
+<p>Primeiramente, sistemas Linux (chamados de <em>Distribuições Linux</em>) são <a href="/blog/bem_vindo_ao_raspberrypi_brasil/">Software Livre</a>, podendo desta forma ser instalados, copiados e modificados conforme necessário. Este ponto é essencial para o aprendizado, experimentação e pesquisas, onde pode ser necessário reinstalar do zero um sistema depois de um erro de configuração, ou instalar em diversas máquinas para a utilização em rede ou para simular outras interações entre sistemas - e claro, completamente <strong>sem custo algum</strong>.</p>
+<p>A liberdade de modificação também significa que os sistemas Linux podem ter componentes não-essenciais removidos ou refatorados, tornando-os muito <strong>mais leves e rápidos</strong> ao serem utilizados. Em computadores com recursos limitados como o <a href="https://amzn.to/3qlUOqH">Raspberry Pi 3</a>, ou anteriores, esta diferença é crucial para uma experiência suave e prazerosa, ao contrário de um sistema pesado e lento.</p>
+<p>Além da leveza e a flexibilidade do sistema, o Linux também é geralmente considerado um sistema <strong>mais seguro</strong> do que o onipresente Windows. Este é um ponto importantíssimo quando se trata de trabalhar com o Raspberry Pi como um servidor (onde múltiplos clientes e usuários podem acessar recursos dele) por longos períodos de tempo. Embora a segurança é crucial em todos os sistemas de computadores, quando um único desktop é comprometido, um único usuário é afetado. Quando um servidor é comprometido, todos os seus usuários estão em potencial perigo. Utilizar um sistema que é seguro por padrão e constantemente atualizado como o Linux é crucial.</p>
+<p>Finalmente, há a inúmera possibilidade de <strong>escolhas</strong> quando tratamos do Linux. Não só temos a flexibilidade para modificar e construir nosso sistema como quisermos, mas também podemos escolher entre vários sistemas já disponíveis para nos servir da melhor maneira. Há imagens genéricas, prontas para uso do Raspberry Pi como um desktop, como o próprio Raspberry Pi OS, outras prontas para servidores como o Ubuntu Server Edition, outras são mais minimalistas como o <a href="https://archlinuxarm.org">Arch Linux</a>, que permite você a construir seu sistema do zero.</p>
+<p>Seguindo em frente, vejamos como instalar um sistema operacional no Raspberry Pi.</p>
+<h2>Como o processo de instalação funciona no Raspberry Pi</h2>
+<p>Diferente da instalação num computador tradicional, onde primeiro insere-se a mídia de instalação do sistema operacional e os dados são depois copiados para o disco rígido, no Raspberry Pi o processo é um pouco mais integrado, embora similar em conceito.</p>
+<figure>
+  <a href="https://amzn.to/3l3UOuh"><img src="/static/images/sd_card.jpg" alt="Exemplo de MicroSD Card" /></a>
+  <figcaption>Ao contrário dos computadores tradicionais, no Raspberry Pi você precisa extrair a imagem de instalação diretamente na sua mídia de armazenação</figcaption>
+</figure>
+
+<p>Para instalar qualquer sistema operacional no Raspberry Pi, você precisa <em>extrair uma imagem</em> (arquivo <code>.img</code>) já pré-configurada deste sistema num <a href="https://amzn.to/3rA6QxW">cartão MicroSD</a> que será utilizado nele. Se você nunca utilizou Linux antes (onde este é o processo padrão para criação de <em>Live Media</em>), este conceito pode parecer um pouco estranho, mas felizmente existem ferramentas didáticas que tornam o processo simples e rápido.</p>
+<p>Se você usa Windows ou não está acostumado a lidar com a linha de comandos do terminal do Linux, o aplicativo <a href="https://github.com/raspberrypi/rpi-imager">Raspberry Pi Imager</a> desenvolvido pela Raspberry Pi Foundation é a maneira recomendada para fazer a instalação. Você pode baixá-lo para Windows, Mac e algumas das principais distribuições Linux como o Ubuntu e Debian. Felizmente, mesmo se a sua distribuição Linux não for suportada, ainda é possível instalar a imagem utilizando o comando <code>dd</code> do Linux, que veremos mais à frente.</p>
+<p>Com um cartão MicroSD em mãos, vejamos na próxima seção como instalar o Raspberry Pi OS no Raspberry Pi.</p>
+<h2>Instalando o Raspberry Pi OS no através do Raspberry Pi Imager</h2>
+<p>Primeiramente, baixe o Raspberry Pi Imager do repositório do <a href="https://www.raspberrypi.org/downloads/">Raspberry Pi Foundation</a> para a sua plataforma. Uma vez instalada, abra o programa e verá a seguinte mensagem:</p>
+<figure>
+    <img src="/static/images/rpi_imager_menu.jpg" alt="Menu principal do Raspberry Pi Imager" />
+    <figcaption>Menu principal do Raspberry Pi Imager</figcaption>
+</figure>
+
+<p>O Raspberry Pi Imager pode tanto baixar uma imagem de uma lista pré-inclusa nas suas opções (Raspberry Pi OS e Ubuntu Server Edition) e extraí-la para o seu cartão MicroSD ou utilizar uma imagem que você já baixou para o seu computador para extraí-la ao cartão MicroSD. Como neste caso estamos lidando com o Raspberry Pi OS, utilizaremos a própria função do Imager para baixar e instalar a imagem:</p>
+<figure>
+    <img src="/static/images/rpi_imager_choosing_os.jpg" alt="Escolhendo uma imagem para baixar e instalar" />
+    <figcaption>Escolhendo baixar a imagem do Raspberry Pi OS através do próprio Imager</figcaption>
+</figure>
+
+<p>É possível também escolher uma imagem que você já baixou de outro lugar também através do aplicativo. Por exemplo, para instalar <a href="http://www.puppylinux.org/">Puppy Linux</a>, basta você primeiro baixar seu arquivo de imagem (terminando com a extensão <code>.img</code>) e escolhê-lo na interface do Raspberry Pi Imager:</p>
+<figure>
+    <img src="/static/images/rpi_imager_custom_image.jpg" alt="Opção para escolher uma imagem customizada" />
+    <figcaption>Opção do Imager para escolher uma imagem já existente no seu computador</figcaption>
+</figure>
+
+<figure>
+    <img src="/static/images/rpi_imager_custom_image2.jpg" alt="Diálogo de escolha de arquivos .img" />
+    <figcaption>Escolhendo uma imagem no seu computador</figcaption>
+</figure>
+
+<p>Escolha em seguida o slot do seu cartão MicroSD (geralmente <code>/dev/sdb</code> ou <code>/dev/mmcblk0</code> no Linux) para o qual a imagem será extraída.</p>
+<figure>
+    <img src="/static/images/rpi_imager_choosing_sdcard.jpg" alt="Escolhendo o dispositivo do SD Card" />
+    <figcaption>Escolhendo o dispositivo do Cartão MicroSD</figcaption>
+</figure>
+
+<blockquote>
+<p>Atenção: ao realizar este procedimento, todos os dados do cartão MicroSD serão permanentemente apagados. Faça o backup destes dados antes de prosseguir.</p>
+</blockquote>
+<p>Clique OK. O Raspberry Pi Imager baixará a imagem (dependendo do tamanho, pode demorar bastante), e em seguida automaticamente extraí-la para o seu cartão MicroSD.</p>
+<p>Ao fim do processo, você poderá remover o seu cartão SD e inserí-lo no seu Raspberry Pi para começar a usar Linux nele. A instalação está concluída.</p>
+<h3>Instalando através da linha de comando</h3>
+<p>Se você usa uma distribuição Linux não oficialmente suportada pelo Raspberry Pi Imager, não se preocupe: é perfeitamente possível extrair a imagem através da linha de comando (terminal). Para isso, o comando <code>dd</code> é utilizado.</p>
+<p>Se o seu dispositivo do cartão SD é <code>/dev/mmcblk0</code>, e a sua imagem é <code>distro.img</code> o comando:</p>
+<pre><code>sudo dd if=distro.img of=/dev/mmcblk0 bs=4M status=progress
+</code></pre>
+<p>Irá realizar a extração e preparo do seu cartão SD. Quando este terminar (pode demorar até 5 minutos dependendo do tamanho da imagem) você poderá utilizar o cartão SD no seu Raspberry Pi.</p>
+<p>O comando <code>dd</code> é poderoso, mas a sua utilização errada pode causar a destruição dos dados armazenados no dispositivo. Por isso, deve ser utilizado com cuidado. Falaremos mais sobre este comando no futuro.</p>
+<h2>Conclusão</h2>
+<p>Instalar Linux no Raspberry Pi é um pouco diferente de um computador comum, mas nem por isso é difícil. Utilizando-se do programa Raspberry Pi Imager, o processo é intuitivo, e usuários avançados podem utilizar a linha de comando para rapidamente realizá-lo. Uma vez realizada a instalação, você está pronto para começar a usar o Linux no Raspberry Pi. É um novo mundo, e falaremos mais sobre isso no futuro.</p>
+<p>Você já instalou Linux no Raspberry Pi? Qual distribuição e qual método utilizou? Mande uma mensagem para nossa conta no <a href="https://qoto.org/@raspibrasil">Mastodon!</a></p>
+<p>Abraços!</p>
+<p><strong>Equipe Raspberry Pi Brasil</strong></p>
             </div>
         </content>
     </entry>
