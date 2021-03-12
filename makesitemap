@@ -39,6 +39,13 @@ DEFAULT_UPDATE_FREQ = "monthly"
 # This is the name of your sitemap file: 
 OUTFILE = "sitemap.xml"
 
+# Add here any exceptions to crawling that you don't want indexed.
+# Example: the template.html file, Google site verification HTML files
+EXCEPTIONS = [
+    'template.html',
+    'google5d0b5ab821f0ccb4.html',
+]
+
 # ------------  /SETTINGS ------------   #
 
 class SiteMapper:
@@ -57,9 +64,13 @@ class SiteMapper:
         for directory in os.walk('.'):
             for element in directory[2]:
                 if ".html" in element:
-                    # Skip the reserved template page... 
-                    if element == "template.html":
+                    # Skip the exception files:
+                    if element in EXCEPTIONS:
+                        if debug:
+                            print("Skipping element %s found in EXCEPTIONS" %
+                                element)
                         continue
+
                     # strip the leading '.' from the walk() method 
                     curdir = directory[0].lstrip('.')
 
