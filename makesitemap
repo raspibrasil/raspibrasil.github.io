@@ -27,12 +27,19 @@ This is the final XML implementation of the sitemap we're looking to build:
 All <url> elements will be inserted automatically.
 '''
 
+# ------------   SETTINGS ------------   #
+
 # Set this to your site's domain WITHOUT a trailing slash
 BASE_URL = "https://www.raspberrypibrasil.com"
 
 # How often does the site get updated?
 # Available options are daily, weekly, monthly
 DEFAULT_UPDATE_FREQ = "monthly"
+
+# This is the name of your sitemap file: 
+OUTFILE = "sitemap.xml"
+
+# ------------  /SETTINGS ------------   #
 
 class SiteMapper:
     def __init__(self):
@@ -103,7 +110,10 @@ class SiteMapper:
         # close <urlset> element:
         self.sitemap += "</urlset>"
 
-        print(self.sitemap)
+        #print(self.sitemap)
+        with open(OUTFILE, 'w') as sm:
+            sm.write(self.sitemap)
+        print("Sitemap published at: %s" % OUTFILE)
 
 
 def main():

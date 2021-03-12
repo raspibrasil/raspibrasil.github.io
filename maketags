@@ -95,11 +95,24 @@ class TagMaker:
         with open(TEMPLATE, 'r') as template:
             raw_content = template.read()
 
-        for tag in self._taglist:
+        # Nuke the directory of /tags/ if it exists, rebuild anew.
+        os.chdir(BLOG)
+        if os.path.isdir("tags/"):
+            print("Directory /tags/ exists. Rebuilding...")
+            res = os.system("rm -rf tags/")
+            if res != 0:
+                raise OSError("could not delete tags directory.")
+            else:
+                os.mkdir("tags/")
+        else:
+            print("Building directory /tags/...")
+            os.mkdir("tags/")
+        os.chdir('..')
 
+        for tag in self._taglist:
             # Begin work:
             # TODO: a way to remove everything before creating
-            tagdir = BLOG + '/tags/' + tag
+            tagdir = BLOG + 'tags/' + tag
             os.mkdir(tagdir)
             os.chdir(tagdir)
 

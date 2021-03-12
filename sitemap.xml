@@ -7,7 +7,12 @@
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog</loc>
-        <lastmod>2021-03-10</lastmod>
+        <lastmod>2021-03-11</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.raspberrypibrasil.com/blog/como_instalar_linux_raspberry_pi</loc>
+        <lastmod>2021-03-12</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
@@ -22,52 +27,57 @@
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags</loc>
-        <lastmod>2021-03-10</lastmod>
+        <lastmod>2021-03-12</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://www.raspberrypibrasil.com/blog/tags/freesoftware</loc>
-        <lastmod>2021-03-10</lastmod>
+        <loc>https://www.raspberrypibrasil.com/blog/tags/instalação</loc>
+        <lastmod>2021-03-12</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/servidor</loc>
-        <lastmod>2021-03-10</lastmod>
-        <changefreq>monthly</changefreq>
-    </url>
-    <url>
-        <loc>https://www.raspberrypibrasil.com/blog/tags/configuracao</loc>
-        <lastmod>2021-03-10</lastmod>
+        <lastmod>2021-03-12</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/tutorial</loc>
-        <lastmod>2021-03-10</lastmod>
+        <lastmod>2021-03-12</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://www.raspberrypibrasil.com/blog/tags/acessorios</loc>
-        <lastmod>2021-03-10</lastmod>
+        <loc>https://www.raspberrypibrasil.com/blog/tags/acessórios</loc>
+        <lastmod>2021-03-12</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/hardware</loc>
-        <lastmod>2021-03-10</lastmod>
+        <lastmod>2021-03-12</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.raspberrypibrasil.com/blog/tags/configuração</loc>
+        <lastmod>2021-03-12</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/raspberrypi</loc>
-        <lastmod>2021-03-10</lastmod>
+        <lastmod>2021-03-12</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/softwarelivre</loc>
-        <lastmod>2021-03-10</lastmod>
+        <lastmod>2021-03-12</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/desktop</loc>
-        <lastmod>2021-03-10</lastmod>
+        <lastmod>2021-03-12</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.raspberrypibrasil.com/blog/tags/linux</loc>
+        <lastmod>2021-03-12</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
