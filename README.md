@@ -15,7 +15,7 @@ These tools require Python 3.7 or above to work, plus the `python-markdown` modu
 
 ### Publishing a single page
 
- 1. Edit `template.html` to taste (structure, styling, etc). Make sure to leave exactly two "holes" with `%s` within it, as per the example. These will be filled by the page's title and contents, respectively.
+ 1. Edit `template.html` to taste (structure, styling, etc). Make sure to leave exactly three "holes" with `%s` within it, as per the example. These will be filled by the page's title, description tag and contents, respectively.
  2. Write your page's content in [Markdown](https://en.wikipedia.org/wiki/Markdown), save it to a `.md` file.
  3. Run `./sitegen FILE.md` to publish a page named `FILE.html`
 
@@ -25,7 +25,7 @@ These tools require Python 3.7 or above to work, plus the `python-markdown` modu
  2. Create a subdirectory for your blog post, for example `blog/my_first_post/`
  3. Write your post's contents as the `index.md` file under your subdirectory.
  4. Write your publishing date as the `pubdate` file under your subdirectory. Use the format `YYYY-MM-DD`, i.e. 2021-03-01
- 5. From the site's root, run `./sitegen blog/my_first_post/index.md`
+ 5. From the site's root, run `./sitegen -a blog/my_first_post/index.md`
 
 ### Publishing a Directory Index
 
@@ -38,10 +38,12 @@ These tools require Python 3.7 or above to work, plus the `python-markdown` modu
  1. Create a file `categories` under your post's directory as `blog/my_first_post/categories`
  2. Write every category of your blog post in a separate line of the `categories` file. UTF-8 and spaces are supported. Example:
 
-    welcome
-    announcement
-    news
-    my blog
+```
+welcome
+announcement
+news
+my blog
+```
 
  3. From the site's root, run `./maketags`
  4. All your blog's tags are now indexed under `blog/tags/`

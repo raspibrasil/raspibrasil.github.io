@@ -29,6 +29,9 @@ All <url> elements will be inserted automatically.
 
 # ------------   SETTINGS ------------   #
 
+# Debugging mode?
+DEBUG = True
+
 # Set this to your site's domain WITHOUT a trailing slash
 BASE_URL = "https://www.raspberrypibrasil.com"
 
@@ -77,13 +80,12 @@ class SiteMapper:
                     if debug:
                         print("Current directory: %s" % curdir)
 
-                    # What's the pubdate of the page? dtime is a datetime
-                    # object
-                    dtime = datetime.fromtimestamp(
-                        os.stat(directory[0] + '/' + element).st_ctime)
-                    
-                    # Serialize it into the format we need (YYYY-MM-DD)
-                    created = str(dtime.date())
+                    # Can't use one timestamp, due to different computers being used.
+                    # use the pubdate immediately next to the index file (much better)
+                    with open(directory[0] + '/pubdate', 'r') as pubd:
+                        created = pubd.read()
+                        if debug:
+                            print("Curdir pubdate: %s" % created)
 
                     # if the page name is index.html, append only the
                     # directory path. Otherwise, full path.
@@ -95,7 +97,7 @@ class SiteMapper:
                         else:
                             pagename = curdir + '/' + element
 
-                    self.paths.append((BASE_URL + pagename, created))
+                    self.paths.append((BASE_URL + pagename, created[:-1]))
 
 
         if debug:
@@ -103,7 +105,7 @@ class SiteMapper:
             for i in self.paths:
                 print(i)
 
-    def makesitemap(self):
+    def makesitemap(self, debug=False):
         '''
         Creates the sitemap from the stored URLs in self.paths
         '''
@@ -111,12 +113,19 @@ class SiteMapper:
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 '''
         for row in self.paths:
+            update_freq = DEFAULT_UPDATE_FREQ
+
+            # blog and tag indices change every week (publishing):
+            frag = row[0].split('/')[-1]
+            if frag == 'blog' or frag == 'tags':
+                update_freq = 'weekly'
+
             self.sitemap += """    <url>
         <loc>%s</loc>
         <lastmod>%s</lastmod>
         <changefreq>%s</changefreq>
     </url>
-""" % (row[0], row[1], DEFAULT_UPDATE_FREQ)
+""" % (row[0], row[1], update_freq)
 
         # close <urlset> element:
         self.sitemap += "</urlset>"
@@ -124,12 +133,12 @@ class SiteMapper:
         #print(self.sitemap)
         with open(OUTFILE, 'w') as sm:
             sm.write(self.sitemap)
-        print("Sitemap published at: %s" % OUTFILE)
+        print("*** Sitemap published at: %s ***" % OUTFILE)
 
 
 def main():
     sm = SiteMapper()
-    sm.crawl()
+    sm.crawl(DEBUG)
     sm.makesitemap()
     return
 
