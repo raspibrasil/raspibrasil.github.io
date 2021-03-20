@@ -1,0 +1,47 @@
+# Usando o Raspberry Pi como um NAS na sua rede caseira
+
+Outline:
+
+ - Setting up a NAS using the raspberry pi as a server with Samba, and an external drive.
+ - Using multiple drives as RAID array (selling point! $$$)
+ - Point to secure shares with SFTP (SSH based) as another post...
+
+Depois de [escolher o modelo apropriado](!LINK escolher rpi) do seu Raspberry Pi e [instalar Linux nele](!LINK instalar linux), podemos finalmente começar a brincar com ele e experimentá-lo com várias soluções e *stacks* de software para nos servir da melhor forma. Afinal, é através destes constantes experimentos que podemos melhorar nosso entendimento e experiência com o [Software Livre](!LINK software livre).
+
+Uma das melhores formas de estudar o software livre é através da aplicação prática: procure um projeto que poderá ajudar você a realizar alguma tarefa, e aprenda com sua implementação. Neste artigo, mostraremos como é fácil tornar o seu Raspberry Pi num dispositivo de **armazenamento em rede** na sua casa através de um software chamado [Samba](https://www.samba.org), que permitirá você a compartilhar arquivos entre todos os dispositivos da sua casa, independente se rodarem Linux, Windows, Mac, Android, ou iOS.
+
+Vamos em frente!
+
+## Como o armazemanento em rede (NAS) funciona
+
+Para este projeto, tornaremos o Raspberry Pi num dispositivo de [*Network Attached Storage*](https://en.wikipedia.org/wiki/Network-attached_storage) ou, abreviadamente, *NAS*. 
+
+O NAS funciona como um servidor central de arquivos dentro da rede, com o qual outros computadores e dispositivos podem interagir para armazenar ou recebê-los. Se você já trabalhou num escritório onde haviam drives de redes disponíveis (F:\, G:\, etc.), o NAS via Samba funciona de forma quase idêntica.
+
+<figure>
+    <img src="!LINK NAS arch" alt="arquitetura do NAS numa rede local" />
+    <figcaption>O NAS atua como um ponto central através do qual outros dispositivos clientes podem enviar ou receber arquivos</figcaption>
+</figure>
+
+Da mesma forma que um servidor web utiliza o protocolo HTTP para enviar sites para navegadores da web, um servidor de arquivos "conversa" com computadores em rede através de um protocolo chamado SMB. O Samba é o servidor mais popular deste protocolo disponível para o Linux, e será o software que utilizaremos neste projeto.
+
+## Requerimentos para este projeto
+
+Para este projeto, graças à leveza do Samba junto ao sistema Linux, versões modestas do Raspberry Pi podem ser utilizadas para realizar a tarefa. Edições [orientadas à servidores](!LINK como escolher) como o [Raspberry Pi 3B](!LINK affiliate) podem muito bem manuseá-lo, assim como o poderoso [Raspberry Pi 4](!LINK affiliate) e até mesmo o primeiro modelo do [Raspberry Pi B](!LINK affiliate) de 2012 possui recursos suficientes para agir como um NAS caseiro.
+
+<figure>
+    <img src="!LINK RPi Model B" />
+    <figcaption>O Raspberry Pi Model B original de 2012 pode servir como um NAS numa rede caseira de poucos dispositivos</figcaption>
+</figure>
+
+Para a parte de software, utilizaremos o *Raspberry Pi OS* como sistema operacional por conta da facilidade de se instalar e configurar software nele. Se você gostaria de mais informações sobre como instalar o Raspberry Pi OS, escrevemos anteriormente um [artigo descrevendo o processo passo-a-passo](!LINK como instalar).
+
+Uma *conexão de internet* no Raspberry Pi é necessária para instalar e configurar seu NAS, podendo tanto ser cabeada ou WiFi. Uma conexão cabeada é recomendada por conta da maior velocidade e estabilidade em relação ao WiFi, mas ambas funcionam.
+
+Finalmente, é necessário ter espaço suficiente para armazenar os arquivos a serem compartilhados. Você pode utilizar armazenamento externo como um [Pendrive de alta velocidade](!LINK affiliate) ou um [HD externo](!LINK affiliate), ou armazenar diretamente no cartão MicroSD do seu Raspberry Pi.
+
+## Instalando e configurando o Samba no Raspberry Pi
+
+
+
+## Tornando o seu NAS mais eficiente
