@@ -42,6 +42,50 @@ Finalmente, é necessário ter espaço suficiente para armazenar os arquivos a s
 
 ## Instalando e configurando o Samba no Raspberry Pi
 
+Primeiramente, instale o pacote `samba` no Raspberry Pi OS utilizando o seguinte comando no terminal:
 
+    sudo apt-get install samba
+
+Este comando também funciona no Ubuntu Server Edition para Raspberry Pi OS. `apt` listará as dependências necessárias para insalar o Samba. Pressione 'y' e Enter para prosseguir. 
+
+Após a instalação, o serviço do Samba (`smbd` nos sistemas Linux) é iniciado automaticamente, mas ainda é necessário configurá-lo para fazê-lo funcionar da maneira exata que queremos. Em nosso caso, configuraremos o Samba para compartilhar apenas um diretório específico do nosso sistema, conhecido como *mountpoint* em inglês, e nos certificar que apenas usuários designados possam acessá-los.
+
+Para isso, antes de começar a configuração, criaremos um usuário específico para acessar e manipular os arquivos via Samba. Você também poderia usar o seu usuário padrão para isso, mas por segurança é desejável ter um usuário específico para operar serviços. Desta forma, se por algum motivo o Samba seja comprometido, você poderá simplesmente deletar o usuário do Samba e recriá-lo - o seu usuário pessoal não será impactado.
+
+Para criar o usuário `sambauser`, que será designado para o Samba, utilize o seguinte comando:
+
+    sudo useradd -r -m -U -d /home/sambauser -s /bin/bash sambauser
+
+Através deste comando, o usuário sambauser não terá uma senha associada a ele, outra medida de segurança que impede logins locais no sistema de serem realiados. Isso não é um problema, porém, porque todo o trabalho do sambauser será realizado remotamente através do serviço do Samba. Para isso, precisamos configurá-lo sob estas considerações.
+
+Com o usuário criado, crie um diretório que servirá de *mountpoint* para o seu NAS. Você poderá criá-lo em qualquer lugar do seu sistema, inclusive em armazenamento externo. Neste exemplo, criaremos no próprio cartão SD do seu Raspberry Pi, dentro do diretório Home do seu usuário (por padrão, `pi` no Raspberry Pi OS) e concederemos as permissões corretas para que o usuário sambauser possa acessá-lo:
+
+    mkdir /home/pi/NAS
+    chmod 777 /home/pi/NAS
+
+Com isso, podemos Como tudo no Linux, a configuração do Samba é feita através de um arquivo de texto simples, localizado em `/etc/samba/smb.conf`. Para editá-lo, abra-o com o seu editor de texto favorito prefixado com `sudo`, por conta de ser um arquivo do sistema. Por exemplo:
+
+    sudo nano /etc/samba/smb.conf
+
+A configuração padrão do Samba já é bem completa em termos de funcionalidade e segurança. Precisamos apenas adicionar o *mountpoint* desejado e quais usuários poderão ter acesso a ele. Adicione o seguinte segmento no fim do arquivo `smb.conf`:
+
+    [NAS]
+        comment = NAS on RaspberryPi
+        path = /home/pi/NAS
+        browseable = yes
+        read only = no
+        create mask = 0777
+        directory mask = 0777
+        valid users = sambauser pi
+        guest ok = no
+
+A linha `valid users = sambauser pi` especifica que apenas estes dois usuários terão acesso (via Samba) à este serviço (também é possível tornar o compartilhamento público, mas este não é o escopo deste artigo).
+
+Finalmente, é necessário adicionar o usuário sambauser à lista de usuários autenticados pelo serviço Samba. Para este caso, será necessário adicionar uma senha para ele, válida apenas para o Samba. Guarde-a bem: **é com esta senha que você irá utilizar o Samba.**
+
+    sudo smbpasswd -a sambauser
+
+Para finalizar, reinicie o serviço do Samba no Raspberry Pi OS.
 
 ## Tornando o seu NAS mais eficiente
+
