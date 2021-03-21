@@ -1,11 +1,5 @@
 # Usando o Raspberry Pi como um NAS na sua rede caseira
 
-Outline:
-
- - Setting up a NAS using the raspberry pi as a server with Samba, and an external drive.
- - Using multiple drives as RAID array (selling point! $$$)
- - Point to secure shares with SFTP (SSH based) as another post...
-
 Depois de [escolher o modelo apropriado](!LINK escolher rpi) do seu Raspberry Pi e [instalar Linux nele](!LINK instalar linux), podemos finalmente começar a brincar com ele e experimentá-lo com várias soluções e *stacks* de software para nos servir da melhor forma. Afinal, é através destes constantes experimentos que podemos melhorar nosso entendimento e experiência com o [Software Livre](!LINK software livre).
 
 Uma das melhores formas de estudar o software livre é através da aplicação prática: procure um projeto que poderá ajudar você a realizar alguma tarefa, e aprenda com sua implementação. Neste artigo, mostraremos como é fácil tornar o seu Raspberry Pi num dispositivo de **armazenamento em rede** na sua casa através de um software chamado [Samba](https://www.samba.org), que permitirá você a compartilhar arquivos entre todos os dispositivos da sua casa, independente se rodarem Linux, Windows, Mac, Android, ou iOS.
@@ -85,7 +79,18 @@ Finalmente, é necessário adicionar o usuário sambauser à lista de usuários 
 
     sudo smbpasswd -a sambauser
 
-Para finalizar, reinicie o serviço do Samba no Raspberry Pi OS.
+Para finalizar, reinicie o serviço do Samba no Raspberry Pi OS com o seguinte comando:
+
+    sudo systemctl restart smbd
+
+O samba estará rodando e compartilhando o diretório que você especificou como *mountpoint*. Para testá-lo, obtenha o seu endereço IP com o comando `ip addr`. No Windows, acesse `\\xxx.xxx.xxx.xxx\NAS$` do Windows Explorer, onde `xxx.xxx.xxx.xxx` é o endereço IP do seu Raspberry Pi. No Linux, acesse `smb://xxx.xxx.xxx.xxx/NAS` no seu gerenciador de arquivos favorito.
 
 ## Tornando o seu NAS mais eficiente
 
+Seu NAS está pronto para trabalhar e compartilhar arquivos entre seus vários dispositivos da sua casa. Ainda há outras coisas que podem ser feitas para otimizá-lo caso você quiser, afinal o aprendizado sempre é constante no Linux, entre elas as seguintes:
+
+ - Para garantir a confidencialidade da conexão entre o NAS e os dispositivos clientes, é possível realizar a transferência dos arquivos com um protocolo chamado **SFTP**, que emprega o famoso Secure Shell (SSH) para proteger a conexão.
+ - É possível aumentar a velocidade da transferência usando armazenamento externo como um [HD](!LINK affiliate) ou até mesmo [SSD externo](!LINK affiliate). No caso de um SSD
+
+SSH (sftp)
+External Hard Drives e SSDs
