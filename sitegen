@@ -238,7 +238,8 @@ Publicado em %s em: %s
     content = markdown(raw_content)
 
     with open(targetdir + 'index.html', 'w') as indexfile:
-        indexfile.write(template_contents % ("Índice de artigos", content))
+        # now there's a "description" tag as well:
+        indexfile.write(template_contents % ("Todos os arquivos do blog do Raspberry Pi", "Índice de artigos", content))
 
 def helper():
     '''

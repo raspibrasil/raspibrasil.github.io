@@ -133,10 +133,12 @@ class TagMaker:
 [Back to all tags](../)
 '''
 
+            # Shim for the <meta description> tag:
+            description = "Todo o conteúdo do Raspberry Pi Brasil para a tag %s" % tag
             cont = markdown(filler)
             with open('index.html', 'w') as index:
                 index.write(raw_content % 
-                    (pagetitle, cont))
+                    (description, pagetitle, cont))
             print("***Built directory under tag '%s'" % tag)
             os.chdir('../../../')
             # tag pages are now built.
@@ -144,6 +146,7 @@ class TagMaker:
         # Now build the "tag index" under /blog/tags
         os.chdir(BLOG + '/tags/')
         pagetitle = "All content tags"
+        description = "Todo as tags de conteúdo do Raspberry Pi Brasil"
         filler = """# Conteúdo por tags
 
 Atualmente, todos os nossos posts estão distrubuídos nas seguintes *tags*:
@@ -156,7 +159,7 @@ Atualmente, todos os nossos posts estão distrubuídos nas seguintes *tags*:
         cont = markdown(filler)
         with open('index.html', 'w') as index:
             index.write(raw_content % 
-                (pagetitle, cont))
+                (description, pagetitle, cont))
 
         print("***Built tag index page.")
         os.chdir('../../')
