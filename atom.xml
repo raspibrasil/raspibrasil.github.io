@@ -3,7 +3,7 @@
     <title>Raspberry Pi Brasil</title>
     <link href="https://www.raspberrypibrasil.com/atom.xml" rel="self" />
     <link href="https://www.raspberrypibrasil.com/" />
-    <updated>2021-03-12T06:38:04.333125Z</updated>
+    <updated>2021-03-22T04:53:24.607745Z</updated>
     <author>
         <name>Equipe Raspberry Pi Brasil - @raspibrasil@qoto.org</name>
     </author>
@@ -13,7 +13,7 @@
         <title>Hello World! O que é o Raspberry Pi e o Software livre?</title>
         <link href="https://www.raspberrypibrasil.com/blog/bem_vindo_ao_raspberrypi_brasil/" />
         <id>urn:uuid:1affbe74-5365-501a-b239-ff5aa5a99e6e</id>
-        <updated>2020-12-22T18:28:47.160529Z</updated>
+        <updated>2021-03-12T14:25:58.220001Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Hello World! O que é o Raspberry Pi e o Software livre?</h1>
@@ -51,7 +51,7 @@
         <title>Como escolher o seu primeiro Raspberry Pi?</title>
         <link href="https://www.raspberrypibrasil.com/blog/como_escolher_seu_raspberry_pi/" />
         <id>urn:uuid:bf6b4a81-aadb-5d8a-81ed-dc7992d7cb47</id>
-        <updated>2021-03-10T11:16:56.350554Z</updated>
+        <updated>2021-03-12T14:25:58.240132Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Como escolher o seu primeiro Raspberry Pi?</h1>
@@ -97,7 +97,7 @@
         <title>Como instalar Linux no Raspberry Pi?</title>
         <link href="https://www.raspberrypibrasil.com/blog/como_instalar_linux_raspberry_pi/" />
         <id>urn:uuid:4ec43c75-3893-56be-90ed-a304c2f0bdc6</id>
-        <updated>2021-03-12T15:38:01.977923Z</updated>
+        <updated>2021-03-16T22:07:14.775897Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Como instalar Linux no Raspberry Pi?</h1>
@@ -179,10 +179,92 @@
     </entry>
 
     <entry>
+        <title>Usando o Raspberry Pi como um NAS na sua rede caseira</title>
+        <link href="https://www.raspberrypibrasil.com/blog/compartilhando_arquivos_nas_raspberrypi/" />
+        <id>urn:uuid:3cdae64b-26a9-58f1-bcdd-c7db6bdf1ac7</id>
+        <updated>2021-03-22T13:32:12.141878Z</updated>
+        <content type="xhtml">
+            <div xmlns="http://www.w3.org/1999/xhtml">
+                <h1>Usando o Raspberry Pi como um NAS na sua rede caseira</h1>
+<p>Depois de <a href="/blog/como_escolher_seu_raspberry_pi/">escolher o modelo apropriado</a> do seu Raspberry Pi e <a href="/blog/como_instalar_linux_raspberry_pi/">instalar Linux nele</a>, podemos finalmente começar a brincar com ele e experimentá-lo com várias soluções e <em>stacks</em> de software para nos servir da melhor forma. Afinal, é através destes constantes experimentos que podemos melhorar nosso entendimento e experiência com o <a href="/blog/bem_vindo_ao_raspberrypi_brasil/">Software Livre</a>.</p>
+<p>Uma das melhores formas de estudar o software livre é através da aplicação prática: procure um projeto que poderá ajudar você a realizar alguma tarefa, e aprenda com sua implementação. Neste artigo, mostraremos como é fácil tornar o seu Raspberry Pi num dispositivo de <strong>armazenamento em rede</strong> na sua casa através de um software chamado <a href="https://www.samba.org">Samba</a>, que permitirá você a compartilhar arquivos entre todos os dispositivos da sua casa, independente se rodarem Linux, Windows, Mac, Android, ou iOS.</p>
+<p>Vamos em frente!</p>
+<h2>Como o armazemanento em rede (NAS) funciona</h2>
+<p>Para este projeto, tornaremos o Raspberry Pi num dispositivo de <a href="https://en.wikipedia.org/wiki/Network-attached_storage"><em>Network Attached Storage</em></a> ou, abreviadamente, <em>NAS</em>. </p>
+<p>O NAS funciona como um servidor central de arquivos dentro da rede, com o qual outros computadores e dispositivos podem interagir para armazenar ou recebê-los. Se você já trabalhou num escritório onde haviam drives de redes disponíveis (F:\, G:\, etc.), o NAS via Samba funciona de forma quase idêntica.</p>
+<figure>
+    <img src="https://cdn.ttgtmedia.com/rms/onlineImages/network_attached_storage_mobile.jpg" alt="arquitetura do NAS numa rede local" />
+    <figcaption>O NAS atua como um ponto central através do qual outros dispositivos clientes podem enviar ou receber arquivos</figcaption>
+</figure>
+
+<p>Da mesma forma que um servidor web utiliza o protocolo HTTP para enviar sites para navegadores da web, um servidor de arquivos "conversa" com computadores em rede através de um protocolo chamado SMB. O Samba é o servidor mais popular deste protocolo disponível para o Linux, e será o software que utilizaremos neste projeto.</p>
+<h2>Requerimentos para este projeto</h2>
+<p>Para este projeto, graças à leveza do Samba junto ao sistema Linux, versões modestas do Raspberry Pi podem ser utilizadas para realizar a tarefa. Edições <a href="/blog/como_escolher_seu_raspberry_pi/">orientadas à servidores</a> como o <a href="https://amzn.to/3sb9NoL">Raspberry Pi 3B</a> podem muito bem manuseá-lo, assim como o poderoso <a href="https://amzn.to/2QuK0Kn">Raspberry Pi 4</a> e até mesmo o primeiro modelo do <a href="https://amzn.to/3vLW75S">Raspberry Pi B</a> de 2012 possui recursos suficientes para agir como um NAS caseiro.</p>
+<figure>
+    <img src="https://images-na.ssl-images-amazon.com/images/I/71srygtslbL._AC_SL1131_.jpg" />
+    <figcaption>O <a href="https://amzn.to/3vLW75S">Raspberry Pi Model B</a> original de 2012 pode servir como um NAS numa rede caseira de poucos dispositivos</figcaption>
+</figure>
+
+<p>Para a parte de software, utilizaremos o <em>Raspberry Pi OS</em> como sistema operacional por conta da facilidade de se instalar e configurar software nele. Se você gostaria de mais informações sobre como instalar o Raspberry Pi OS, escrevemos anteriormente um <a href="/blog/como_instalar_linux_raspberry_pi/">artigo descrevendo o processo passo-a-passo</a>.</p>
+<p>Uma <em>conexão de internet</em> no Raspberry Pi é necessária para instalar e configurar seu NAS, podendo tanto ser cabeada ou WiFi. Uma conexão cabeada é recomendada por conta da maior velocidade e estabilidade em relação ao WiFi, mas ambas funcionam.</p>
+<p>Finalmente, é necessário ter espaço suficiente para armazenar os arquivos a serem compartilhados. Você pode utilizar armazenamento externo como um <a href="https://amzn.to/3fabSgW">Pendrive de alta velocidade</a> ou um <a href="https://amzn.to/3f3UR87">HD externo</a>, ou armazenar diretamente no cartão MicroSD do seu Raspberry Pi.</p>
+<h2>Instalando e configurando o Samba no Raspberry Pi</h2>
+<p>Primeiramente, instale o pacote <code>samba</code> no Raspberry Pi OS utilizando o seguinte comando no terminal:</p>
+<pre><code>sudo apt-get install samba
+</code></pre>
+<p>Este comando também funciona no Ubuntu Server Edition para Raspberry Pi OS. <code>apt</code> listará as dependências necessárias para insalar o Samba. Pressione 'y' e Enter para prosseguir. </p>
+<p>Após a instalação, o serviço do Samba (<code>smbd</code> nos sistemas Linux) é iniciado automaticamente, mas ainda é necessário configurá-lo para fazê-lo funcionar da maneira exata que queremos. Em nosso caso, configuraremos o Samba para compartilhar apenas um diretório específico do nosso sistema, conhecido como <em>mountpoint</em> em inglês, e nos certificar que apenas usuários designados possam acessá-los.</p>
+<p>Para isso, antes de começar a configuração, criaremos um usuário específico para acessar e manipular os arquivos via Samba. Você também poderia usar o seu usuário padrão para isso, mas por segurança é desejável ter um usuário específico para operar serviços. Desta forma, se por algum motivo o Samba seja comprometido, você poderá simplesmente deletar o usuário do Samba e recriá-lo - o seu usuário pessoal não será impactado.</p>
+<p>Para criar o usuário <code>sambauser</code>, que será designado para o Samba, utilize o seguinte comando:</p>
+<pre><code>sudo useradd -r -m -U -d /home/sambauser -s /bin/bash sambauser
+</code></pre>
+<p>Através deste comando, o usuário sambauser não terá uma senha associada a ele, outra medida de segurança que impede logins locais no sistema de serem realiados. Isso não é um problema, porém, porque todo o trabalho do sambauser será realizado remotamente através do serviço do Samba. Para isso, precisamos configurá-lo sob estas considerações.</p>
+<p>Com o usuário criado, crie um diretório que servirá de <em>mountpoint</em> para o seu NAS. Você poderá criá-lo em qualquer lugar do seu sistema, inclusive em armazenamento externo. Neste exemplo, criaremos no próprio cartão SD do seu Raspberry Pi, dentro do diretório Home do seu usuário (por padrão, <code>pi</code> no Raspberry Pi OS) e concederemos as permissões corretas para que o usuário sambauser possa acessá-lo:</p>
+<pre><code>mkdir /home/pi/NAS
+chmod 777 /home/pi/NAS
+</code></pre>
+<p>Com isso, podemos Como tudo no Linux, a configuração do Samba é feita através de um arquivo de texto simples, localizado em <code>/etc/samba/smb.conf</code>. Para editá-lo, abra-o com o seu editor de texto favorito prefixado com <code>sudo</code>, por conta de ser um arquivo do sistema. Por exemplo:</p>
+<pre><code>sudo nano /etc/samba/smb.conf
+</code></pre>
+<p>A configuração padrão do Samba já é bem completa em termos de funcionalidade e segurança. Precisamos apenas adicionar o <em>mountpoint</em> desejado e quais usuários poderão ter acesso a ele. Adicione o seguinte segmento no fim do arquivo <code>smb.conf</code>:</p>
+<pre><code>[NAS]
+    comment = NAS on RaspberryPi
+    path = /home/pi/NAS
+    browseable = yes
+    read only = no
+    create mask = 0777
+    directory mask = 0777
+    valid users = sambauser pi
+    guest ok = no
+</code></pre>
+<p>A linha <code>valid users = sambauser pi</code> especifica que apenas estes dois usuários terão acesso (via Samba) à este serviço (também é possível tornar o compartilhamento público, mas este não é o escopo deste artigo).</p>
+<p>Finalmente, é necessário adicionar o usuário sambauser à lista de usuários autenticados pelo serviço Samba. Para este caso, será necessário adicionar uma senha para ele, válida apenas para o Samba. Guarde-a bem: <strong>é com esta senha que você irá utilizar o Samba.</strong></p>
+<pre><code>sudo smbpasswd -a sambauser
+</code></pre>
+<p>Para finalizar, reinicie o serviço do Samba no Raspberry Pi OS com o seguinte comando:</p>
+<pre><code>sudo systemctl restart smbd
+</code></pre>
+<p>O samba estará rodando e compartilhando o diretório que você especificou como <em>mountpoint</em>. Para testá-lo, obtenha o seu endereço IP com o comando <code>ip addr</code>. No Windows, acesse <code>\\xxx.xxx.xxx.xxx\NAS$</code> do Windows Explorer, onde <code>xxx.xxx.xxx.xxx</code> é o endereço IP do seu Raspberry Pi. No Linux, acesse <code>smb://xxx.xxx.xxx.xxx/NAS</code> no seu gerenciador de arquivos favorito.</p>
+<h2>Tornando o seu NAS mais eficiente</h2>
+<p>Seu NAS está pronto para trabalhar e compartilhar arquivos entre seus vários dispositivos da sua casa. Ainda há outras coisas que podem ser feitas para otimizá-lo caso você quiser, afinal o aprendizado sempre é constante no Linux, entre elas as seguintes:</p>
+<ul>
+<li>Para garantir a confidencialidade da conexão entre o NAS e os dispositivos clientes, é possível realizar a transferência dos arquivos com um protocolo chamado <strong>SFTP</strong>, que emprega o famoso Secure Shell (SSH) para proteger a conexão e transferência dos arquivos. Falaremos mais sobre como implementá-lo junto ao SSH num artigo futuro.</li>
+<li>É possível aumentar a velocidade da transferência usando armazenamento externo como um <a href="https://amzn.to/3f3UR87">HD</a> ou até mesmo <a href="https://amzn.to/3r9y5hu">SSD externo</a>. Outra vantagem do SSD é que eles poderão durar muito mais tempo que um HD tradicional, por conta da ausência de falhas mecânicas e os ciclos reduzidos de escrita e leitura quando implementados apenas como armazenamento.</li>
+</ul>
+<h2>Conclusão</h2>
+<p>Tornar seu Raspberry Pi num NAS caseiro para compartilhar arquivos entre seus dispositivos na sua casa não é complicado, e nem requer muitos recursos. Graças à simples implementação do Samba, é possível começar a compartilhar arquivos em questão de alguns minutos com apenas um pouco de configuração.</p>
+<p>A implementação do Samba no Raspberry Pi exemplifica novamente como o aprendizado do <a href="/blog/bem_vindo_ao_raspberrypi_brasil/">Software Livre</a> se torna muito mais poderoso e apreciável quando envolve uma aplicação prática do conhecimento. Ao realizar este projeto, você estará tanto aprendendo mais sobre administração de sistemas quanto também realizando um serviço aos seus interesses. É sob esta combinação que o aprendizado flui.</p>
+<hr />
+<p>O que você achou de tornar o Raspberry Pi num NAS para compartilhar arquivos? Conhece alguma outra solução para realizar este tipo de compartilhamento numa rede caseira? Deixe-nos saber na nossa <a href="https://qoto.org/@raspibrasil">conta no Mastodon!</a></p>
+            </div>
+        </content>
+    </entry>
+
+    <entry>
         <title>Quais os melhores acessórios e periféricos para o Raspbery Pi?</title>
         <link href="https://www.raspberrypibrasil.com/blog/melhores_acessorios_raspberry_pi/" />
         <id>urn:uuid:d70e0e14-04de-574c-b6dd-6892d9b92261</id>
-        <updated>2021-03-10T11:16:32.750553Z</updated>
+        <updated>2021-03-12T14:25:58.241459Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Quais os melhores acessórios e periféricos para o Raspbery Pi?</h1>

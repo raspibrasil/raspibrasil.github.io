@@ -8,6 +8,7 @@
 
 import os
 import sys
+import datetime
 
 from markdown import markdown
 
@@ -111,10 +112,14 @@ class TagMaker:
 
         for tag in self._taglist:
             # Begin work:
-            # TODO: a way to remove everything before creating
             tagdir = BLOG + 'tags/' + tag
             os.mkdir(tagdir)
             os.chdir(tagdir)
+
+            # add today's date in the tag pubdate for sitemap:
+            today = datetime.datetime.today()
+            with open("pubdate", "w") as pdate:
+                pdate.write(str(today.date()))
 
             postlist = []
             for item in self.tagrelation:
@@ -145,6 +150,12 @@ class TagMaker:
 
         # Now build the "tag index" under /blog/tags
         os.chdir(BLOG + '/tags/')
+
+        # For sitemap:
+        today = datetime.datetime.today()
+        with open("pubdate", "w") as pdate:
+            pdate.write(str(today.date()))
+
         pagetitle = "All content tags"
         description = "Todo as tags de conteúdo do Raspberry Pi Brasil"
         filler = """# Conteúdo por tags
