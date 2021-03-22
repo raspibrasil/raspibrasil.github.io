@@ -56,8 +56,8 @@ class TagMaker:
         in each post, and squashing duplicates.
         '''
         os.chdir(BLOG)
-
         raw_list = ''        
+
         for item in os.walk('.'):
             if 'categories' in item[2]:
                 ind = item[2].index('categories')
@@ -76,9 +76,12 @@ class TagMaker:
                 self.tagrelation.append((item[0][2:], raw_tags, title))
 
         # Raw list populated with all tag material. Remove duplicates
+        dupecheck = []
         for line in raw_list.split('\n'):
-            if line not in self._taglist:
-                self._taglist.append(line)
+            if line not in dupecheck:
+                dupecheck.append(line)
+                count = raw_list.count(line)
+                self._taglist.append((line, count))
 
         # Remove empty category from end of stack:
         self._taglist.pop()
@@ -110,9 +113,10 @@ class TagMaker:
             os.mkdir("tags/")
         os.chdir('..')
 
+
         for tag in self._taglist:
             # Begin work:
-            tagdir = BLOG + 'tags/' + tag
+            tagdir = BLOG + 'tags/' + tag[0]
             os.mkdir(tagdir)
             os.chdir(tagdir)
 
@@ -123,12 +127,11 @@ class TagMaker:
 
             postlist = []
             for item in self.tagrelation:
-                if tag in item[1]:
+                if tag[0] in item[1]:
                     postlist.append((item[0], item[2]))
-
-            pagetitle = "Posts tagged '%s'" % tag
+            pagetitle = "Posts tagged '%s'" % tag[0]
             filler = """# All posts tagged with '%s':
-""" % tag
+""" % tag[0]
             for post in postlist:
                 filler += """
  - [%s](/%s)
@@ -139,12 +142,12 @@ class TagMaker:
 '''
 
             # Shim for the <meta description> tag:
-            description = "Todo o conteúdo do Raspberry Pi Brasil para a tag %s" % tag
+            description = "Todo o conteúdo do Raspberry Pi Brasil para a tag %s" % tag[0]
             cont = markdown(filler)
             with open('index.html', 'w') as index:
                 index.write(raw_content % 
-                    (description, pagetitle, cont))
-            print("***Built directory under tag '%s'" % tag)
+                    (pagetitle, description, cont))
+            print("***Built directory under tag '%s'" % tag[0])
             os.chdir('../../../')
             # tag pages are now built.
 
@@ -163,14 +166,15 @@ class TagMaker:
 Atualmente, todos os nossos posts estão distrubuídos nas seguintes *tags*:
 
 """
-        for directory in os.listdir('.'):
-            filler += """ - [%s](/%s)
-""" % (directory, BLOG + '/tags/' + directory)
+        for tag in self._taglist:
+
+            filler += """ - [%s](/%s) (%s posts)
+""" % (tag[0], BLOG + 'tags/' + tag[0], tag[1])
         
         cont = markdown(filler)
         with open('index.html', 'w') as index:
             index.write(raw_content % 
-                (description, pagetitle, cont))
+                (pagetitle, description, cont))
 
         print("***Built tag index page.")
         os.chdir('../../')

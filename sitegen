@@ -239,7 +239,7 @@ Publicado em %s em: %s
 
     with open(targetdir + 'index.html', 'w') as indexfile:
         # now there's a "description" tag as well:
-        indexfile.write(template_contents % ("Todos os arquivos do blog do Raspberry Pi", "Índice de artigos", content))
+        indexfile.write(template_contents % ("Índice de artigos", "Todos os arquivos do blog do Raspberry Pi", content))
 
 def helper():
     '''
