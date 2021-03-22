@@ -139,6 +139,10 @@ section#main img {
     margin: auto;
 }
 
+section.article {
+    border-bottom: 2px solid #4D1C00;
+}
+
 /* small screens and mobiles  */
 @media screen and (max-width: 500px) {
     body {

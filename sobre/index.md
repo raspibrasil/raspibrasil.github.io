@@ -11,7 +11,7 @@ Com seu design compacto e altamente customizável, o Raspberry Pi e outros SBCs 
 Começando com apenas um Raspberry Pi, é possível realizar vários projetos de software e tecnologia simplesmente aplicando conhecimento e software livre. Alguns exemplos:
 
  - Servidor Web para um site da internet hospedado na sua própria casa.
- - Armazenamento em rede (NAS), como um drive de rede corporativo.
+ - [Armazenamento em rede (NAS)](/blog/compartilhando_arquivos_nas_raspberrypi/), como um drive de rede corporativo.
  - Firewall ou roteador da sua rede caseira.
  - Servidor de VPN ou bloqueador de anúncios.
 
