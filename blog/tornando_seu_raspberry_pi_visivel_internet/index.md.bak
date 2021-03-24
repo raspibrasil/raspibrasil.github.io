@@ -1,0 +1,12 @@
+# Duas formas de tornar o seu Raspberry Pi visível na Internet
+
+Outline:
+
+ - Ways to access and interact with the Raspberry Pi outside your LAN.
+ - Method #1: Port forwarding
+ - Method #2: using a Tor hidden service
+ - Warning you may need to buff up the security considerably
+
+Utilizar o Raspberry Pi como um servidor caseiro é uma forma interessante de se estudar e aprender a gerenciar serviços do [Linux](/blog/como_instalar_linux_raspberry_pi/) enquanto também desfrutamos dos benefícios que estes serviços nos providenciam. Por exemplo, anteriormente vimos como facilmente podemos [compartilhar arquivos entre nossos dispositivos de casa](/blog/compartilhando_arquivos_nas_raspberrypi/) utilizando um programa chamado Samba no Raspberry Pi. Após aprender a instalá-lo e configurá-lo, pudemos também nos beneficiar da conveniência de conectar qualquer dispositivo em casa, independente do sistema operacional.
+
+Nestes exemplos, porém, ainda possuimos uma limitação: não é possível acessar o sistema *fora da nossa rede local*. Se quisermos acessar o Raspberry Pi fora da nossa casa, atra
