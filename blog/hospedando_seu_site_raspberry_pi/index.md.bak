@@ -1,0 +1,8 @@
+# Hospede o seu site na sua própria casa usando o Raspberry Pi
+
+Outline:
+
+ - How to self-host your website using a port-forwarded Pi, Apache and a static site generator.
+ - There are many other web servers and other choices of software that you can set up in your Pi - try them out later!
+
+Há poucos limites sobre o que o seu Raspberry Pi pode fazer quando combinado com o poder e flexibilidade do [Software Livre](!LINK freesoftware). Anteriormente, por exemplo, demonstramos como o é possível tornar o Raspberry Pi num [servidor NAS](!LINK NAS), permitindo o compartilhamento de arquivos entre os dispositivos da sua rede local. Ainda existem outras coisas que podemos fazer com  

@@ -123,12 +123,14 @@ pre {
     color: #fff;
     border-radius: 10px;
     overflow-x: auto;
+    margin: auto;
 }
 
 /* inline code, unlike the preformatted MD one. */
 p code {
-    color: magenta;
-    background: #fff;
+    color: #fff;
+    background: #333;
+    padding: 2px;
 }
 
 section#main img {
@@ -149,6 +151,19 @@ section.article {
         font-size: 1em;
         line-height: 1.1em;
     }
+
+    header {
+        text-align: center;
+    }
+
+    header h1, header h2 {
+        line-height: 1.1em;
+    }
+
+    header nav ul li {
+        float: none;
+    }
+
     header img {
         float: none;
         display: block;
