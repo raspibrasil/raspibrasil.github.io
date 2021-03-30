@@ -105,7 +105,7 @@ Categorizado em: ''' % (pubdate)
     contents = markdown(raw_content)
 
     with open(pagefile.replace(".md",".html"), 'w') as newpage:
-        finalpage = template_contents % (pagetitle, short_desc[:-1], contents)
+        finalpage = template_contents % (pagetitle, short_desc, contents)
         newpage.write(finalpage)
         print('Page "%s" converted successfully.' % pagetitle)
 

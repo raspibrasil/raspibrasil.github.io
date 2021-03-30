@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Hospede o seu site de graça na sua própria casa usando o Raspberry Pi - Raspberry Pi Brasil</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Hospede o seu site de graça na sua própria casa usando o Raspberry Pi" />
+        <link rel="stylesheet" type="text/css" href="/static/style.css" />
+        <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+        <link rel="me" href="https://qoto.org/@raspibrasil" />
+    </head>
+    <body>
+        <header>
+            <img src="/static/logo.png" alt="logo raspberry pi brasil" />
+            <h1>Raspberry Pi Brasil</h1>
+            <h2>A comunidade brasileira do Raspberry Pi e do Software Livre</h2>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/sobre">Sobre o site</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                    <li><a href="/atom.xml">Feed</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="main">
+        <h1>Hospede o seu site de graça na sua própria casa usando o Raspberry Pi</h1>
+<p>Há poucos limites sobre o que o seu Raspberry Pi pode fazer quando combinado com o poder e flexibilidade do <a href="/blog/bem_vindo_ao_raspberrypi_brasil/">Software Livre</a>. Anteriormente, por exemplo, demonstramos como o é possível tornar o Raspberry Pi num <a href="/blog/compartilhando_arquivos_nas_raspberrypi/">servidor NAS</a>, permitindo o compartilhamento de arquivos entre os dispositivos da sua rede local. É com esta aplicação prática do Software Livre com o conhecimento que realmente podemos aprender como o nosso computador realmente funciona.</p>
+<p>Seguindo os nossos estudos após aprender a utilizá-lo como um servidor e <a href="/blog/tornando_seu_raspberry_pi_visivel_internet/">torná-lo visível na internet</a>, daremos um passo à frente e mostrar neste artigo como você pode <strong>hospedar o seu próprio site</strong>, de graça, na sua casa com o Raspberry Pi. Esta é uma técnica conhecida como <em>self-hosting</em> e embora pareça complicado em princípio, a técnica é bastante simples e rápida de se implementar.</p>
+<p>Vamos em frente.</p>
+<h2>Instalando um servidor web no Raspberry Pi</h2>
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Client-server-model.svg/500px-Client-server-model.svg.png" alt="como o modelo client-server funciona" />
+    <figcaption>
+    O modelo "cliente e servidor" utilizado na internet institui que vários dispositivos externos podem acessar o conteúdo provido por um servidor central através de uma rede, que pode ser a internet. Para hospedar um site, usamos um servidor Web. Crédito: Wikimedia.org
+    </figcaption>
+</figure>
+
+<p>Para hospedar um serviço, é necessário um servidor que o providencie em sua rede. No caso de um site na internet, este servidor é chamado de <em>servidor HTTP</em> (o protocolo através do qual os navegadores da internet "conversam" entre si), mais comumente conhecidos como servidores web.</p>
+<p>Graças à popularidade deste tipo de serviço, hoje podemos contar com vários programas que são software livre disponíveis para atender à esta necessidade. Dentre os servidores web mais populares atualmente, se encontram o <a href="https://httpd.apache.org/">Apache</a>, <a href="https://www.lighttpd.net/">LigHTTPD</a> e o relativamente recente <a href="https://nginx.org/en/">NginX</a>. Todos estes realizam bem o trabalho, e cada um deles possuem vantagens e desvantagens, mas neste artigo iremos focar no servidor Apache, que provavelmente é o mais utilizado entre os sites na internet hoje em dia.</p>
+<p>O foco deste artigo é na distribuição Raspberry Pi OS, sobre o qual escrevemos <a href="/blog/como_instalar_linux_raspberry_pi/">um tutorial detalhado de instalação anteriormente</a>, mas os mesmos passos se aplicam para distribuições similares como Debian ou Ubuntu Server, que também possuem imagens para o Raspberry Pi.</p>
+<p>Primeiramente, instalaremos o pacote do Apache no Raspberry Pi OS com o seguinte comando:</p>
+<pre><code>sudo apt-get install apache2
+</code></pre>
+<p>Após a instalação, o Apache é iniciado automaticamente com configurações de segurança padrões ativadas, mas ainda é possível configurá-lo para poder funcionar da maneira que desejamos. </p>
+<p>Por padrão, o Apache servirá todos os conteúdos armazenados no diretório <code>/var/www/</code> para qualquer cliente que solicitá-lo, o que torna lançar uma versão "mínima" do seu site bem fácil. Para isso, crie um arquivo chamado <code>index.html</code> usando o seu editor de texto favorito com o seguinte conteúdo:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Raspberry Pi!&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Hello World! Eu sou um Raspberry Pi&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Em seguida, mova este <code>index.html</code> para o diretório padrão do Apache:</p>
+<pre><code>sudo cp index.html /var/www/
+</code></pre>
+<p>Finalmente, para confirmar que a página foi configurada corretamente, abra o navegador e acesse o endereço <code>http://localhost/</code></p>
+<figure>
+    <img src="/static/images/raspberry_pi_apache_server.jpg" alt="página sendo servida corretamente pelo Apache" />
+    <figcaption>
+    Página sendo servida corretamente pelo Apache.
+    </figcaption>
+</figure>
+
+<p>Parabéns, você publicou a sua primeira página na web.</p>
+<h2>Configurando o acesso público dedicado ao seu Raspberry Pi</h2>
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/First_Web_Server.jpg/500px-First_Web_Server.jpg" alt="o primeiro servidor web da história, no CERN" />
+    <figcaption>
+    Este computador, configurado e instalado no CERN é considerado por muitos como o primeiro Servidor Web da história. Curiosamente, o software que utilizara para o serviço eponimamente se chamava "Web." Crédito: Wikimedia.org
+    </figcaption>
+</figure>
+
+<p>Seu site já se encontra disponível localmente mas, conforme vimos no post anterior, para disponibilizar qualquer serviço do seu Raspberry Pi fora da sua rede local, é preciso configurá-lo para ser <a href="/blog/tornando_seu_raspberry_pi_visivel_internet/">acessível na internet através do Port Forwarding</a>. Quando se trata de um site, porém, obter um domínio e acesso dedicado a ele é bem mais importante. É este domínio que você compartilhará com os outros visitantes para que possam acessar o seu site, e não o seu endereço IP.</p>
+<p>Geralmente, para um site pequeno, um subdomínio com DNS gratuito pode ser suficiente para garantir que os usuários encontrem o seu site. Para isso, é possível utilizar o serviço do <a href="https://www.noip.com">No-IP</a> para manter seu domínio apontando para o seu endereço de IP. Você pode criar uma conta gratuita nele e estabelecer o subdomínio em alguns minutos. Após isso, poderá compartilhar o endereço do seu site com todos na Internet!</p>
+<h2>Ferramentas para criação de conteúdo no seu site</h2>
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Logo_of_Hugo_the_static_website_generator.svg/400px-Logo_of_Hugo_the_static_website_generator.svg.png" alt="Logo do gerador de sites estáticos Hugo" />
+    <figcaption>
+        Para gerar um site estático (HTML puro) programas como o Hugo ajudam bastante. Crédito: Wikimedia.org
+    </figcaption>
+</figure>
+
+<p>Sua página da web está já disponível, mas convenhamos que está bem básica e poderia melhorar um pouco. Para isso, é necessário criar conteúdo para o seu site na forma de mais páginas armazenadas dentro do diretório <code>/var/www/</code>.</p>
+<p>Todo o conteúdo da web acessado por via de navegadores é escrito numa linguagem chamada HTML (Hypertext Markup Language) que é a que utilizamos para criar a "mini-página" na seção anterior. Há vários guias que ensinam como aprender esta linguagem na internet, sendo o guia apresentado pelo <a href="https://www.htmldog.com/">HTML Dog</a> uma recomendação pessoal, pois este é bem didático.</p>
+<p>Como escrever manualmente cada página em HTML pode ser um pouco maçante, existem algumas ferramentas que automatizam o processo de criação da página, permitindo que você foque na provisão do conteúdo (texto). Estas ferramentas são chamadas de <a href="https://jamstack.org/generators/">geradores de sites estáticos</a>. Talvez a mais famosa delas seja o framework <a href="https://gohugo.io">Hugo</a>, que permite a criação de páginas completas com templates já pré-elaborados. Outro bem conhecido é o <a href="https://jekyllrb.com/">Jekyll</a>, disponibilizado por padrão no Github.</p>
+<p>O site do Raspberry Pi Brasil, por exemplo, utiliza um gerador de site estático próprio, escrito na linguagem Python. Se você tiver interesse em utilizá-lo, <a href="https://github.com/raspibrasil/sitegen">acesse-o aqui no Github</a>.</p>
+<h2>Considerações e melhorias futuras</h2>
+<p>A configuração padrão do Apache pode servir-lhe bem para um servidor ou site pequeno, mas quando quisermos expandir nosso servidor com múltiplos serviços e sites independentes, precisamos ajustar um pouco a configuração. Isso é especialmente desejável no caso do <a href="https://amzn.to/3qlUOqH">Rasbperry Pi 3</a> ou <a href="https://amzn.to/3slgdlW">Raspberry Pi 4</a>, que possuem bastante recursos para hospedarem vários serviços na web. </p>
+<p>Nesete caso, é necessário utilizar <a href="https://httpd.apache.org/docs/2.4/vhosts/examples.html">Virtual Hosts</a>, que permitem que múltiplos domínios e sites sejam acessados em paralelo numa mesma máquina física. Felizmente, esta configuração não é difícil, e a documentação do projeto do Apache é bem detalhada.</p>
+<p>A utilização de um gerador de site estático pode ser suficiente para o gerenciamento de um blog ou site puramente informacional, mas dependendo do tipo de site que você estiver desenvolvendo, pode não ser suficiente, especialmente se depende do input dos visitantes para funcionar. Neste caso, um site dinâmico, alimentado por uma linguagem de programação backend como Python, PHP, Ruby on Rails ou Node.js é necessária, mas a implementação destas é um pouco mais complicada - e consome mais recursos. Falaremos mais como utilizá-los num post futuro.</p>
+<h2>Conclusão</h2>
+<p>Hospedar seu site na internet usando o Raspberry Pi com sua conexão caseira não é complicado, e não vai lhe custar nada. </p>
+<p>Realizar o <em>self-host</em> do seu site é parecido com ir a algum lugar de bicicleta; personalizável, leve, requer algum esforço, mas certamente irá levá-lo até lá. Para sites pequenos, pode ser a melhor e mais barata solução! Porém, se você precisar de algo muito mais sofisticado, pode não ser a melhor estratégia, especialmente considerando a velocidade das conexões caseiras, e a quantidade de recursos que o seu Raspberry Pi poderá trazer. </p>
+<p>No fim do dia, este é mais um ótimo exercício para demonstrar o poder do Software Livre e a capacidade que pode trazer para a sua vida. </p>
+<p>O que você achou de hospedar o seu site gratuitamente com o Raspberry Pi? Possui uma forma melhor de gerenciar o domínio ou o conteúdo do seu site? Compartilhe com a gente no <a href="https://qoto.org/raspibrasil">Mastodon!</a></p>
+        </section>
+        <footer>
+            <p>
+                Copyright 2020 - 2021 Raspberry Pi Brasil - Todos os direitos reservados.
+            </p>
+            <p>
+                Conteúdo disponibilizado sob a licença <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution Share-Alike 4.0</a>
+            </p>
+            <p>
+                Raspberry Pi é uma marca registrada pela Raspberry Pi Foundation na Inglaterra.
+            </p>
+            <p>
+                <a href="/privacidade">Política de privacidade</a>
+            </p>
+            <p>
+                <img src="/static/logo.png" width="70" />
+            </p>
+        </footer>
+    </body>
+</html>

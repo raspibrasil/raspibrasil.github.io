@@ -84,8 +84,7 @@ class SiteMapper:
                     # use the pubdate immediately next to the index file (much better)
                     with open(directory[0] + '/pubdate', 'r') as pubd:
                         created = pubd.read()
-                        if debug:
-                            print("Curdir pubdate: %s" % created)
+                        # print("Curdir pubdate: %s" % created)
 
                     # if the page name is index.html, append only the
                     # directory path. Otherwise, full path.
@@ -97,7 +96,7 @@ class SiteMapper:
                         else:
                             pagename = curdir + '/' + element
 
-                    self.paths.append((BASE_URL + pagename, created[:-1]))
+                    self.paths.append((BASE_URL + pagename, created))
 
 
         if debug:

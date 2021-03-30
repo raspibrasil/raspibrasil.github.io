@@ -4,7 +4,7 @@
         <title> Tornando o seu Raspberry Pi visível na Internet - Raspberry Pi Brasil</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content=" Tornando o seu Raspberry Pi visível na Interne" />
+        <meta name="description" content=" Tornando o seu Raspberry Pi visível na Internet" />
         <link rel="stylesheet" type="text/css" href="/static/style.css" />
         <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
         <link rel="me" href="https://qoto.org/@raspibrasil" />
@@ -27,7 +27,7 @@
         <section id="main">
         <h1>Tornando o seu Raspberry Pi visível na Internet</h1>
 <p>Utilizar o Raspberry Pi como um servidor caseiro é uma forma interessante de se estudar e aprender a gerenciar serviços do <a href="/blog/como_instalar_linux_raspberry_pi/">Linux</a> enquanto também desfrutamos dos benefícios que estes serviços nos providenciam. Por exemplo, anteriormente vimos como facilmente podemos <a href="/blog/compartilhando_arquivos_nas_raspberrypi/">compartilhar arquivos entre nossos dispositivos de casa</a> utilizando um programa chamado Samba no Raspberry Pi. Após aprender a instalá-lo e configurá-lo, pudemos também nos beneficiar da conveniência de conectar qualquer dispositivo em casa, independente do sistema operacional.</p>
-<p>Nestes exemplos, porém, ainda possuimos uma limitação: não é possível acessar o sistema <em>fora da nossa rede local</em>. No momento que saímos do alcance da nossa rede Wifi, já não seria mais possível acessar o nosso Raspberry Pi e nem os serviços que tão carinhosamente implementamos nele. Felizmente, ainda é possível cobrir esta diferença com soluções de Software. É isso mesmo, não é preciso gastar dinheiro comprando algum equipamento especial ou contratando um plano especial com o seu provedor de internet para realizar isto. Neste post, mostraremos duas possíveis soluções para acessar seu Raspberry Pi da Internet.</p>
+<p>Nestes exemplos, porém, ainda possuimos uma limitação: não é possível acessar o sistema <em>fora da nossa rede local</em>. No momento que saímos do alcance da nossa rede Wifi, já não seria mais possível acessar o nosso Raspberry Pi e nem os serviços que tão carinhosamente implementamos nele. Felizmente, ainda é possível cobrir esta diferença com soluções de Software. É isso mesmo, não é preciso gastar dinheiro comprando algum equipamento especial ou contratando um plano especial com o seu provedor de internet para realizar isto. Neste post, mostraremos um método para <strong>acessar seu Raspberry Pi da Internet</strong>, conhecido como <em>Port Forwarding</em>.</p>
 <h2>Como funciona o <em>Port Forwarding</em></h2>
 <p>A técnica chamada de <a href="https://en.wikipedia.org/wiki/Port_forwarding">Port Forwarding</a> é relativamente simples, e pode ser implementada em virtualmente qualquer roteador e switch residencial moderno. Ela funciona da seguinte forma:</p>
 <p>Quando você conecta um dispositivo à internet na sua casa (wifi ou não), está essencialmente conectando-o ao seu roteador <em>primeiro</em> para que este roteador se encarregue de gerenciar a conexão do dispositivo com os serviços externos da internet. É o seu roteador que está em contato direto com a internet, e realiza o trabalho de gerenciar as conexões que entram e saem da sua rede através de um processo chamado <a href="https://en.wikipedia.org/wiki/Network_address_translation">Network Address Translation, ou NAT</a>. </p>
@@ -127,8 +127,6 @@ python -m http.server 8090
 <p>Divirta-se colocando o seu novo site na internet a partir do seu Raspberry Pi!</p>
 <hr />
 <p>O que você acha do método do <em>Port Forwarding</em> como uma maneira de disponibilizar seu Raspberry Pi na Internet? Conhece algum outro método de realizá-lo? O que faria para assegurar o seu Raspberry Pi uma vez publicado? Escreva para nossa conta no <a href="https://qoto.org/@raspibrasil">Mastodon!</a></p>
-<p>Publicado em 2021-03-25</p>
-<p>Categorizado em: <a href="/blog/tags/raspberrypi">raspberrypi</a> <a href="/blog/tags/tutorial">tutorial</a> <a href="/blog/tags/servidor">servidor</a> <a href="/blog/tags/internet">internet</a> <a href="/blog/tags/configuração">configuração</a> <a href="/blog/tags/redes">redes</a> </p>
         </section>
         <footer>
             <p>

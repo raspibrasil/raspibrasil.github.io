@@ -121,9 +121,10 @@ class TagMaker:
             os.chdir(tagdir)
 
             # add today's date in the tag pubdate for sitemap:
-            today = datetime.datetime.today()
+            today = datetime.date.today()
             with open("pubdate", "w") as pdate:
-                pdate.write(str(today.date()))
+                pdate.write(str(today))
+
 
             postlist = []
             for item in self.tagrelation:
