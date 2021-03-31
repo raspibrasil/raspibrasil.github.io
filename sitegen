@@ -34,12 +34,16 @@ from markdown import markdown
 
 # Change this into the template you wish to use. 
 # See the example one provided in the repo for more information.
-TEMPLATE=os.path.realpath("template.html")
+TEMPLATE = os.path.realpath("template.html")
 
-START_DIR=os.path.realpath('.')
+# The "root address" of your site. Different from the domain, because we need
+# the full https:// stuff for SEO:
+SITEROOT = 'https://www.raspberrypibrasil.com/'
 
 # Helps when developing:
 DEBUG = True
+
+START_DIR=os.path.realpath('.')
 
 def convert(page, targetdir, is_article=False):
     '''
@@ -49,6 +53,7 @@ def convert(page, targetdir, is_article=False):
 
      - <title></title>
      - <meta name="content">
+     - Canonical <link> pointing to this very page
      - The rest of the site's contents.
     '''
     global TEMPLATE
@@ -62,6 +67,11 @@ def convert(page, targetdir, is_article=False):
     fd = os.path.realpath(page)
     finaldir = "/".join(fd.split("/")[:-1])
     pagefile = fd.split('/')[-1]
+
+    # Get the "URL Fragment" to make a canonical link:
+    urlpath = fd.split('/')
+    url = "/".join(urlpath[urlpath.index('raspibrasil')+1:-1])
+    canonical = SITEROOT + url
 
     if DEBUG:
         print("Changing to publishing directory %s..." % finaldir)
@@ -105,7 +115,7 @@ Categorizado em: ''' % (pubdate)
     contents = markdown(raw_content)
 
     with open(pagefile.replace(".md",".html"), 'w') as newpage:
-        finalpage = template_contents % (pagetitle, short_desc, contents)
+        finalpage = template_contents % (pagetitle, short_desc, canonical, contents)
         newpage.write(finalpage)
         print('Page "%s" converted successfully.' % pagetitle)
 
@@ -239,7 +249,7 @@ Publicado em %s em: %s
 
     with open(targetdir + 'index.html', 'w') as indexfile:
         # now there's a "description" tag as well:
-        indexfile.write(template_contents % ("Índice de artigos", "Todos os arquivos do blog do Raspberry Pi", content))
+        indexfile.write(template_contents % ("Índice de artigos", "Todos os arquivos do blog do Raspberry Pi", SITEROOT + 'blog/', content))
 
 def helper():
     '''

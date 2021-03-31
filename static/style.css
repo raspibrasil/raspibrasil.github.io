@@ -128,8 +128,8 @@ pre {
 
 /* inline code, unlike the preformatted MD one. */
 p code {
-    color: #fff;
-    background: #333;
+    color: #f360ff;
+    background: #ffefef;
     padding: 2px;
 }
 
