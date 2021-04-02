@@ -30,6 +30,9 @@ instance manually otherwise.
 
 #-- Settings --
 
+# The site's "domain" with https:// prefix and all for canonical links:
+SITE_ROOT = "https://www.raspberrypibrasil.com/"
+
 # The blog's Root url.
 BLOG = "blog/"
 
@@ -144,10 +147,14 @@ class TagMaker:
 
             # Shim for the <meta description> tag:
             description = "Todo o conteúdo do Raspberry Pi Brasil para a tag %s" % tag[0]
+
+            # Canonical link is going to be the current directory...
+            canonical = SITE_ROOT + tagdir
+
             cont = markdown(filler)
             with open('index.html', 'w') as index:
                 index.write(raw_content % 
-                    (pagetitle, description, cont))
+                    (pagetitle, description, canonical, cont))
             print("***Built directory under tag '%s'" % tag[0])
             os.chdir('../../../')
             # tag pages are now built.
@@ -171,11 +178,14 @@ Atualmente, todos os nossos posts estão distrubuídos nas seguintes *tags*:
 
             filler += """ - [%s](/%s) (%s posts)
 """ % (tag[0], BLOG + 'tags/' + tag[0], tag[1])
+
+        # Add canonical link:
+        canonical = SITE_ROOT + BLOG + '/tags/'
         
         cont = markdown(filler)
         with open('index.html', 'w') as index:
             index.write(raw_content % 
-                (pagetitle, description, cont))
+                (pagetitle, description, canonical, cont))
 
         print("***Built tag index page.")
         os.chdir('../../')

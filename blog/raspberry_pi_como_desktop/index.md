@@ -46,22 +46,15 @@ O Linux é uma ótima escolha como o [sistema operacional do seu Raspberry Pi](/
 Felizmente, até mesmo um sistema operacional gráfico e com todos recursos modernos como um navegador, suíte de produtividade e outros programas conseguem caber confortavelmente no Raspberry Pi 4 de 4 GB de RAM. A distribuição Raspberry Pi OS, que [demonstramos a instalação](/blog/como_instalar_linux_raspberry_pi/) anteriormente, já possui por padrão todos estes programas disponíveis. E ao passo que a utilização dos recursos varia de acordo com o uso, o Raspberry Pi OS consegue mantê-los relativamente estável uma sessão normal de uso.
 
 <figure>
-    <img src="!LINK" alt="Sessão de trabalho no Raspberry Pi OS" />
+    <img src="/static/images/raspberry_pi_os_screenshot.jpg" alt="Sessão de trabalho no Raspberry Pi OS" />
     <figcaption>
         O Raspberry Pi OS é um sistema operacional moderno que consegue confortavelmente providenciar um ambiente de computação como um tradicional desktop.
     </figcaption>
 </figure>
 
-Para testá-lo, por exemplo, colocamos nosso Raspberry Pi 4 numa sessão Linux padrão nossa de uso em laptops: navegador aberto, terminal com várias sessões abertas, gerenciador de arquivos e LibreOffice em uso. Consumo de memória máximo: !LINK GB RAM. A experiência também foi bem suave, sem "travar" o sistema e alternando tranquilamente. 
+Para testá-lo, por exemplo, colocamos nosso Raspberry Pi 4 numa sessão Linux padrão nossa de uso em laptops: navegador aberto, terminal com várias sessões abertas, gerenciador de arquivos e LibreOffice em uso. Consumo de memória médio: *1.3 GB RAM*. A experiência também foi bem suave, sem "travar" o sistema e alternando tranquilamente. 
 
-<figure>
-    <img src="!LINK" alt="Sessão de testes do Raspberry Pi Brasil" />
-    <figcaption>
-        Exemplo da sessão de testes.
-    </figcaption>
-</figure>
-
-Para uma utilização padrão, sem software muito específico, o Raspberry Pi 4 pode muito bem servir como um Desktop Tradicional.
+**Conclusão:** Para uma utilização padrão, sem software muito específico, o [Raspberry Pi 4 de 4GB de memória](https://amzn.to/3wfUopM) pode muito bem servir como um Desktop Tradicional.
 
 ## Limitações do Raspberry Pi como Desktop
 
