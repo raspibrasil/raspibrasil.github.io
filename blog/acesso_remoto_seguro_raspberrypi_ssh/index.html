@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Acesse seu Raspberry Pi remotamente de forma segura com chaves via SSH - Raspberry Pi Brasil</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Acesse seu Raspberry Pi remotamente de forma segura com chaves via SSH" />
+        <link rel="stylesheet" type="text/css" href="/static/style.css" />
+        <link rel="canonical" href="https://www.raspberrypibrasil.com/blog/acesso_remoto_seguro_raspberrypi_ssh" />
+        <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+        <link rel="me" href="https://qoto.org/@raspibrasil" />
+    </head>
+    <body>
+        <header>
+            <img src="/static/logo.png" alt="logo raspberry pi brasil" />
+            <h1>Raspberry Pi Brasil</h1>
+            <h2>A comunidade brasileira do Raspberry Pi e do Software Livre</h2>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/sobre">Sobre o site</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                    <li><a href="/atom.xml">Feed</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="main">
+        <h1>Acesse seu Raspberry Pi remotamente de forma segura com chaves via SSH</h1>
+<p>Um dos pontos fortes do Raspberry Pi é a sua versatilidade quando se trata de computação. Graças à sua crescente capacidade e recursos, é possível utilizar versões mais recentes como o <a href="https://amzn.to/3wfUopM">Raspberry Pi 4</a> como um <a href="/blog/raspberry_pi_como_desktop/">computador Desktop completo</a>, mas seu uso como um servidor também continua como uma de suas <a href="/blog/como_escolher_seu_raspberry_pi/">formas de utilização principais</a>. Um servidor nada mais é do que um computador que provém serviços e com o qual trabalhamos remotamente, através da rede. Com o seu baixo consumo de energia, o Raspberry Pi é um candidato perfeito para este uso.</p>
+<p>O desafio de se trabalhar remotamente com computadores é garantir a conexão à eles. É preciso garantir que os comandos e dados sejam transmitidos com sucesso, e com segurança para que não sejam obstruidos ou manipulados por fatores externos, especialmente quando transmitidos pela internet. Felizmente, todos estes problemas estão cobertos através de uma ferramenta chamada <a href="https://en.wikipedia.org/wiki/Secure_Shell_Protocol">SSH</a> ou <em>Secure Shell</em>, que garante a transmissão e transmissão dos dados entre os dois computadores. O SSH é a ferramenta ideal para trabalhar com o Raspberry Pi à distância, e embora venha já habilitado por padrão, é necessário configurá-lo para providenciar segurança e conveniência adicionais.</p>
+<p>Vejamos neste post como.</p>
+<h2>Como funciona o SSH?</h2>
+<p>O SSH é um protocolo que acrescenta <strong>criptografia</strong> à conexão entre dois computadores. De maneira simplificada, os dados são criptografados (embaralhados por uma chave secreta) antes de serem transmitidos, e ao serem recebidos, são desembaralhados pelo destinatário. </p>
+<p>Esta criptografia segue um modelo chamado de <a href="https://en.wikipedia.org/wiki/Public-key_cryptography"><em>Public-key Cryptography</em></a> ou criptografia assimétrica que envolve um par de chaves criptográficas entre dois atores, as quais são responsáveis por embaralhar e desembaralhar o conteúdo. Há a chave <em>privada</em> que deve ser mantida em segurança e a chave <em>pública</em> que pode ser compartilhada com outros que desejam se comunicar.</p>
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Public_key_encryption.svg/525px-Public_key_encryption.svg.png" alt="como funciona a criptografia assimétrica" />
+    <figcaption>
+        A criptografia assimétrica utiliza uma chave pública para criptografar conteúdo e uma chave privada para descriptografá-lo, tornando possível a comunicação privada. Crédito: Wikimedia.org
+    </figcaption>
+</figure>
+
+<p>Qualquer sistema operacional que possua o SSH habilitado produz seu próprio par de chaves para participar do protocolo, incluindo o <a href="/blog/como_instalar_linux_raspberry_pi/">Raspberry Pi OS</a> que o possui habilitado por padrão. Portanto, para acessar seu Raspberry Pi na sua rede local uma vez que ligado e conectado, basta usar o seguinte comando:</p>
+<pre><code>ssh usuario@endereçoip
+</code></pre>
+<p>Onde <code>usuario</code> é o nome do seu usuário no Raspberry Pi (por padrão, <code>pi</code> no Raspberry Pi OS) e <code>endereçoip</code> é o seu endereço IP da rede local. Você pode descobrir este endereço olhando os dispositivos conectados na página de administração do seu roteador, similarmente à forma de realizar o <a href="/blog/tornando_seu_raspberry_pi_visivel_internet/">Port Forwarding</a>.</p>
+<p>Ao executar este comando, você verá uma mensagem perguntando se você confirma a identidade do computador remoto. Como você está na rede local, e é a sua primeira vez conectando ao Pi, não há risco em aceitar. Digite a senha do seu usuário no Raspberry Pi e você terá acesso remoto seguro via SSH como se estivesse trabalhando localmente.</p>
+<p>Em relação ao acesso, o guia termina aqui. Porém, há alguns problemas relacionados com a utilização de senhas. O primeiro problema é que senhas podem ser vazadas ou - pior - adivinhadas por um adversário determinado. Uma vez comprometida, não há como garantir a segurança da sua conexão via senha apenas. Além disso, senhas precisam ser digitadas a cada utilização, o que pode se tornar cansativo dependendo do tipo de trabalho realizado.</p>
+<p>Felizmente, há uma solução para ambos estes problemas: <em>autenticação por chaves criptográficas</em>. Esta é uma das melhores práticas na utilização do SSH, e pode ser facilmente implementada no Raspberry Pi como veremos a seguir.</p>
+<h2>Habilitando e utilizando autenticação por chaves (passwordless)</h2>
+<p>Na autenticação por chaves, o computador local utiliza a sua chave privada para autenticar com sua chave pública armazenada no computador remoto, de maneira similar à criptografia assimétrica. Para utilizá-la, primeiro precisamos primeiro criar nosso par de chaves em nosso computador local. Assumiremos aqui a utilização do Linux também.</p>
+<p>A suíte de software do SSH inclui utilidades para gerar e gerenciar chaves públicas e privadas. Podemos gerá-las com o seguinte comando:</p>
+<pre><code>ssh-keygen -t ed25519
+</code></pre>
+<p>Siga as instruções da tela e especifique <code>mykey</code> como o nome do seu arquivo quando solicitado. A opção <code>ed25519</code> especifica o tipo de chave a ser utilizada, e este algoritmo é o mais recente e considerado mais seguro do que as outras opções como RSA e ECDSA, baseada em criptografia elíptica.</p>
+<p>Este comando criará dois arquivos, <code>mykey</code> e <code>mykey.pub</code> correspondendo respectivamente às suas chaves privada e pública. Para protegê-las, arrange-as dentro de um diretório seguro chamado <code>.ssh</code> dentro do seu diretório home, que é de praxe do SSH:</p>
+<pre><code>mkdir $HOME/.ssh
+chmod 700 $HOME/.ssh # limite o acesso apenas à você
+mv mykey mykey.pub $HOME/.ssh
+</code></pre>
+<p>Com estas chaves em mãos, precisamos agora configurar o Raspberry Pi para aceitar nossa chave como forma de autenticação. Para isso, copie a sua chave <em>pública</em> para o seu Raspberry Pi com o <code>scp</code>, que copia arquivos via SSH:</p>
+<pre><code>scp $HOME/.ssh/mykey.pub usuario@enderecoip:/home/usuario/.ssh/ # envie a chave PÚBLICA
+</code></pre>
+<p>Digite sua senha para confirmar. Após a transferência, acesse o Raspberry Pi e adicione a chave para as chaves confiadas:</p>
+<pre><code>cat mykey.pub  &gt;&gt; .ssh/authorized_keys
+</code></pre>
+<blockquote>
+<p>Observação: você pode adicionar o acesso de computadores adicionais (mesmos usuários ou não) simplesmente repetindo este processo até agora.</p>
+</blockquote>
+<p>Agora você poderá acessar seu Pi sem precisar de senha através do comando:</p>
+<pre><code>ssh -i $HOME/.ssh/mykey usuario@enderecoip # note que é a chave privada agora
+</code></pre>
+<blockquote>
+<p>Aviso: sua chave privada agora é como a sua senha. Proteja-a e armazene-a num backup seguro para evitar problemas de acesso futuros.</p>
+</blockquote>
+<h2>Automatizando o processo</h2>
+<p>O comando anterior, embora bem mais rápido que via senha, ainda continua um pouco maçante e comprido. Podemos ainda melhorá-lo e diminuir a necessidade de digitação através da elaboração do arquivo de configuração do SSH. Para facilitar este acesso, crie o arquivo <code>$HOME/.ssh/config</code> no seu computador local e insira o seguinte conteúdo nele:</p>
+<pre><code>Host meuraspberrypi:
+    Hostname enderecoip
+    User usuario
+    IdentityFile $HOME/.ssh/mykey
+</code></pre>
+<p>Agora você pode rapidamente acessar o seu Raspberry Pi da seguinte forma:</p>
+<pre><code>ssh meuraspberrypi
+</code></pre>
+<p>Muito mais rápido, prático e seguro que a utilização de senhas!</p>
+<h2>Pontos de segurança adicionais na internet</h2>
+<p>Ao passo que a utilização do Raspberry Pi na sua rede caseira local tipicamente não precisa de medidas adicionais de segurança, um dispositivo com <a href="/blog/tornando_seu_raspberry_pi_visivel_internet/">livre acesso à internet</a> requer mais atenção em relação à segurança - especialmente num serviço de autenticação como o SSH.</p>
+<p>A primeira recomendação é que, uma vez que o acesso via chaves for habilitado, <strong>desabilite a autenticação remota por via de senhas</strong>. Desta forma, você reduz a chance que algum adversário ganhe acesso ao seu sistema <em>mesmo sabendo a sua senha</em>. Para isso, edite o arquivo <code>/etc/sshd_config</code> no seu Raspberry Pi e adicione a seguinte linha:</p>
+<pre><code>PasswordAuthentication no # se estiver "yes" basta trocar para "no"
+</code></pre>
+<p>A segunda recomendação é <strong>trocar a porta do seu serviço SSH</strong>, que por padrão é disponibilizado na porta 22. Muitos scanners automáticos maliciosos na internet procuram por esta porta padrão de serviços, e trocá-la por outra porta aleatória pode adicionar mais segurança. Ainda no Raspberry Pi, edite esta linha (que provavelmente estará comentada):</p>
+<pre><code>Port 12345 # troque 12345 para um número aleatório que só você sabe!
+</code></pre>
+<p>Agora reinicie o serviço do SSH no Raspberry Pi:</p>
+<pre><code>sudo systemctl restart sshd
+</code></pre>
+<p>Como a porta de serviços mudou, você deve editar sua configuração local para refletí-la:</p>
+<pre><code>Host meuraspberrypi:
+    Hostname enderecoip
+    User usuario
+    IdentityFile $HOME/.ssh/mykey
+    Port 12345 # &lt;-- coloque aqui o seu número escolhido
+</code></pre>
+<p>Após esta atualização, você poderá acessá-lo via <code>ssh meuraspberrypi</code> novamente.</p>
+<h2>Outras possibilidades com o SSH</h2>
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/FTP_model.png" alt="diagrama do FTP" />
+    <figcaption>
+        Utilizando SSH, é possível assegurar o antiquado FTP para torná-lo seguro de forma bem fácil. Crédito: Wikimedia.org
+    </figcaption>
+</figure>
+
+<p>Como o SSH providencia apenas uma camada segura de comunicação, é possível utilizá-lo em conjunto com outros protocolos ou aplicações sinergisticamente.</p>
+<p>Uma das aplicações mais populares desta combinação é o <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol"><strong>SFTP</strong></a> (Secure File Transfer Protocol) que combina a autenticação do SSH para transferir arquivos de maneira segura entre dois computadores. </p>
+<p>O SFTP corrige falhas de segurança presentes no antigo FTP sem a necessidade de utilização de certificados externos, e pode ser completamente automatizada graças à autenticação via chaves. Falaremos mais sobre este excelente serviço num post futuro.</p>
+<p>Outra aplicação é o roteamento das conexões do seu computador usando um computador remoto como proxy e assegurando-a via SSH. Este é um conceito chamado <strong>proxy-chaining</strong> e pode servir como uma maneira simples de circunvir censura de rede (exemplo: filtros de internet em escolas e escritórios) e providenciar um pouco mais de privacidade.</p>
+<hr />
+<p>Você já utilizava o SSH para acessar seu Raspberry Pi antes de ler este arquivo? Como configura o acesso remoto a ele? Compartilhe conosco no <a href="https://qoto.org/@raspibrasil">Mastodon!</a></p>
+<p>Publicado em 2021-04-09</p>
+<p>Categorizado em: <a href="/blog/tags/raspberrypi">raspberrypi</a> <a href="/blog/tags/servidor">servidor</a> <a href="/blog/tags/segurança">segurança</a> <a href="/blog/tags/software livre">software livre</a> <a href="/blog/tags/linux">linux</a> <a href="/blog/tags/tutorial">tutorial</a> </p>
+        </section>
+        <footer>
+            <p>
+                Copyright 2020 - 2021 Raspberry Pi Brasil - Todos os direitos reservados.
+            </p>
+            <p>
+                Conteúdo disponibilizado sob a licença <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution Share-Alike 4.0</a>
+            </p>
+            <p>
+                Raspberry Pi é uma marca registrada pela Raspberry Pi Foundation na Inglaterra.
+            </p>
+            <p>
+                <a href="/privacidade">Política de privacidade</a>
+            </p>
+            <p>
+                <img src="/static/logo.png" width="70" />
+            </p>
+        </footer>
+    </body>
+</html>
