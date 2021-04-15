@@ -3,7 +3,7 @@
     <title>Raspberry Pi Brasil</title>
     <link href="https://www.raspberrypibrasil.com/atom.xml" rel="self" />
     <link href="https://www.raspberrypibrasil.com/" />
-    <updated>2021-04-09T00:44:58.100453Z</updated>
+    <updated>2021-04-15T14:06:37.417654Z</updated>
     <author>
         <name>Equipe Raspberry Pi Brasil - @raspibrasil@qoto.org</name>
     </author>
@@ -13,7 +13,7 @@
         <title>Acesse seu Raspberry Pi remotamente de forma segura com chaves via SSH</title>
         <link href="https://www.raspberrypibrasil.com/blog/acesso_remoto_seguro_raspberrypi_ssh/" />
         <id>urn:uuid:6b4b11be-3309-507c-a0d1-407174bd7bdb</id>
-        <updated>2021-04-09T09:40:59.483443Z</updated>
+        <updated>2021-04-15T22:02:39.746536Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Acesse seu Raspberry Pi remotamente de forma segura com chaves via SSH</h1>
@@ -112,10 +112,114 @@ mv mykey mykey.pub $HOME/.ssh
     </entry>
 
     <entry>
+        <title>Acessando o Raspberry Pi fora de casa via Tor</title>
+        <link href="https://www.raspberrypibrasil.com/blog/acesso_remoto_tor/" />
+        <id>urn:uuid:0e20f0e9-a51b-5e81-aff3-d5ff0c65f45e</id>
+        <updated>2021-04-15T22:49:22.826487Z</updated>
+        <content type="xhtml">
+            <div xmlns="http://www.w3.org/1999/xhtml">
+                <h1>Acessando o Raspberry Pi fora de casa via Tor</h1>
+<p>Usar o Raspberry Pi como um servidor é forma extremamente conveniente e simples de aprender a utilizar o <a href="/blog/bem_vindo_ao_raspberrypi_brasil/">software livre</a>. Com seu baixo consumo de energia, hardware e armazenamento baratos, e baixa necessidade de arrefecimento, modelos como o <a href="https://amzn.to/3qlUOqH">Raspberry Pi 3</a> funcionam como ótimos servidores de pequeno a médio porte na sua rede caseira. Quando queremos acessá-lo de fora da nossa rede caseira, geralmente podemos fazê-lo através de uma técnica chamada <a href="/blog/tornando_seu_raspberry_pi_visivel_internet/">Port Forwarding</a>, que envolve colocar o Raspberry Pi numa posição privilegiada na rede e ser enxergado da própria internet. </p>
+<p>Porém, algumas vezes esta combinação pode não ser completamente possível, por conta de fatores associados ao seu roteador ou até mesmo se o seu provedor de internet não expõe endereços individuais na internet. Quando isto acontece, felizmente ainda temos uma alternativa para acessar nossos arquivos remotamente: a rede <a href="https://torproject.org">Tor</a>. Famosa (ou infame) por proporcionar privacidade e anonimato nas atividades da internet, há um uso menos conhecido do Tor que permite você acessar um computador atrás de um roteador através de uma ferramenta chamada <em>Hidden Services</em>. Vejamos como fazer isso neste post.</p>
+<h2>Como os Tor Hidden Services funcionam</h2>
+<p>O Tor foi criado em 2002 pela Marinha Americana como uma forma de se anonimizar tráfego na internet e dificultar sua análise. Desde sua concepção, o projeto primeiramente foca na proteção da privacidade dos usuários, a qual é alcançada através da utilização de três camadas criptografadas de tráfego, que tornam virtualmente impossível qualquer ponto na rede de descobrir quem está acessando o quê.</p>
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Tor-onion-network.png" alt="Descrição de como a rede Tor funciona" />
+    <figcaption>
+        O Tor anonimiza a sua conexão com a internet fazendo-a passar por três "pontos intermediários," que impossibilitam identificar quem está falando com quem. Crédito: Wikimedia.org
+    </figcaption>
+</figure>
+
+<p>Com o tempo, o Tor Project expandiu o seu escopo para incluir também a funcionalidade <em>Hidden Service</em> que permite você hospedar um site ou serviço dentro do Tor sem ser possível identificar quem são os seus visitantes, e nem seus visitantes quem você é. Esta implementação é bastante controversa, pois pode habilitar alguém a hospedar conteúdo de legalidade duvidosa, mas vem com outra ótima função: se tornar acessível mesmo atrás de um firewall ou roteador.</p>
+<p>Por esta razão, podemos utilizar Hidden Services como uma forma de acesso remoto da internet ao nosso Raspberry Pi de forma segura combinando-o com o <a href="/blog/acesso_remoto_seguro_raspberrypi_ssh/">Protocolo SSH</a>. Assim, caso não seja possível acessar o seu Raspberry Pi via port forwarding, podemos ainda acessá-lo provado que: </p>
+<ol>
+<li>Ele possua alguma conexão à internet.</li>
+<li>O sistema Tor e o SSH estejam instalados e operando nele. </li>
+<li>O seu dispositivo cliente também possua Tor instalado. </li>
+</ol>
+<p>Trataremos a seguir sobre os pontos #2 e #3. </p>
+<h2>Criando um Hidden Service de SSH no Raspberry Pi</h2>
+<p>Um Hidden Service nada mais é do que um serviço disponibilizado através da rede Tor. Você em teoria pode criar um Hidden Service para qualquer serviço do Linux, embora os mais comuns sejam <a href="/blog/hospedando_seu_site_raspberry_pi/">Servidor Web</a> ou <a href="/blog/acesso_remoto_seguro_raspberrypi_ssh/">SSH</a>. E enquanto serviços na internet costumam utilizar domínios da internet (.com, .net, etc), Hidden Services utilizam endereços <code>.onion</code>, que são gerados de maneira aleatória. </p>
+<p>Como o SSH já vem habilitado por padrão no <a href="/blog/como_instalar_linux_raspberry_pi/">Raspberry Pi OS</a>, para hospedar o serviço SSH como Hidden Service no Raspberry Pi, primeiro instale o Tor com o seguinte comando: </p>
+<pre><code>sudo apt-get install tor
+</code></pre>
+<p>O Tor é instalado e iniciado automaticamente. Na sua configuração padrão, o Tor atende bem os requerimentos de anonimato como um cliente, mas se você precisa hospedar serviços com ele, precisa de configurações adicionais. Vamos editá-lo para adicionar um Hidden Service rodando o SSH. Adicione as seguintes linhas ao arquivo de configuração central do Tor: <code>/etc/tor/torrc</code>:</p>
+<pre><code>HiddenServiceDir /var/lib/tor/ssh
+HiddenServicePort 22 127.0.0.1:22
+# assumindo que SSH está na porta 22
+</code></pre>
+<p>Salve o arquivo e reinicie o Tor com o seguinte comando:</p>
+<pre><code>sudo systemctl restart tor
+</code></pre>
+<p>Ao reiniciar, o Tor irá criar um diretório com informações específicas para o seu novo Hidden Service do SSH localizado em <code>/var/lib/tor/ssh</code> (conforme criado acima), acessível somente pelo usuário root por conta da segurança. Ao passo que você não precisará editar nenhum outro arquivo de configuração, o arquivo <code>hostname</code> dentro deste diretório contém o endereço <code>.onion</code> do seu Hidden Service, do qual você precisará para acessá-lo remotamente. Um endereço .onion de exemplo poderia ser:</p>
+<pre><code>$ sudo cat /var/lib/tor/ssh/hostname
+abcdefabcdefabcdefabcdefabcdefabcdefabcdef.onion
+</code></pre>
+<p>Guarde este endereço em algum lugar, pois você precisará-dele para configurar o dispositivo cliente.</p>
+<h2>Acessando o SSH via Tor no seu dispositivo</h2>
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Onion_diagram.svg/500px-Onion_diagram.svg.png" alt="Onion Routing explicado" />
+    <figcaption>
+        O princípio do Onion Routing consiste em "encapar" uma mensagem com três chaves distintas para que ninguém exceto o destinatário possa vê-la. Crédito: Wikimedia.org
+    </figcaption>
+</figure>
+
+<p>Já andamos metade do caminho configurando o servidor, mas igualmente necessário é configurar o seu dispositivo cliente para também utilizar o Tor para identificar e acessar o seu Raspberry Pi. Assumiremos aqui que você está utilizando Linux no dispositivo cliente.</p>
+<p>Conforme especificamos nos requerimentos acima, você também deverá instalar o Tor no seu dispositivo para acessar um Hidden Service, e adicionalmente um programa chamado <code>netcat</code> que fará o roteamento da conexão SSH pela rede Tor. Utilizando Ubuntu ou Debian, o comando para instalar é:</p>
+<pre><code>sudo apt-get install netcat
+</code></pre>
+<p>Edite o arquivo de configuração <code>~/.ssh/config</code> e adicione uma nova entrada para o seu Hidden Service:</p>
+<pre><code>Host meuraspi-tor
+    # use o hostname que obteve do raspberry pi anteriormente
+    Hostname abcdefabcdefabcdefabcdefabcdefabcdefabcdef.onion 
+    User nomedeusuario
+    ProxyCommand netcat --proxy 127.0.0.1:9050 --proxy-type socks5 %h %p
+</code></pre>
+<blockquote>
+<p>Dica: se você já possui um host SSH habilitado, é de praxe criar sua "versão torificada" simplesmente adicionando <code>-tor</code> no campo <em>Host</em>. Por exemplo, se o seu Raspberry Pi internamente é o Host <code>raspi</code>, seu acesso via Tor seria <code>raspi-tor</code>.</p>
+</blockquote>
+<p>Adicionalmente, se você <a href="/blog/acesso_remoto_seguro_raspberrypi_ssh/">configurou seu SSH para utilizar chaves</a> ao invés de senhas na autenticação, deve especificar a localização delas novamente:</p>
+<pre><code>Host meuraspi-tor
+    Hostname abcdefabcdefabcdefabcdefabcdefabcdefabcdef.onion 
+    User nomedeusuario
+    # especifique a localização da chave privada:
+    IdentityFile /home/usuario/.ssh/minhachave
+    ProxyCommand netcat --proxy 127.0.0.1:9050 --proxy-type socks5 %h %p
+</code></pre>
+<p>Salve o arquivo, e teste a conexão com o comando:</p>
+<pre><code>ssh meuraspi-tor
+</code></pre>
+<p>Note que, por conta da utilização do Tor e o roteamento por vários hosts, a velocidade da conexão é reduzida drasticamente. O SSH irá perguntar se você reconhece o fingerprint por conta dele ser um host novo. Se você enxerga o seu login do Raspberry Pi com sucesso, parabéns: o seu Hidden Service foi configurado corretamente, e está disponível além da sua rede caseira.</p>
+<h2>Prós e contras de um Hidden Service no Raspberry Pi</h2>
+<p>Embora prático e simples de se implementar, nem tudo são flores com os Hidden Services. Embora sua maior vantagem seja a privacidade adicional e o acesso independente de firewall ou NAT, eles possuem duas grandes limitações:</p>
+<ul>
+<li>O serviço precisa rodar sobre a rede Tor, reduzindo significantemente sua velocidade. Para comparação, imagine a redução da velocidade da sua conexão através de uma VPN. No caso do Tor, é como se você passasse por <em>três</em> VPNs para o mesmo destino. Este é o custo do anonimato.</li>
+<li>Algumas redes, especialmente as corporativas, bloqueiam o uso do Tor dentro delas alegando risco de segurança. É possível ainda utilizá-lo através de soluções do próprio Tor, como <em>Bridges</em> ou <em>Pluggable Transports</em>, mas requerem mais esforço para serem implementados. É mais fácil simplesmente evitar seu uso.</li>
+</ul>
+<p>Uma grande vantagem, porém, é a segurança adicional que é providenciada ao seu próprio Raspberry Pi: como você não o disponibiliza diretamente na internet, não há risco adicional que scanners e adversários encontrem seu Raspberry Pi e tentem atacá-lo.</p>
+<h2>Bônus: acessando seu Raspberry Pi do seu smartphone</h2>
+<p>Não há como se tornar mais móvel hoje em dia do que através de um smartphone e conexão 4G e, dependendo da sua rotina, é provável que você passe mais tempo na rua do que com acesso a um computador. Há como acessar seu Raspberry Pi desta forma?</p>
+<p>Incrivelmente, <strong>sim!</strong> Mas, por enquanto, apenas no Android...</p>
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Screenshot_from_termux.png/337px-Screenshot_from_termux.png" alt="screenshot do Termux" />
+    <figcaption>
+        O aplicativo Termux rodando no Android. Crédito: Wikimedia.org
+    </figcaption>
+</figure>
+
+<p>Graças a um aplicativo Android chamado <a href="https://termux.com/">Termux</a>, você pode ter acesso a um verdadeiro <em>shell</em> Linux no seu próprio celular. É possível instalar software do Linux dentro do aplicativo, incluindo o SSH e o Tor. Combinando os dois e os configurando como nos exemplos acima, é possível acessá-lo da mesma maneira do que num desktop. </p>
+<p>Nós descobrimos o Termux relativamente recentemente, mas desde então ele facilmente se tornou nosso aplicativo favorito, e o altamente recomendamos. Talvez no futuro escreveremos um post mais detalhado de como podemos utilizá-lo a fundo.</p>
+<hr />
+<p>Você utilizou hidden services ou o Tor antes? Já conhecia esta utilização para acesso remoto? Escreva para nós no <a href="https://qoto.org/@kzimmermann">Mastodon!</a></p>
+            </div>
+        </content>
+    </entry>
+
+    <entry>
         <title>Hello World! O que é o Raspberry Pi e o Software livre?</title>
         <link href="https://www.raspberrypibrasil.com/blog/bem_vindo_ao_raspberrypi_brasil/" />
         <id>urn:uuid:1affbe74-5365-501a-b239-ff5aa5a99e6e</id>
-        <updated>2021-03-12T14:25:58.220001Z</updated>
+        <updated>2020-12-22T18:28:47.160529Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Hello World! O que é o Raspberry Pi e o Software livre?</h1>
@@ -153,7 +257,7 @@ mv mykey mykey.pub $HOME/.ssh
         <title>Como escolher o seu primeiro Raspberry Pi?</title>
         <link href="https://www.raspberrypibrasil.com/blog/como_escolher_seu_raspberry_pi/" />
         <id>urn:uuid:bf6b4a81-aadb-5d8a-81ed-dc7992d7cb47</id>
-        <updated>2021-03-12T14:25:58.240132Z</updated>
+        <updated>2021-03-10T11:16:56.350554Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Como escolher o seu primeiro Raspberry Pi?</h1>
@@ -199,7 +303,7 @@ mv mykey mykey.pub $HOME/.ssh
         <title>Como instalar Linux no Raspberry Pi?</title>
         <link href="https://www.raspberrypibrasil.com/blog/como_instalar_linux_raspberry_pi/" />
         <id>urn:uuid:4ec43c75-3893-56be-90ed-a304c2f0bdc6</id>
-        <updated>2021-03-16T22:07:14.775897Z</updated>
+        <updated>2021-03-12T15:38:01.977923Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Como instalar Linux no Raspberry Pi?</h1>
@@ -284,7 +388,7 @@ mv mykey mykey.pub $HOME/.ssh
         <title>Usando o Raspberry Pi como um NAS na sua rede caseira</title>
         <link href="https://www.raspberrypibrasil.com/blog/compartilhando_arquivos_nas_raspberrypi/" />
         <id>urn:uuid:3cdae64b-26a9-58f1-bcdd-c7db6bdf1ac7</id>
-        <updated>2021-03-22T13:32:12.141878Z</updated>
+        <updated>2021-03-24T00:04:22.320110Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Usando o Raspberry Pi como um NAS na sua rede caseira</h1>
@@ -366,7 +470,7 @@ chmod 777 /home/pi/NAS
         <title>Hospede o seu site de graça na sua própria casa usando o Raspberry Pi</title>
         <link href="https://www.raspberrypibrasil.com/blog/hospedando_seu_site_raspberry_pi/" />
         <id>urn:uuid:c0436feb-ee99-5d52-b184-3fa1cea8117b</id>
-        <updated>2021-03-30T21:32:35.653141Z</updated>
+        <updated>2021-03-31T14:33:00.133290Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Hospede o seu site de graça na sua própria casa usando o Raspberry Pi</h1>
@@ -450,7 +554,7 @@ chmod 777 /home/pi/NAS
         <title>Quais os melhores acessórios e periféricos para o Raspbery Pi?</title>
         <link href="https://www.raspberrypibrasil.com/blog/melhores_acessorios_raspberry_pi/" />
         <id>urn:uuid:d70e0e14-04de-574c-b6dd-6892d9b92261</id>
-        <updated>2021-03-12T14:25:58.241459Z</updated>
+        <updated>2021-03-10T11:16:32.750553Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Quais os melhores acessórios e periféricos para o Raspbery Pi?</h1>
@@ -492,7 +596,7 @@ chmod 777 /home/pi/NAS
         <title>É possível utilizar o seu Raspberry Pi como um computador desktop? Não subestime a sua capacidade!</title>
         <link href="https://www.raspberrypibrasil.com/blog/raspberry_pi_como_desktop/" />
         <id>urn:uuid:e9b0f52c-ed89-5c1e-804f-70bd231b1b6e</id>
-        <updated>2021-04-02T17:29:15.889060Z</updated>
+        <updated>2021-04-02T16:48:22.409821Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>É possível utilizar o seu Raspberry Pi como um computador desktop? Não subestime a sua capacidade!</h1>
@@ -578,7 +682,7 @@ chmod 777 /home/pi/NAS
         <title> Tornando o seu Raspberry Pi visível na Internet</title>
         <link href="https://www.raspberrypibrasil.com/blog/tornando_seu_raspberry_pi_visivel_internet/" />
         <id>urn:uuid:e566e832-ecf5-52e8-b23b-973be4ac92f9</id>
-        <updated>2021-03-30T11:23:41.546420Z</updated>
+        <updated>2021-03-31T14:33:00.136624Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Tornando o seu Raspberry Pi visível na Internet</h1>
