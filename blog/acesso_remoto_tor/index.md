@@ -114,7 +114,7 @@ Incrivelmente, **sim!** Mas, por enquanto, apenas no Android...
 
 Graças a um aplicativo Android chamado [Termux](https://termux.com/), você pode ter acesso a um verdadeiro *shell* Linux no seu próprio celular. É possível instalar software do Linux dentro do aplicativo, incluindo o SSH e o Tor. Combinando os dois e os configurando como nos exemplos acima, é possível acessá-lo da mesma maneira do que num desktop. 
 
-Nós descobrimos o Termux relativamente recentemente, mas desde então ele facilmente se tornou nosso aplicativo favorito, e o altamente recomendamos. Talvez no futuro escreveremos um post mais detalhado de como podemos utilizá-lo a fundo.
+Nós descobrimos o Termux relativamente recentemente, mas desde então ele facilmente se tornou nosso aplicativo favorito, e o altamente recomendamos. Se você tem mais interesse em conhecer este aplicativo, escrevemos [um post mais detalhado de como podemos utilizá-lo a fundo](/blog/usando_linux_smartphone_termux/). Confira!
 
 ---
 

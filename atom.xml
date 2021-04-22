@@ -3,7 +3,7 @@
     <title>Raspberry Pi Brasil</title>
     <link href="https://www.raspberrypibrasil.com/atom.xml" rel="self" />
     <link href="https://www.raspberrypibrasil.com/" />
-    <updated>2021-04-15T14:06:37.417654Z</updated>
+    <updated>2021-04-22T14:00:20.966587Z</updated>
     <author>
         <name>Equipe Raspberry Pi Brasil - @raspibrasil@qoto.org</name>
     </author>
@@ -115,7 +115,7 @@ mv mykey mykey.pub $HOME/.ssh
         <title>Acessando o Raspberry Pi fora de casa via Tor</title>
         <link href="https://www.raspberrypibrasil.com/blog/acesso_remoto_tor/" />
         <id>urn:uuid:0e20f0e9-a51b-5e81-aff3-d5ff0c65f45e</id>
-        <updated>2021-04-15T22:49:22.826487Z</updated>
+        <updated>2021-04-22T22:59:01.443373Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Acessando o Raspberry Pi fora de casa via Tor</h1>
@@ -208,7 +208,7 @@ abcdefabcdefabcdefabcdefabcdefabcdefabcdef.onion
 </figure>
 
 <p>Graças a um aplicativo Android chamado <a href="https://termux.com/">Termux</a>, você pode ter acesso a um verdadeiro <em>shell</em> Linux no seu próprio celular. É possível instalar software do Linux dentro do aplicativo, incluindo o SSH e o Tor. Combinando os dois e os configurando como nos exemplos acima, é possível acessá-lo da mesma maneira do que num desktop. </p>
-<p>Nós descobrimos o Termux relativamente recentemente, mas desde então ele facilmente se tornou nosso aplicativo favorito, e o altamente recomendamos. Talvez no futuro escreveremos um post mais detalhado de como podemos utilizá-lo a fundo.</p>
+<p>Nós descobrimos o Termux relativamente recentemente, mas desde então ele facilmente se tornou nosso aplicativo favorito, e o altamente recomendamos. Se você tem mais interesse em conhecer este aplicativo, escrevemos <a href="/blog/usando_linux_smartphone_termux/">um post mais detalhado de como podemos utilizá-lo a fundo</a>. Confira!</p>
 <hr />
 <p>Você utilizou hidden services ou o Tor antes? Já conhecia esta utilização para acesso remoto? Escreva para nós no <a href="https://qoto.org/@kzimmermann">Mastodon!</a></p>
             </div>
@@ -787,6 +787,108 @@ python -m http.server 8090
 <p>Divirta-se colocando o seu novo site na internet a partir do seu Raspberry Pi!</p>
 <hr />
 <p>O que você acha do método do <em>Port Forwarding</em> como uma maneira de disponibilizar seu Raspberry Pi na Internet? Conhece algum outro método de realizá-lo? O que faria para assegurar o seu Raspberry Pi uma vez publicado? Escreva para nossa conta no <a href="https://qoto.org/@raspibrasil">Mastodon!</a></p>
+            </div>
+        </content>
+    </entry>
+
+    <entry>
+        <title>Usando Linux no seu Smartphone com o Termux</title>
+        <link href="https://www.raspberrypibrasil.com/blog/usando_linux_smartphone_termux/" />
+        <id>urn:uuid:978ff8a9-3944-5dca-bbdd-6a3a9fd29cc8</id>
+        <updated>2021-04-22T23:00:02.863370Z</updated>
+        <content type="xhtml">
+            <div xmlns="http://www.w3.org/1999/xhtml">
+                <h1>Usando Linux no seu Smartphone com o Termux</h1>
+<p>Aqui no Raspberry Pi Brasil temos o lema que não há nada que não possa ser resolvido através de um <a href="/blog/bem_vindo_ao_raspberrypi_brasil/">Single-board Computer (SBC)</a> e o Software Livre. Embora os SBCs sejam computadores versáteis e flexíveis, variando desde os simples modelos como o <a href="https://amzn.to/3qlUOqH">Raspberry Pi 3</a> até os poderosos <a href="https://amzn.to/3slgdlW">Raspberry Pi 4B</a> que podem até <a href="/blog/raspberry_pi_como_desktop/">ser utilizados como Desktops</a>, algumas vezes precisamos de um fator de mobilidade em nossa computação moderna.</p>
+<p>Quando se trata de mobilidade, praticamente não há quem ganhe dos nossos smartphones, em termos de conectividade e vida útil da bateria. Infelizmente, ao os utilizarmos, ficamos restritos aos Apps e suas plataformas, sendo difícil ter o poder que o Linux e o Software Livre nos providencia nestes dispositivos. Isto é, até agora. Neste post, mostramos como é possível ter acesso a um ambiente Linux completo no seu smartphone Android através de um aplicativo poderoso chamado <strong>Termux</strong> para que você possa levar sua computação com você e até <a href="/blog/tornando_seu_raspberry_pi_visivel_internet/">acessar seu Raspberry Pi fora de casa</a> através do seu smartphone.</p>
+<p>Vamos em frente.</p>
+<h2>O que é o Termux?</h2>
+<p>O <a href="https://termux.com/">Termux</a> é um aplicativo para Android que emula um ambiente Linux completo dentro do Android. Diferente de outros "aplicativos Linux" disponíveis, não só o Termux emula um <em>shell</em> como o bash ou SSH, ele oferece um ambiente <strong>completo</strong> que disponibiliza várias utilidades do Linux e até um gerenciador de pacotes que permite você a instalar software adicional ao ambiente. Tamanha é a plenitude do aplicativo que os desenvolvedores inclusive o consideram uma distribuição Linux independente.</p>
+<p>Nos bastidores, o Termux faz uso do fato que o Android também é baseado no Linux para utilizar um mechanismo chamado <a href="https://en.wikipedia.org/wiki/Chroot"><em>chroot</em></a> que isola o seu próprio ambiente do resto do Android, essencialmente tornando-se um "Linux dentro do Linux."</p>
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Diagramme_ArchiEmulateur.png/400px-Diagramme_ArchiEmulateur.png" alt="Descrição de funcionamento do Chroot" />
+    <figcaption>
+        O chroot cria um ambiente virtual isolado que pode ser operado e modificado independente do ambiente "pai." Crédito: Wikimedia.org
+    </figcaption>
+</figure>
+
+<p>Uma vez dentro do ambiente <em>chroot</em>, o Termux opera seu próprio mundo, trazendo funcionalidades nativas do Linux à interface Android. O Termux traz o shell bash nativamente e pronto para ser utilizado, e também o seu próprio mecanismo de gerenciamento de pacotes chamado <code>pkg</code>, que funciona de maneira similar ao <code>apt</code> do <a href="/blog/como_instalar_linux_raspberry_pi/">Raspberry Pi OS</a> e do Debian. E a melhor notícia de todas: <em>não requer "rooting" para funcionar.</em> Virtualmente qualquer versão recente do Android pode rodá-lo.</p>
+<p>A função do <em>chroot</em> de "pegar emprestado" a fundação Linux que o Android usa pode ser a razão pela qual o Termux infelizmente não está disponível para o iPhone, o que é realmente uma pena dado o poder do aplicativo.</p>
+<h2>Instalando e utilizando o Termux</h2>
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Screenshot_from_termux.png" alt="Screenshot do Termux no Android" />
+    <figcaption>
+        O Termux oferece um ambiente Linux completo para o seu celular Android. Crédito: Wikimedia.org
+    </figcaption>
+</figure>
+
+<p>Você pode baixar o Termux diretamente do Google Play, mas seus próprios desenvolvedores recomendam a utilização da versão disponível no <a href="https://f-droid.org/en/packages/com.termux/">F-Droid</a> (a alternativa Free Software ao Google Play) por conta desta receber as atualizações mais frequentemente.</p>
+<p>Na sua primeira execução, o Termux lembra a linha de comando do Linux, disponibilizando algumas informações de onde encontrar ajuda e o <code>bash</code> para você inserir comandos. Embora já completamente utilizável a partir deste ponto, podemos melhorá-lo com alguns passos a mais.</p>
+<p>Além do aplicativo em si, o Termux mantém seu próprio ambiente separado, portanto primeiramente é necessário <em>atualizá-lo</em> também para sua versão mais recente. Podemos fazer isso com o comando <code>pkg</code>:</p>
+<pre><code>pkg upgrade
+</code></pre>
+<p>O <code>pkg</code> no Termux é do que um <em>wrapper</em> para o <code>apt</code> do Debian que o aponta para o melhor repositório do Termux disponível. Por conta do mechanismo <em>chroot</em> descrito acima, você já está rodando como usuário <code>root</code> e portanto o comando <code>sudo</code> não é necessário.</p>
+<p>Se houverem atualizações disponíveis, instale-as digitando <code>y</code> e ao final do processo seu ambiente Linux estará atualizado.</p>
+<p>Podemos usar o <code>pkg</code> para instalar software adicional dentro do Termux. Recomendamos instalar os seguintes pacotes para obter um ambiente Linux versátil e produtivo:</p>
+<ul>
+<li>tmux: um <a href="https://en.wikipedia.org/wiki/Tmux">terminal multiplexer</a> que permite você rodar várias "janelas" de terminais numa única sessão.</li>
+<li>mc: gerenciador de arquivos do terminal com dois painéis. Um pouco esquisito de usar no começo, mas excelente uma vez que acostumado.</li>
+<li>elinks: um navegador web apenas de texto, ótimo para consultar documentação no terminal.</li>
+<li>um editor de texto, nosso favorito sendo o <a href="https://vim.org">vim</a>.</li>
+</ul>
+<p>O comando para instalá-los é:</p>
+<pre><code>pkg install tmux mc elinks vim
+</code></pre>
+<p>Finalmente, você pode conceder permissões adicionais para o ambiente do Termux acessar o resto do armazenamento interno do seu celular ou até mesmo o cartão MicroSD. Isto possibilitará acessar fotos e outros arquivos de outros aplicativos de maneira bem conveniente, sem precisar utilizar a função de "compartilhar" do Android. Para isso, utilize o comando:</p>
+<pre><code>termux-setup-storage
+</code></pre>
+<p>O Android perguntará se você quer conceder acesso ao armazenamento. Aperte "sim" e você poderá acessar o resto do seu smartphone no diretório <code>~/storage/</code>, onde <code>~/storage/shared</code> é o seu armazenamento interno e <code>~/storage/external-1</code> é o seu cartão MicroSD.</p>
+<p>Agora você pode se sentir em casa usando Linux completamente do seu próprio celular!</p>
+<h2>Acessando seu Raspberry Pi do seu celular</h2>
+<p>Você já tem o computador móvel (smartphone), acesso à Internet (conexão 4G) e um sistema operacional familiar (Linux no Termux). Será possível conectar remotamente ao seu Raspberry Pi agora?</p>
+<p>A resposta é um ressonante <strong>sim</strong>: da mesma forma que de um computador desktop remoto.</p>
+<p>Providenciado que você tenha configurado seu Raspberry Pi para <a href="/blog/tornando_seu_raspberry_pi_visivel_internet/">ser visível na Internet</a> ou acessível <a href="/blog/acesso_remoto_tor/">via rede Tor</a>, basta apenas você configurar o seu ambiente no Termux.</p>
+<p>Primeiro, instale o SSH no termux:</p>
+<pre><code>pkg install ssh
+</code></pre>
+<p>Crie o arquivo de configuração <code>.ssh/config</code> e gere suas chaves SSH conforme descrito <a href="/blog/acesso_remoto_seguro_raspberrypi_ssh/">em nosso post anterior</a>. Seu serviço agora pode ser acessado via <code>ssh meuservico</code></p>
+<p>Se você acessa o Raspberry Pi apenas via Tor, os passos seguintes são necessários. Instale o Tor:</p>
+<pre><code>pkg install tor
+</code></pre>
+<p>Você precisa iniciar o Tor, mas o Termux não possui uma infraestrutura para gerenciar serviços (systemd, openrc, etc) tal como numa distribuição desktop. Você ainda pode iniciá-lo desta forma:</p>
+<pre><code>tor &amp;&gt; /dev/null &amp;
+</code></pre>
+<p>Este comando irá iniciar o tor no <em>background</em> e omitir qualquer output dele, tornando-o silencioso e transparente. Uma vez iniciado, você poderá acessá-lo via <code>torsocks ssh meuservico</code></p>
+<h2>Levando o Termux para o próximo nível</h2>
+<figure>
+    <img src="/static/images/mobile_accessories.jpg" alt="acessórios para seu smartphone" />
+    <figcaption>
+        Será que podemos tornar um smartphone num computador? De certa forma, sim!
+    </figcaption>
+</figure>
+
+<p>Você agora tem em mãos agora um ambiente Linux completo que pode acessar seu Raspberry Pi. Seu smartphone é literalmente um computador Linux!</p>
+<p>Ainda assim, existem algumas limitações de hardware entre o seu smartphone e um computador laptop ou desktop completo, principalmente na interface de input (digitar comandos do Linux numa tela de toque é cruel), e no tamanho de sua tela. Ao passo que estes problemas não podem ser resolvidos apenas por software, existem algumas adições simples que podem melhorar muito a experiência.</p>
+<p>A adição de um teclado externo é uma dádiva para quem está digitando comandos apenas numa tela de toque, e altamente recomendado para qualquer um que está trabalhando seriamente através do Termux. Alguns modelos de <a href="https://amzn.to/3avZLHX">teclados bluetooth sem conector</a>, que se conectam-se com os dispositivos apenas via handshake, são portáteis e ideais para "levar o trabalho com você." 
+Alternativamente, adaptadores de USB-OTG <a href="https://amzn.to/32FpM3f">para MicroUSB</a> ou <a href="https://amzn.to/2QRdty7">USB-C</a> podem ser utilizados para conectar qualquer teclado USB diretamente no seu smartphone, tornando-se perfeito para usar em escritórios, etc. Você pode inclusive pode conectar um <a href="https://amzn.to/3vbBwXD">hub USB</a> e assim utilizar ambos o teclado e o mouse (!!!) no Termux.</p>
+<figure>
+    <a href="https://amzn.to/2QnI070"><img src="https://images-na.ssl-images-amazon.com/images/I/51vhLMusFML._AC_SL1200_.jpg" alt="acessórios para seu smartphone" /></a>
+    <figcaption>
+        Adaptadores USB podem ser utilizados para conectar periféricos de desktops no seu smartphone.
+    </figcaption>
+</figure>
+
+<p>No caso da tela, é um pouco mais complicado. <a href="https://amzn.to/2Qgta2g">Adaptadores de USB-C para HDMI</a> existem, mas são raros os modelos de smartphone que realmente podem utilizá-los. Como este suporte não é dependente da versão do Android e sim do hardware do dispositivo, você precisa saber se o modelo suporta o protocolo <a href="https://en.wikipedia.org/wiki/Mobile_High-Definition_Link">Mobile High-Definition Link</a> (MHL), que é utilizado com este acessório. Modelos como o <a href="https://amzn.to/32ByWOa">Huawei Mate 30</a> ou o <a href="https://amzn.to/3sI8soM">Samsung Galaxy S9</a>, por exemplo, funcionam com este adaptador.</p>
+<p>A alternativa simples é utilizar um dispositivo de <em>casting</em>, como o famoso <a href="https://amzn.to/3tNF428">Chromecast</a>, que transfere a imagem à tela HDMI via WiFi. Novamente esta não é uma solução perfeita por conta da utilização da banda do seu roteador wifi e algumas redes corporativas que não permitem comunicação multicast, mas pode auxiliar a experiência. Se nem isso é possível, um <a href="https://amzn.to/3gxd6Uu">stand de smartphone</a> simples pode ser o mínimo.</p>
+<h2>Limitações do Termux</h2>
+<p>Como nem tudo são flores, nem no mundo do Software Livre, temos que reconhecer as limitações do Termux em comparação ao Linux instalado no desktop.</p>
+<p>A maior limitação do Termux como um aplicativo é sua dependência sobre o Android. Parte por conta do <em>chroot</em> do Linux, é impossível utilizá-lo no iPhone ou outras plataformas, o que é uma grande pena para usuários que gostam dos produtos da Apple.</p>
+<p>Em seguida, há algumas diferenças entre a implementação do Termux e o Linux propriamente dito que podem entrar em conflito com alguns programas. Por exemplo, como não há um sistema <code>init</code> para gerenciar serviços, coisas que devem rodar no background devem ser iniciadas conforme o exemplo com Tor acima. A hierarquia do sistema de arquivos também é diferente, e certas localizações são mascaradas por links ou completamente removidas como <code>/usr/local</code>. Isto pode causar algumas surpresas operacionais.</p>
+<p>Finalmente, o Termux sem "rooting" do dispositivo não possui permissões para certos acessos e operações no sistema Android, mesmo se você é usuário root dentro dele. Alguns programas disponíveis no Termux irão avisar desta limitação, outros não poderão nem ser executados sem este acesso. A maioria desta última classe, porém, está disponível num repositório separado.</p>
+<p>Mesmo com tudo isso considerado, o Termux é um ótimo aplicativo para quem gostaria de trabalhar com o Linux fora de casa e em locais onde trazer o computador não é prático. Combinado com os acessórios indicados acima, é possível construir uma "estação de trabalho" portátil, que pode inclusive acessar seus recursos de casa remotamente. </p>
+<p>O Raspberry Pi Brasil altamente recomenda o Termux para quem precisa usar o Linux fora de casa.</p>
+<hr />
+<p>Você já conhecia o Termux antes? Como faz para acessar seu Raspberry Pi do Celular? Compartilhe com a gente no <a href="https://qoto.org/@raspibrasil">Mastodon!</a></p>
             </div>
         </content>
     </entry>

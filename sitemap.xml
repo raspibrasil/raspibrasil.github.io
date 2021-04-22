@@ -8,7 +8,7 @@
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog</loc>
-        <lastmod>2021-03-11
+        <lastmod>2021-04-22
 </lastmod>
         <changefreq>weekly</changefreq>
     </url>
@@ -56,82 +56,98 @@
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>weekly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/instalação</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.raspberrypibrasil.com/blog/tags/aplicativos</loc>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/servidor</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/internet</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.raspberrypibrasil.com/blog/tags/smartphone</loc>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/tutorial</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/acessórios</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/nas</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/hardware</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/redes</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/segurança</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/configuração</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/raspberrypi</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/projetos</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/softwarelivre</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/desktop</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://www.raspberrypibrasil.com/blog/tags/linux</loc>
-        <lastmod>2021-04-15</lastmod>
+        <lastmod>2021-04-22</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.raspberrypibrasil.com/blog/usando_linux_smartphone_termux</loc>
+        <lastmod>2021-04-22
+</lastmod>
         <changefreq>monthly</changefreq>
     </url>
     <url>
