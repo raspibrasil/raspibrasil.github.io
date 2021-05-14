@@ -1,0 +1,9 @@
+# Como conectar o WiFi do Raspberry Pi da Linha de comando?
+
+Outline:
+
+ - wpa_supplicant it!
+ - Promote good wifi dongles with high speeds to sell
+ - Also RPis where WiFi is built-in.
+
+Usar Linux nos dias de hoje não é o bicho-de-sete-cabeças que a cultura popular nos dita ser. Distribuições modernas e focadas no uso desktop como o [Raspberry Pi OS](!LINK), por exemplo, nos trazem ambientes gráficos e modernos, onde quase toda a configuração e controle pode ser feita através de aplicativos gráficos de maneira similar a outros sistemas operacionais como o Windows. Ainda assim, em certas ocasiões podemos não ter a conveniência do acesso gráfico para realizar a configuração do nosso sistema
