@@ -38,15 +38,29 @@ Se você está frustrado com a dificuldade de utilizar periféricos ou a capacid
 
 Ao passo que hoje temos uma vasta disponibilidade de fontes para smartphones com "modo rápido" de carregamento, a verdade é que a maioria ainda segue o mesmo padrão 5V/0.7A decidido há quase duas décadas. Até mesmo as fontes "rápidas" operam em dois modos distintos, sendo o 5B/0.7A o *fallback* caso o dispositivo não suporte voltagens e amperagens maiores. E enquanto a voltagem da maioria das fontes é padronizada nos 5V, a amperagem pode variar significantemente - para cima ou para baixo.
 
-Ao invés de "catar milho" buscando na gaveta uma fonte de celular apropriada, é muito mais eficiente procurar exatamente por uma fonte que atenda os requerimentos de energia recomendados do seu Raspbery Pi. E felizmente, [fontes que fornecem 5V/1.2A existem](!LINK affiliate) e caem como uma luva nos requerimentos da maior parte dos Raspberry Pis descritos acima.
+Ao invés de "catar milho" buscando na gaveta uma fonte de celular apropriada, é muito mais eficiente procurar exatamente por uma fonte que atenda os requerimentos de energia recomendados do seu Raspbery Pi. E felizmente, [fontes que fornecem 5V/1.2A existem](https://amzn.to/33KgrrB) e caem como uma luva nos requerimentos da maior parte dos Raspberry Pis descritos acima.
 
-Uma fonte com capacidade de amperagem mais alta é capaz de fornecer corrente elétrica adicional para quando o Raspberry Pi recebe um dispositivo USB conectado, não causando o reboot por falta de energia, e pode garantir o funcionamento no caso do uso de outros periféricos também.
+Uma fonte com capacidade de amperagem mais alta é capaz de fornecer corrente elétrica adicional para quando o Raspberry Pi recebe um dispositivo USB conectado, não causando o reboot por falta de energia, e pode garantir o funcionamento no caso do uso de outros periféricos também. A grande vantagem é que mesmo que um pouco acima dos 1.2A recomendados pela documentação oficial, é possível também utilizar fontes com amperagem mais alta, como 1.5A, já que a demanda por corrente elétrica é controlada pelo dispositivo, não a fonte alimentadora. Até mesmo [fontes com 3A de alimentação](https://amzn.to/3w79HA5) podem ser utilizadas.
+
+Ao fornecer ao Raspberry Pi a *capacidade* de corrente mais alta, o "pico de energia" súbito que causa problemas ao conectar USBs é mantido e resguardado, permitindo a continuidade do Raspberry Pi ininterrupta. Por outro lado, também é possível resolver o problema do *outro lado*: utilizando um hub USB auto-alimentado.
 
 ### Dispositivos e Hubs USB com fonte própria
 
+É possível também evitar o dreno de energia dos dispositivos periféricos simplesmente alimentando-os de outra maneira que não seja oriunda do Raspberry Pi. Alguns dispositivos, como [HD externos de mesa](https://amzn.to/3tLCA3f), possuem sua própria fonte de alimentação externa para funcionar pois consomem mais energia que uma porta USB convencional pode fornecer. Estes são os HDs recomendados para criar um [armazenamento caseiro como um NAS](/blog/compartilhando_arquivos_nas_raspberrypi/). Plugar o Raspberry Pi neste dispositivo já com fonte própria não causa consumo adicional a ele.
+
+Alternativamente, alguns [Hubs USB](https://amzn.to/3fnKP0c) possuem alimentação própria também, funcionando tanto quanto uma forma de carregar dispositivos nele conectados quanto um hub de dados que não consome a energia do host. É possível, por exemplo, conectar o hub à tomada, conectá-lo ao Raspberry Pi e em seguida utilizar deste hub para conectar os demais periféricos, causando "interferência" mínima ao seu Pi.
+
 ### Fontes oficiais do Raspberry Pi Foundation
 
+Finalmente, não podemos deixar de frisar que a Raspberry Pi Foundation designou todo o hardware envolvido, incluindo as *fontes oficiais* que são as recomendadas ao operar o Raspberry Pi.
+
+Segundo a Fundação, estas fontes são designadas para prover exatamente a energia necessária para o funcionamento de cada um dos modelos do Raspberry Pi, além de contarem com cabos resistentes e bem-isolados (a má-construção destes pode acarretar no aumento de resistência no circuito, reduzindo a potência que alcança o dispositivo para começar).
+
+Fontes oficiais e homologadas são vendidas pela própria fundação e estão disponíveis no Brasil também. As [fontes para os modelos 1 a 3](https://amzn.to/3tT4xWW), por exemplo, fornecem energia à 5V 2.5A, sem precisar de um cabo USB extra. E no caso do audacioso [Raspberry Pi 4](https://amzn.to/3eO35Rp), acreditamos que não há alternativa à [fonte oficial do Raspberry Pi Foundation](https://amzn.to/3wcFLml) por conta também na mudança da voltagem necessária do dispositivo. A certeza, porém, é que ao utilizá-la, você terá corrente o suficiente para alimentar diversos dispositivos ao mesmo tempo - incluindo as 4 portas USB disponíveis.
+
 ## Conclusão
+
+A [útilização do Raspberry Pi como um desktop](/blog/raspberry_pi_como_desktop/) é uma realidade com os modelos mais recentes, mas num mundo *low power* como este, pode ser necessário um pouco mais de atenção para continua
 
 ---
 
