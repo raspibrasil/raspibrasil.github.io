@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Evitando problemas de energia com o seu Raspberry Pi - Raspberry Pi Brasil</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Evitando problemas de energia com o seu Raspberry Pi" />
+        <link rel="stylesheet" type="text/css" href="/static/style.css" />
+        <link rel="canonical" href="https://www.raspberrypibrasil.com/blog/raspberry_pi_problema_energia" />
+        <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+        <link rel="me" href="https://qoto.org/@raspibrasil" />
+    </head>
+    <body>
+        <header>
+            <img src="/static/logo.png" alt="logo raspberry pi brasil" />
+            <h1>Raspberry Pi Brasil</h1>
+            <h2>A comunidade brasileira do Raspberry Pi e do Software Livre</h2>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/sobre">Sobre o site</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                    <li><a href="/atom.xml">Feed</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="main">
+        <h1>Evitando problemas de energia com o seu Raspberry Pi</h1>
+<p>Parte da popularidade do Raspberry Pi na cena dos <a href="/blog/bem_vindo_ao_raspberrypi_brasil/">Single Board Computers</a> certamente provém do fato que seus periféricos e demais interfaces podem ser atendidos por dispositivos de computadores disponíveis comumente nas casas e escritórios atuais. É possível ligá-lo no próprio carregador de celular e conectar periféricos através de USB como um próprio <a href="/blog/raspberry_pi_como_desktop/">Computador Desktop</a>, tornando seu uso muito mais flexível e natural. Porém, mesmo com o Raspberry Pi aderindo a certos padrões, quando se trata de <em>energia</em> é preciso uma atenção especial para escolher uma fonte adequada para que todas as operações de computação sejam executadas de forma adequada sem danificar o equipamento por conta de uma voltagem ou amperagem inadequada. </p>
+<p>Embora fontes comuns de celular possam confortavelmente manter os modelos antigos do Raspberry Pi operando sem acessórios, esta situação muda com os modelos mais novos, que consomem mais energia para funcionar, ou quando plugamos periféricos que aumentam o consumo de energia do dispositivo. Ao passo que o consumo de energia é um ponto frequentemente ignorado pela maior parte dos usuários de computadores, no caso do Raspberry Pi a energia disponível é pouca e acontada, o que pode causar alguns problemas inesperados se não tomada a atenção. Neste post, veremos porque alguns problemas de energia podem ocorrer em certos casos com o Raspberry Pi, e como podemos evitar que aconteçam.</p>
+<h2>Requerimentos mínimos vs recomendados de energia do Raspberry Pi</h2>
+<p>Todos os modelos do Raspberry Pi até a versão 3 foram pensados sob a ótica de compatibilidade com fontes comuns DC utilizadas por smartphones, padronizadas há muito tempo na voltagem 5V. Desta forma, até as velhas fontes daquele tocador de MP3 que você tinha desde 2003 são suficientes para alimentar um Raspberry Pi até o modelo 3 por si só. </p>
+<p>A partir do modelo 2, porém, o design do Raspberry começou a incorporar mais capacidade de computação e memória, o que começou a aumentar de forma significante o consumo de energia do design original. A compatibilidade da voltagem com fontes padrão de smartphone fora mantida, porém, e na ausência de qualquer outro periférico os modelos 2 e 3 ainda podem ser mantidos ligados.</p>
+<p>A partir do modelo 4, o Raspberry Pi teve um salto significante de recursos, e seus requerimentos de energia se tornaram maiores do que o padrão de 5V das fontes de smartphone comuns. Ele passou a requerer sua própria fonte para operar de maneira correta, surpreendendo muitos acostumados com os modelos anteriores. </p>
+<p>A verdade, porém, é que desde o modelo 2, já era de conhecimento que uma fonte comum não poderia garantir <em>todas</em> as operações com o Raspberry Pi, especialmente quando combinadas com periféricos de USB. Prova disto é que a Raspberry Pi Foundation sempre manteve publicado ambos os [requerimentos <em>mínimos</em> e <em>recomendados</em> de energia]https://www.raspberrypi.org/documentation/faqs/#pi-power-specs) para cada modelo do Raspberry Pi. Portanto, ao passo que estes modelos acabam funcionando com uma fonte qualquer, isto não significa que eles garantem a operação em todos os casos.</p>
+<p>Segundo a documentação da Raspberry Pi Foundation, os modelos do Raspberry Pi em geral possuem os seguintes valores de Voltagem e Amperagem <em>recomendados</em> para operar:</p>
+<ul>
+<li>Model B: 5V / 1.2A</li>
+<li>Model 2 a 3: 5V / 1.8A</li>
+<li>Model 4: <strong>5.1V</strong> / 3A.</li>
+</ul>
+<p>Para comparação, uma fonte de smartphone genérica consegue providenciar 5V a 0.7A apenas, o que é bem abaixo da capacidade recomendada para operações dos modelos 3 e anteriores, e insuficiente para o modelo 4 em diante. Se você trabalha apenas com o Raspberry Pi como um <a href="/blog/acesso_remoto_seguro_raspberrypi_ssh/">servidor via acesso remoto</a>, pode não encontrar problemas com energia numa fonte comum, mas ao plugar algum periférico como um teclado, pode se surpreender se o sistema inteiro sofrer um reboot por conta do pico de consumo de energia.</p>
+<h2>Soluções par evitar problemas de energia na operação do Raspberry Pi</h2>
+<p>Se você está frustrado com a dificuldade de utilizar periféricos ou a capacidade total do seu Raspberry Pi via por conta de problemas de energia, há algumas soluções diferentes que você pode considerar: trocar a fonte ou a alimentação dos seus periféricos.</p>
+<h3>Fontes com maior amperagem</h3>
+<p>Ao passo que hoje temos uma vasta disponibilidade de fontes para smartphones com "modo rápido" de carregamento, a verdade é que a maioria ainda segue o mesmo padrão 5V/0.7A decidido há quase duas décadas. Até mesmo as fontes "rápidas" operam em dois modos distintos, sendo o 5B/0.7A o <em>fallback</em> caso o dispositivo não suporte voltagens e amperagens maiores. E enquanto a voltagem da maioria das fontes é padronizada nos 5V, a amperagem pode variar significantemente - para cima ou para baixo.</p>
+<p>Ao invés de "catar milho" buscando na gaveta uma fonte de celular apropriada, é muito mais eficiente procurar exatamente por uma fonte que atenda os requerimentos de energia recomendados do seu Raspbery Pi. E felizmente, <a href="https://amzn.to/33KgrrB">fontes que fornecem 5V/1.2A existem</a> e caem como uma luva nos requerimentos da maior parte dos Raspberry Pis descritos acima.</p>
+<p>Uma fonte com capacidade de amperagem mais alta é capaz de fornecer corrente elétrica adicional para quando o Raspberry Pi recebe um dispositivo USB conectado, não causando o reboot por falta de energia, e pode garantir o funcionamento no caso do uso de outros periféricos também. A grande vantagem é que mesmo que um pouco acima dos 1.2A recomendados pela documentação oficial, é possível também utilizar fontes com amperagem mais alta, como 1.5A, já que a demanda por corrente elétrica é controlada pelo dispositivo, não a fonte alimentadora. Até mesmo <a href="https://amzn.to/3w79HA5">fontes com 3A de alimentação</a> podem ser utilizadas.</p>
+<p>Ao fornecer ao Raspberry Pi a <em>capacidade</em> de corrente mais alta, o "pico de energia" súbito que causa problemas ao conectar USBs é mantido e resguardado, permitindo a continuidade do Raspberry Pi ininterrupta. Por outro lado, também é possível resolver o problema do <em>outro lado</em>: utilizando um hub USB auto-alimentado.</p>
+<h3>Dispositivos e Hubs USB com fonte própria</h3>
+<figure>
+    <a href="https://amzn.to/3fnKP0c">
+    <img src="/static/images/powered_usb.jpg" alt="Exemplo de Hub USB com fonte" />
+    </a>
+    <figcaption>
+        Um Hub USB com fonte externa pode suprir energia aos seus periféricos sem drenar o Raspberry Pi.
+    </figcaption>
+</figure>
+
+<p>É possível também evitar o dreno de energia dos dispositivos periféricos simplesmente alimentando-os de outra maneira que não seja oriunda do Raspberry Pi. Alguns dispositivos, como <a href="https://amzn.to/3tLCA3f">HD externos de mesa</a>, possuem sua própria fonte de alimentação externa para funcionar pois consomem mais energia que uma porta USB convencional pode fornecer. Estes são os HDs recomendados para criar um <a href="/blog/compartilhando_arquivos_nas_raspberrypi/">armazenamento caseiro como um NAS</a>. Plugar o Raspberry Pi neste dispositivo já com fonte própria não causa consumo adicional a ele.</p>
+<p>Alternativamente, alguns <a href="https://amzn.to/3fnKP0c">Hubs USB</a> possuem alimentação própria também, funcionando tanto quanto uma forma de carregar dispositivos nele conectados quanto um hub de dados que não consome a energia do host. É possível, por exemplo, conectar o hub à tomada, conectá-lo ao Raspberry Pi e em seguida utilizar deste hub para conectar os demais periféricos, causando "interferência" mínima ao seu Pi.</p>
+<h3>Fontes oficiais do Raspberry Pi Foundation</h3>
+<figure>
+    <a href="https://amzn.to/3ojEJlI">
+    <img src="/static/images/fonte_rpi4.jpg" alt="Fonte Oficial do Raspberry Pi 4" />
+    </a>
+    <figcaption>
+        A fonte oficial do Raspberry Pi 4 por enquanto é a única alternativa para alimentar este modelo, que possui requerimentos de Voltagem e Corrente únicos dentro da linha.
+    </figcaption>
+</figure>
+
+<p>Finalmente, não podemos deixar de frisar que a Raspberry Pi Foundation designou todo o hardware envolvido, incluindo as <em>fontes oficiais</em> que são as recomendadas ao operar o Raspberry Pi.</p>
+<p>Segundo a Fundação, estas fontes são designadas para prover exatamente a energia necessária para o funcionamento de cada um dos modelos do Raspberry Pi, além de contarem com cabos resistentes e bem-isolados (a má-construção destes pode acarretar no aumento de resistência no circuito, reduzindo a potência que alcança o dispositivo para começar).</p>
+<p>Fontes oficiais e homologadas são vendidas pela própria fundação e estão disponíveis no Brasil também. As <a href="https://amzn.to/3tT4xWW">fontes para os modelos 1 a 3</a>, por exemplo, fornecem energia à 5V 2.5A, sem precisar de um cabo USB extra. E no caso do audacioso <a href="https://amzn.to/3eO35Rp">Raspberry Pi 4</a>, acreditamos que não há alternativa à <a href="https://amzn.to/3wcFLml">fonte oficial do Raspberry Pi Foundation</a> por conta também na mudança da voltagem necessária do dispositivo. A certeza, porém, é que ao utilizá-la, você terá corrente o suficiente para alimentar diversos dispositivos ao mesmo tempo - incluindo as 4 portas USB disponíveis.</p>
+<h2>Conclusão</h2>
+<p>A <a href="/blog/raspberry_pi_como_desktop/">útilização do Raspberry Pi como um desktop</a> é uma realidade com os modelos mais recentes, mas num mundo <em>low power</em> como este, pode ser necessário um pouco mais de atenção sobre o quanto entra e sai de energia no sistema total.</p>
+<p>Embora fácil e rápido, simplesmente plugar seu Pi numa fonte velha de smartphone Android pode não suprir a corrente total necessária para torná-lo operacional em caso de conectar e desconectar múltiplos dispositivos USB, o que o causa dar reboot por falta de energia. </p>
+<p>Felizmente o problema pode ser resolvido de algumas formas simples, como utilizando uma fonte com amperagem maior ou um HUB USB com sua própria fonte. Em último caso, podemos utilizar as fontes oficiais desenvolvidas pela Raspberry Pi Foundation - no caso do <a href="https://amzn.to/3eO35Rp">Raspberry Pi 4</a>, por exemplo, é a única solução.</p>
+<hr />
+<p>Como você faz para evitar problemas de energia com o seu Raspberry Pi? Você usa as fontes oficiais ou alguma outra solução? <a href="https://qoto.org/@raspibrasil">Escreva pra gente no Mastodon!</a></p>
+<hr />
+<p><strong>Disclaimer:</strong> o Raspberry Pi Brasil não é um órgão oficial da Raspberry Pi Foundation e não possui a documentação oficial referente às especificações de energia e de hardware do Raspberry Pi. Consulte a documentação oficial da <a href="https://raspberrypi.org">Raspberry Pi Foundation</a> no caso de dúvida. O Raspberry Pi Brasil não se responsabiliza em caso de danos oriundos da utilização de qualquer informação deste site.</p>
+<p>Publicado em 2021-05-15</p>
+<p>Categorizado em: <a href="/blog/tags/raspberrypi">raspberrypi</a> <a href="/blog/tags/hardware">hardware</a> <a href="/blog/tags/desktop">desktop</a> <a href="/blog/tags/energia">energia</a> </p>
+        </section>
+        <footer>
+            <p>
+                Copyright 2020 - 2021 Raspberry Pi Brasil - Todos os direitos reservados.
+            </p>
+            <p>
+                Conteúdo disponibilizado sob a licença <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution Share-Alike 4.0</a>
+            </p>
+            <p>
+                Raspberry Pi é uma marca registrada pela Raspberry Pi Foundation na Inglaterra.
+            </p>
+            <p>
+                <a href="/privacidade">Política de privacidade</a>
+            </p>
+            <p>
+                <img src="/static/logo.png" width="70" />
+            </p>
+        </footer>
+    </body>
+</html>
