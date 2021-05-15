@@ -22,7 +22,7 @@ Segundo a documentação da Raspberry Pi Foundation, os modelos do Raspberry Pi 
 
 Para comparação, uma fonte de smartphone genérica consegue providenciar 5V a 0.7A apenas, o que é bem abaixo da capacidade recomendada para operações dos modelos 3 e anteriores, e insuficiente para o modelo 4 em diante. Se você trabalha apenas com o Raspberry Pi como um [servidor via acesso remoto](/blog/acesso_remoto_seguro_raspberrypi_ssh/), pode não encontrar problemas com energia numa fonte comum, mas ao plugar algum periférico como um teclado, pode se surpreender se o sistema inteiro sofrer um reboot por conta do pico de consumo de energia.
 
-## Soluções par evitar problemas de energia na operação do Raspberry Pi
+## Soluções para evitar problemas de energia na operação do Raspberry Pi
 
 Se você está frustrado com a dificuldade de utilizar periféricos ou a capacidade total do seu Raspberry Pi via por conta de problemas de energia, há algumas soluções diferentes que você pode considerar: trocar a fonte ou a alimentação dos seus periféricos.
 
