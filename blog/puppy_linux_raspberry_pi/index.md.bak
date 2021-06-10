@@ -15,16 +15,34 @@ Vejamos em frente!
 
 ## Puppy Linux: o melhor amigo do seu Raspberry Pi
 
-O [Puppy Linux](http://www.puppylinux.com/) é uma família de distribuições Linux que se especializa em otimizar computadores antigos e com recursos limitados de CPU e memória. Originalmente uma distribuição desenvolvida independentemente, versões atuais do Puppy Linux são "construídas" através de várias outras distribuições Linux como o [Ubuntu](https://ubuntu.com) e o [Slackware](https://slackware.org) e montadas utilizando uma ferramenta chamada de [Woof](https://puppylinux.com/woof-ce.html). Portanto o termo "família" de distribuições.
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Puppy_logo.svg/200px-Puppy_logo.svg.png" alt="Logo do Puppy Linux" />
+    <figcaption>
+        O logo do projeto do Puppy Linux. Crédito: Wikimedia.org
+    </figcaption>
+</figure>
 
-Este modelo de desenvolvimento exótico significa que há vários "sabores" possíveis de Puppy Linux que você baixar, desde os builds "oficiais" mantidos pelos desenvolvedores originais do Puppy Linux até outras *Community Editions* que se especializam de diversas formas. 
+O [Puppy Linux](http://www.puppylinux.com/) é uma família de distribuições Linux que se especializa em otimizar computadores antigos e com recursos limitados de CPU e memória. Um dos seus objetivos explícitos de desenvolvimento é de *trazer vida nova* a computadores considerados *antigos ou obsoletos* para sistemas como o Windows, que se tornam mais pesados gradativamente.
+
+Originalmente uma distribuição desenvolvida independentemente, versões atuais do Puppy Linux são "construídas" através de várias outras distribuições Linux como o [Ubuntu](https://ubuntu.com) e o [Slackware](https://slackware.org) e montadas utilizando uma ferramenta chamada de [Woof](https://puppylinux.com/woof-ce.html). Portanto o termo *família de distribuições*.
+
+Este modelo de desenvolvimento exótico significa que há vários "sabores" possíveis de Puppy Linux que você baixar, desde os builds "oficiais" mantidos pelos desenvolvedores originais do Puppy Linux até outras *Community Editions* que se especializam de diversas formas. Uma destas versões é especificamente orientada para o Raspberry Pi: o [Raspup](ihttp://raspup.eezy.xyz/).
+
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Raspup.png" alt="Screenshot do Raspup" />
+    <figcaption>
+        O Raspup é um "sabor" do Puppy Linux orientado especificamente ao uso do Raspberry Pi como um Desktop. Crédito: Wikimedia.org
+    </figcaption>
+</figure>
+
+O Raspup combina toda a leveza e rapidez do Puppy Linux para a portabilidade e versatilidade do Raspberry Pi. Ele é leve o suficinete para rodar até nos modelos B de 2012 - que [demonstramos num post anterior](/blog/raspberry_pi_como_desktop/) - e com performance aumentando quando utilizado nas versões mais recentes. E ao contrário de um sistema operacional mais tradicional como o Raspbian, o Puppy Linux é otimizado para os ambientes de recursos modestos.
+
+## Aspectos únicos do Puppy Linux que beneficiam o Raspberry Pi
+
+O Puppy Linux é distinto de outras distribuições Linux porque é designado para rodar completamente na memória RAM, num conceito chamado de [ramdisk](https://en.wikipedia.org/wiki/RAM_drive) não só isto torna a execução do programa muito mais rápida (afinal, não precisamos esperar a cópia e escrita das informações de um disco rígido lento), esta forma de execução também garante que as escritas ao disco são mantidas num mínimo - podendo chegar a ser zero.
 
 ## Instalando o Puppy Linux no Raspberry Pi
 
- - Including persistence.buntu 
-
-## Instalando o Puppy Linux no Raspberry Pi
-
- - Including persistence.
+ - Including persistence. 
 
 ## Vantagens e desvantagens do Puppy Linux em comparação ao Raspberry Pi OS
