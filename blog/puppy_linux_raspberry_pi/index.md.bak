@@ -1,0 +1,30 @@
+# Puppy Linux no Raspberry Pi: feitos um para o outro no Desktop
+
+Outline:
+
+ - Running Puppy Linux on the Raspberry Pi - any range or memory.
+ - RAM-based limits the writing and IO from the disk, saving the SD card.
+ - If you need persistence, run it once and reboot. Yes, really.
+ - RAM Usage gets bigger as more space is used (necessary consequence).
+
+Utilizar o Raspberry Pi como um desktop não precisa ser um bicho-de-sete-cabeças. Graças à distribuições *user-friendly* e modernas como o [Raspberry Pi OS](/blog/como_instalar_linux_raspberry_pi/) entre outras, utilizar seu SBC como um computador pessoal completo e de baixo custo de operação não é difícil nem doloroso - especialmente com as edições mais modernas como o [Raspberry Pi 4](https://amzn.to/3wfUopM).
+
+Ainda assim, há alguns SBCs com recursos mais modestos, como o [Raspberry Pi 3](https://amzn.to/3qlUOqH) ou até mesmo os primeiros modelos de 2012-2013. Nestes casos, o Raspberry Pi OS pode ser um pouco pesado demais para seus recursos simplistas de memória e CPU. Felizmente, como tudo no [software livre](/blog/bem_vindo_ao_raspberrypi_brasil/), há outras alternativas para usar um SBC modesto como um desktop. Neste post, falaremos sobre o **Puppy Linux**, uma distribuição Linux leve e rápida, que casa perfeitamente com o Raspberry Pi.
+
+Vejamos em frente!
+
+## Puppy Linux: o melhor amigo do seu Raspberry Pi
+
+O [Puppy Linux](http://www.puppylinux.com/) é uma família de distribuições Linux que se especializa em otimizar computadores antigos e com recursos limitados de CPU e memória. Originalmente uma distribuição desenvolvida independentemente, versões atuais do Puppy Linux são "construídas" através de várias outras distribuições Linux como o [Ubuntu](https://ubuntu.com) e o [Slackware](https://slackware.org) e montadas utilizando uma ferramenta chamada de [Woof](https://puppylinux.com/woof-ce.html). Portanto o termo "família" de distribuições.
+
+Este modelo de desenvolvimento exótico significa que há vários "sabores" possíveis de Puppy Linux que você baixar, desde os builds "oficiais" mantidos pelos desenvolvedores originais do Puppy Linux até outras *Community Editions* que se especializam de diversas formas. 
+
+## Instalando o Puppy Linux no Raspberry Pi
+
+ - Including persistence.buntu 
+
+## Instalando o Puppy Linux no Raspberry Pi
+
+ - Including persistence.
+
+## Vantagens e desvantagens do Puppy Linux em comparação ao Raspberry Pi OS
