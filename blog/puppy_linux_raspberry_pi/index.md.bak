@@ -35,13 +35,13 @@ Este modelo de desenvolvimento exótico significa que há vários "sabores" poss
     </figcaption>
 </figure>
 
-O Raspup combina toda a leveza e rapidez do Puppy Linux para a portabilidade e versatilidade do Raspberry Pi. Ele é leve o suficinete para rodar até nos modelos B de 2012 - que [demonstramos num post anterior](/blog/raspberry_pi_como_desktop/) - e com performance aumentando quando utilizado nas versões mais recentes. E ao contrário de um sistema operacional mais tradicional como o Raspbian, o Puppy Linux é otimizado para os ambientes de recursos modestos.
+O Raspup combina toda a leveza e rapidez do Puppy Linux para a portabilidade e versatilidade do Raspberry Pi. Ele é leve o suficiente para rodar até nos modelos B de 2012 - que [demonstramos num post anterior](/blog/raspberry_pi_como_desktop/) - e com performance aumentando quando utilizado nas versões mais recentes. E ao contrário de um sistema operacional mais tradicional como o Raspbian, o Puppy Linux é otimizado para os ambientes de recursos modestos.
 
 ## Aspectos únicos do Puppy Linux que beneficiam o Raspberry Pi
 
 O Puppy Linux é distinto de outras distribuições Linux porque é designado para rodar completamente na memória RAM, num conceito chamado de [ramdisk](https://en.wikipedia.org/wiki/RAM_drive) não só isto torna a execução do programa muito mais rápida (afinal, não precisamos esperar a cópia e escrita das informações de um disco rígido lento), esta forma de execução também garante que as escritas ao disco são mantidas num mínimo - podendo chegar a ser zero.
 
-Este segundo ponto é importante no caso do Raspberry Pi, cuja única forma de armazenamento é o Cartão MicroSD, e mesmo os [modelos mais recentes](https://amzn.to/3oNsn4y) possuem limitações sobre o número de ciclos de read-write que podem performar.
+Este segundo ponto é importante no caso do Raspberry Pi, cuja única forma de armazenamento é o Cartão MicroSD, e mesmo os [modelos mais recentes](https://amzn.to/3oNsn4y) possuem limitações sobre o número de ciclos de read-write que podem performar. A técnica do ramdisk essencialmente corta a necessidade de se comunicar tanto com o cartão SD 
 
 ## Instalando o Puppy Linux no Raspberry Pi
 
