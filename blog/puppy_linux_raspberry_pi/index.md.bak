@@ -41,9 +41,20 @@ O Raspup combina toda a leveza e rapidez do Puppy Linux para a portabilidade e v
 
 O Puppy Linux é distinto de outras distribuições Linux porque é designado para rodar completamente na memória RAM, num conceito chamado de [ramdisk](https://en.wikipedia.org/wiki/RAM_drive) não só isto torna a execução do programa muito mais rápida (afinal, não precisamos esperar a cópia e escrita das informações de um disco rígido lento), esta forma de execução também garante que as escritas ao disco são mantidas num mínimo - podendo chegar a ser zero.
 
-Este segundo ponto é importante no caso do Raspberry Pi, cuja única forma de armazenamento é o Cartão MicroSD, e mesmo os [modelos mais recentes](https://amzn.to/3oNsn4y) possuem limitações sobre o número de ciclos de read-write que podem performar. A técnica do ramdisk essencialmente esta necessidade com o cartão SD, conservando sua via útil e mantendo a velocidade do sistema. Quando estamos com outros
+<figure>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/M%C3%A4luketta_kiirus.jpg" alt="Benchmarks comparando HDD, SSD e RAMDisk" />
+    <figcaption>
+        O RAM Disk é uma tecnologia que "emula" o disco rígido dentro da memória RAM, tornando sua manipulação muito mais rápida e responsiva do que o armazenamento não-volátil. Crédito: Wikimedia.org
+    </figcaption>
+</figure>
 
-## Instalando o Puppy Linux no Raspberry Pi
+Este segundo ponto é importante no caso do Raspberry Pi, cuja única forma de armazenamento é o Cartão MicroSD, e mesmo os [modelos mais recentes](https://amzn.to/3oNsn4y) possuem limitações sobre o número de ciclos de read-write que podem performar. A técnica do ramdisk essencialmente esta necessidade com o cartão SD, conservando sua via útil e mantendo a velocidade do sistema.
+
+O Puppy Linux também permite que você utilize o que é chamado de *persistence*, isto é, salvar a sua sessão de utilização de volta para o cartão SD para que no próximo reboot todas as suas personalizações e configurações voltem a estar lá, tornando-se bem prático para quem carrega este sistema operacional num pendrive consigo.
+
+# Instalando o Puppy Linux no Raspberry Pi
+
+A instalação do Raspup no Raspberry Pi não é diferente de qualquer outra [instalação tradicional de um sistema operacional no Raspberry Pi](/blog/como_instalar_linux_raspberry_pi/); seguimos o mesmo passo-a-passo padrão, que é:
 
  - Including persistence. 
 
