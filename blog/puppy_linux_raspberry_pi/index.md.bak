@@ -52,9 +52,33 @@ Este segundo ponto é importante no caso do Raspberry Pi, cuja única forma de a
 
 O Puppy Linux também permite que você utilize o que é chamado de *persistence*, isto é, salvar a sua sessão de utilização de volta para o cartão SD para que no próximo reboot todas as suas personalizações e configurações voltem a estar lá, tornando-se bem prático para quem carrega este sistema operacional num pendrive consigo.
 
-# Instalando o Puppy Linux no Raspberry Pi
+## Instalando o Puppy Linux no Raspberry Pi
 
 A instalação do Raspup no Raspberry Pi não é diferente de qualquer outra [instalação tradicional de um sistema operacional no Raspberry Pi](/blog/como_instalar_linux_raspberry_pi/); seguimos o mesmo passo-a-passo padrão, que é:
+
+ - Baixar e verificar a imagem da distribuição Linux desejada.
+ - Extrair a imagem desejada para o cartão MicroSD.
+ - Realizar boot via MicroSD e começar a utilizá-lo.
+
+Por conta das múltiplas imagens e plataformas suportadas, o projeto do Puppy Linux disponibiliza apenas as imagens oficiais em sua [Página Oficial](https://puppylinux.com/download.html). A versão Raspup para Raspberry Pi é disponibilizada [neste acervo no Ibiblio](http://distro.ibiblio.org/puppylinux/arm/puppy-raspup-8.2.1/). Baixe-a para o seu computador e verifique que foi realizado corretamente.
+
+Você pode extrair a imagem para o cartão MicroSD utilizando o mesmo programa [Raspberry Pi Imager](https://github.com/raspberrypi/rpi-imager) que utilizamos para desmonstrar a extração do Raspberry Pi OS num post anterior. Ao invés de escolher uma imagem oferecida pelo programa, clique a opção *Use Custom*:
+
+<figure>
+    <img src="/static/images/rpi_imager_custom_image.jpg" alt="Raspberry Imager mostrando opção de imagem customizada." />
+    <img src="/static/images/rpi_imager_custom_image2.jpg" alt="Raspberry Imager mostrando opção de imagem customizada." />
+    <figcaption>
+        Selecione sua imagem baixada do Raspup para extraí-la ao cartão SD.
+    </figcaption>
+</figure>
+
+Para quem prefere a linha de comando, o comando `dd` é perfeito para o trabalho. Tendo em mãos o nome da imagem baixada e o caminho para o seu dispositivo MicroSD (neste exemplo `/dev/sdb`), o comando é:
+
+    sudo dd if=raspup-8.2.1-a60dc46d9-2gb-f2fs-swap.img of=/dev/sdb && sudo sync
+
+No término deste comando (que pode levar alguns minutos para concluir), seu cartão SD estará pronto para ser utilizado no Raspberry Pi.
+
+## Utilizando o Puppy Linux no Raspberry Pi
 
  - Including persistence. 
 
