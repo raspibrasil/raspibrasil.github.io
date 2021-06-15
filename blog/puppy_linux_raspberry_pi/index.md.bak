@@ -80,7 +80,9 @@ No término deste comando (que pode levar alguns minutos para concluir), seu car
 
 ## Utilizando o Puppy Linux no Raspberry Pi
 
-Ao fim do boot, a interface do Puppy Linux é bem icônica, e a consideramos única no âmbito das distribuições Linux disponíveis.
+Ao fim do boot, a interface do Puppy Linux é bem icônica, e a consideramos única no âmbito das distribuições Linux disponíveis. Retrô em aparência, ela pode inicialmente se parecer com um sistema operacional antigo mas não se engane: esta é uma distribuição moderna e segura do Linux.
+
+Ao contrário de algumas distribuições "minimalistas" que apresentam sua maior utilização via ferramentas na linha de comando, o Puppy Linux é diferenet no que ele permite que você realize quase que tudo a partir de ferramentas disponibilizadas na interface gráfica. Os vários ícones que você pode encontrar na área de trabalho são prova disso: apenas clicando neles e digitando alguns inputs, você pode configurar a maior parte do seu sistema.
 
  - Including persistence. 
 
