@@ -12,7 +12,7 @@ A partir do modelo 2, porém, o design do Raspberry começou a incorporar mais c
 
 A partir do modelo 4, o Raspberry Pi teve um salto significante de recursos, e seus requerimentos de energia se tornaram maiores do que o padrão de 5V das fontes de smartphone comuns. Ele passou a requerer sua própria fonte para operar de maneira correta, surpreendendo muitos acostumados com os modelos anteriores. 
 
-A verdade, porém, é que desde o modelo 2, já era de conhecimento que uma fonte comum não poderia garantir *todas* as operações com o Raspberry Pi, especialmente quando combinadas com periféricos de USB. Prova disto é que a Raspberry Pi Foundation sempre manteve publicado ambos os [requerimentos *mínimos* e *recomendados* de energia]https://www.raspberrypi.org/documentation/faqs/#pi-power-specs) para cada modelo do Raspberry Pi. Portanto, ao passo que estes modelos acabam funcionando com uma fonte qualquer, isto não significa que eles garantem a operação em todos os casos.
+A verdade, porém, é que desde o modelo 2, já era de conhecimento que uma fonte comum não poderia garantir *todas* as operações com o Raspberry Pi, especialmente quando combinadas com periféricos de USB. Prova disto é que a Raspberry Pi Foundation sempre manteve publicado ambos os [requerimentos *mínimos* e *recomendados* de energia](https://www.raspberrypi.org/documentation/faqs/#pi-power-specs) para cada modelo do Raspberry Pi. Portanto, ao passo que estes modelos acabam funcionando com uma fonte qualquer, isto não significa que eles garantem a operação em todos os casos.
 
 Segundo a documentação da Raspberry Pi Foundation, os modelos do Raspberry Pi em geral possuem os seguintes valores de Voltagem e Amperagem *recomendados* para operar:
 
