@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Raspberry Pi Brasil</title>
-    <link href="https://www.raspberrypibrasil.com/atom.xml" rel="self" />
-    <link href="https://www.raspberrypibrasil.com/" />
-    <updated>2021-05-15T09:11:47.188656Z</updated>
+    <link href="https://raspibrasil.github.io/atom.xml" rel="self" />
+    <link href="https://raspibrasil.github.io/" />
+    <updated>2025-02-04T20:10:45.355703Z</updated>
     <author>
         <name>Equipe Raspberry Pi Brasil - @raspibrasil@qoto.org</name>
     </author>
@@ -11,9 +11,9 @@
     
     <entry>
         <title>Acesse seu Raspberry Pi remotamente de forma segura com chaves via SSH</title>
-        <link href="https://www.raspberrypibrasil.com/blog/acesso_remoto_seguro_raspberrypi_ssh/" />
-        <id>urn:uuid:6b4b11be-3309-507c-a0d1-407174bd7bdb</id>
-        <updated>2021-04-15T22:02:39.746536Z</updated>
+        <link href="https://raspibrasil.github.io/blog/acesso_remoto_seguro_raspberrypi_ssh/" />
+        <id>urn:uuid:70d29870-e6bc-5c69-a780-2eaaacd25115</id>
+        <updated>2025-02-04T13:53:35.300873Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Acesse seu Raspberry Pi remotamente de forma segura com chaves via SSH</h1>
@@ -113,9 +113,9 @@ mv mykey mykey.pub $HOME/.ssh
 
     <entry>
         <title>Acessando o Raspberry Pi fora de casa via Tor</title>
-        <link href="https://www.raspberrypibrasil.com/blog/acesso_remoto_tor/" />
-        <id>urn:uuid:0e20f0e9-a51b-5e81-aff3-d5ff0c65f45e</id>
-        <updated>2021-04-22T22:59:01.443373Z</updated>
+        <link href="https://raspibrasil.github.io/blog/acesso_remoto_tor/" />
+        <id>urn:uuid:d03ba547-25e1-5820-b26b-bae51dcbcdf3</id>
+        <updated>2025-02-04T13:53:35.300873Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Acessando o Raspberry Pi fora de casa via Tor</h1>
@@ -217,9 +217,9 @@ abcdefabcdefabcdefabcdefabcdefabcdefabcdef.onion
 
     <entry>
         <title>Hello World! O que é o Raspberry Pi e o Software livre?</title>
-        <link href="https://www.raspberrypibrasil.com/blog/bem_vindo_ao_raspberrypi_brasil/" />
-        <id>urn:uuid:1affbe74-5365-501a-b239-ff5aa5a99e6e</id>
-        <updated>2020-12-22T18:28:47.160529Z</updated>
+        <link href="https://raspibrasil.github.io/blog/bem_vindo_ao_raspberrypi_brasil/" />
+        <id>urn:uuid:b1a6952b-c54a-5247-915b-f80e0e7f40b3</id>
+        <updated>2025-02-04T13:53:35.300873Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Hello World! O que é o Raspberry Pi e o Software livre?</h1>
@@ -255,9 +255,9 @@ abcdefabcdefabcdefabcdefabcdefabcdefabcdef.onion
 
     <entry>
         <title>Como escolher o seu primeiro Raspberry Pi?</title>
-        <link href="https://www.raspberrypibrasil.com/blog/como_escolher_seu_raspberry_pi/" />
-        <id>urn:uuid:bf6b4a81-aadb-5d8a-81ed-dc7992d7cb47</id>
-        <updated>2021-03-10T11:16:56.350554Z</updated>
+        <link href="https://raspibrasil.github.io/blog/como_escolher_seu_raspberry_pi/" />
+        <id>urn:uuid:5ca7b190-9d47-5490-baa9-ae40b1457f27</id>
+        <updated>2025-02-04T13:53:35.300873Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Como escolher o seu primeiro Raspberry Pi?</h1>
@@ -301,9 +301,9 @@ abcdefabcdefabcdefabcdefabcdefabcdefabcdef.onion
 
     <entry>
         <title>Como instalar Linux no Raspberry Pi?</title>
-        <link href="https://www.raspberrypibrasil.com/blog/como_instalar_linux_raspberry_pi/" />
-        <id>urn:uuid:4ec43c75-3893-56be-90ed-a304c2f0bdc6</id>
-        <updated>2021-03-12T15:38:01.977923Z</updated>
+        <link href="https://raspibrasil.github.io/blog/como_instalar_linux_raspberry_pi/" />
+        <id>urn:uuid:031e33f0-4c29-5e3d-9ad6-b62184e9433e</id>
+        <updated>2025-02-04T13:53:35.300873Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Como instalar Linux no Raspberry Pi?</h1>
@@ -386,9 +386,9 @@ abcdefabcdefabcdefabcdefabcdefabcdefabcdef.onion
 
     <entry>
         <title>Usando o Raspberry Pi como um NAS na sua rede caseira</title>
-        <link href="https://www.raspberrypibrasil.com/blog/compartilhando_arquivos_nas_raspberrypi/" />
-        <id>urn:uuid:3cdae64b-26a9-58f1-bcdd-c7db6bdf1ac7</id>
-        <updated>2021-03-24T00:04:22.320110Z</updated>
+        <link href="https://raspibrasil.github.io/blog/compartilhando_arquivos_nas_raspberrypi/" />
+        <id>urn:uuid:8f1f1da2-576d-5e96-a067-646b0aa02c2a</id>
+        <updated>2025-02-04T13:53:35.304207Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Usando o Raspberry Pi como um NAS na sua rede caseira</h1>
@@ -468,9 +468,9 @@ chmod 777 /home/pi/NAS
 
     <entry>
         <title>Hospede o seu site de graça na sua própria casa usando o Raspberry Pi</title>
-        <link href="https://www.raspberrypibrasil.com/blog/hospedando_seu_site_raspberry_pi/" />
-        <id>urn:uuid:c0436feb-ee99-5d52-b184-3fa1cea8117b</id>
-        <updated>2021-03-31T14:33:00.133290Z</updated>
+        <link href="https://raspibrasil.github.io/blog/hospedando_seu_site_raspberry_pi/" />
+        <id>urn:uuid:5b3647f9-a899-5d69-a951-8455c30c7e25</id>
+        <updated>2025-02-04T13:53:35.304207Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Hospede o seu site de graça na sua própria casa usando o Raspberry Pi</h1>
@@ -552,9 +552,9 @@ chmod 777 /home/pi/NAS
 
     <entry>
         <title>Quais os melhores acessórios e periféricos para o Raspbery Pi?</title>
-        <link href="https://www.raspberrypibrasil.com/blog/melhores_acessorios_raspberry_pi/" />
-        <id>urn:uuid:d70e0e14-04de-574c-b6dd-6892d9b92261</id>
-        <updated>2021-03-10T11:16:32.750553Z</updated>
+        <link href="https://raspibrasil.github.io/blog/melhores_acessorios_raspberry_pi/" />
+        <id>urn:uuid:a7f7b12c-e453-5744-b0b5-b968a54b1264</id>
+        <updated>2025-02-04T13:53:35.304207Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Quais os melhores acessórios e periféricos para o Raspbery Pi?</h1>
@@ -594,9 +594,9 @@ chmod 777 /home/pi/NAS
 
     <entry>
         <title>É possível utilizar o seu Raspberry Pi como um computador desktop? Não subestime a sua capacidade!</title>
-        <link href="https://www.raspberrypibrasil.com/blog/raspberry_pi_como_desktop/" />
-        <id>urn:uuid:e9b0f52c-ed89-5c1e-804f-70bd231b1b6e</id>
-        <updated>2021-04-02T16:48:22.409821Z</updated>
+        <link href="https://raspibrasil.github.io/blog/raspberry_pi_como_desktop/" />
+        <id>urn:uuid:b45de4fb-18d1-53e4-aa3d-c3b922964c0e</id>
+        <updated>2025-02-04T13:53:35.304207Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>É possível utilizar o seu Raspberry Pi como um computador desktop? Não subestime a sua capacidade!</h1>
@@ -680,9 +680,9 @@ chmod 777 /home/pi/NAS
 
     <entry>
         <title>Evitando problemas de energia com o seu Raspberry Pi</title>
-        <link href="https://www.raspberrypibrasil.com/blog/raspberry_pi_problema_energia/" />
-        <id>urn:uuid:2c80654d-4410-5d40-86b5-2f8a4971b77e</id>
-        <updated>2021-05-15T18:08:23.202083Z</updated>
+        <link href="https://raspibrasil.github.io/blog/raspberry_pi_problema_energia/" />
+        <id>urn:uuid:7fd9c628-259b-51b2-ae65-501edbc250ba</id>
+        <updated>2025-02-04T13:53:35.304207Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Evitando problemas de energia com o seu Raspberry Pi</h1>
@@ -692,7 +692,7 @@ chmod 777 /home/pi/NAS
 <p>Todos os modelos do Raspberry Pi até a versão 3 foram pensados sob a ótica de compatibilidade com fontes comuns DC utilizadas por smartphones, padronizadas há muito tempo na voltagem 5V. Desta forma, até as velhas fontes daquele tocador de MP3 que você tinha desde 2003 são suficientes para alimentar um Raspberry Pi até o modelo 3 por si só. </p>
 <p>A partir do modelo 2, porém, o design do Raspberry começou a incorporar mais capacidade de computação e memória, o que começou a aumentar de forma significante o consumo de energia do design original. A compatibilidade da voltagem com fontes padrão de smartphone fora mantida, porém, e na ausência de qualquer outro periférico os modelos 2 e 3 ainda podem ser mantidos ligados.</p>
 <p>A partir do modelo 4, o Raspberry Pi teve um salto significante de recursos, e seus requerimentos de energia se tornaram maiores do que o padrão de 5V das fontes de smartphone comuns. Ele passou a requerer sua própria fonte para operar de maneira correta, surpreendendo muitos acostumados com os modelos anteriores. </p>
-<p>A verdade, porém, é que desde o modelo 2, já era de conhecimento que uma fonte comum não poderia garantir <em>todas</em> as operações com o Raspberry Pi, especialmente quando combinadas com periféricos de USB. Prova disto é que a Raspberry Pi Foundation sempre manteve publicado ambos os [requerimentos <em>mínimos</em> e <em>recomendados</em> de energia]https://www.raspberrypi.org/documentation/faqs/#pi-power-specs) para cada modelo do Raspberry Pi. Portanto, ao passo que estes modelos acabam funcionando com uma fonte qualquer, isto não significa que eles garantem a operação em todos os casos.</p>
+<p>A verdade, porém, é que desde o modelo 2, já era de conhecimento que uma fonte comum não poderia garantir <em>todas</em> as operações com o Raspberry Pi, especialmente quando combinadas com periféricos de USB. Prova disto é que a Raspberry Pi Foundation sempre manteve publicado ambos os <a href="https://www.raspberrypi.org/documentation/faqs/#pi-power-specs">requerimentos <em>mínimos</em> e <em>recomendados</em> de energia</a> para cada modelo do Raspberry Pi. Portanto, ao passo que estes modelos acabam funcionando com uma fonte qualquer, isto não significa que eles garantem a operação em todos os casos.</p>
 <p>Segundo a documentação da Raspberry Pi Foundation, os modelos do Raspberry Pi em geral possuem os seguintes valores de Voltagem e Amperagem <em>recomendados</em> para operar:</p>
 <ul>
 <li>Model B: 5V / 1.2A</li>
@@ -700,7 +700,7 @@ chmod 777 /home/pi/NAS
 <li>Model 4: <strong>5.1V</strong> / 3A.</li>
 </ul>
 <p>Para comparação, uma fonte de smartphone genérica consegue providenciar 5V a 0.7A apenas, o que é bem abaixo da capacidade recomendada para operações dos modelos 3 e anteriores, e insuficiente para o modelo 4 em diante. Se você trabalha apenas com o Raspberry Pi como um <a href="/blog/acesso_remoto_seguro_raspberrypi_ssh/">servidor via acesso remoto</a>, pode não encontrar problemas com energia numa fonte comum, mas ao plugar algum periférico como um teclado, pode se surpreender se o sistema inteiro sofrer um reboot por conta do pico de consumo de energia.</p>
-<h2>Soluções par evitar problemas de energia na operação do Raspberry Pi</h2>
+<h2>Soluções para evitar problemas de energia na operação do Raspberry Pi</h2>
 <p>Se você está frustrado com a dificuldade de utilizar periféricos ou a capacidade total do seu Raspberry Pi via por conta de problemas de energia, há algumas soluções diferentes que você pode considerar: trocar a fonte ou a alimentação dos seus periféricos.</p>
 <h3>Fontes com maior amperagem</h3>
 <p>Ao passo que hoje temos uma vasta disponibilidade de fontes para smartphones com "modo rápido" de carregamento, a verdade é que a maioria ainda segue o mesmo padrão 5V/0.7A decidido há quase duas décadas. Até mesmo as fontes "rápidas" operam em dois modos distintos, sendo o 5B/0.7A o <em>fallback</em> caso o dispositivo não suporte voltagens e amperagens maiores. E enquanto a voltagem da maioria das fontes é padronizada nos 5V, a amperagem pode variar significantemente - para cima ou para baixo.</p>
@@ -746,9 +746,9 @@ chmod 777 /home/pi/NAS
 
     <entry>
         <title> Tornando o seu Raspberry Pi visível na Internet</title>
-        <link href="https://www.raspberrypibrasil.com/blog/tornando_seu_raspberry_pi_visivel_internet/" />
-        <id>urn:uuid:e566e832-ecf5-52e8-b23b-973be4ac92f9</id>
-        <updated>2021-03-31T14:33:00.136624Z</updated>
+        <link href="https://raspibrasil.github.io/blog/tornando_seu_raspberry_pi_visivel_internet/" />
+        <id>urn:uuid:e2e33c03-fb86-5954-a216-1c82bb01f79b</id>
+        <updated>2025-02-04T13:53:35.304207Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Tornando o seu Raspberry Pi visível na Internet</h1>
@@ -859,9 +859,9 @@ python -m http.server 8090
 
     <entry>
         <title>Usando Linux no seu Smartphone com o Termux</title>
-        <link href="https://www.raspberrypibrasil.com/blog/usando_linux_smartphone_termux/" />
-        <id>urn:uuid:978ff8a9-3944-5dca-bbdd-6a3a9fd29cc8</id>
-        <updated>2021-04-22T23:00:02.863370Z</updated>
+        <link href="https://raspibrasil.github.io/blog/usando_linux_smartphone_termux/" />
+        <id>urn:uuid:20e166b9-cf64-5d94-9a32-ed8be5de0f2c</id>
+        <updated>2025-02-04T13:53:35.304207Z</updated>
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
                 <h1>Usando Linux no seu Smartphone com o Termux</h1>

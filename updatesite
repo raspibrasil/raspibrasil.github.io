@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Shortcut to update the website (all pages) should anything in the template change.
+#
+
+set -euo pipefail
+
+# Step 1: update all the "default" pages:
+echo "Updating static pages..."
+./sitegen index.md \
+    contato/index.md \
+    privacidade/index.md \
+    sobre/index.md
+
+# Step 2: update all blog posts:
+echo "Updating blog posts..."
+./sitegen -a blog/*/index.md
+
+# Step 3: update the blog index:
+echo "Updating blog index..."
+./sitegen -i -d blog/ blog/*
+
+# Step 4: update post tags:
+echo "Updating tag directory..."
+./maketags
+
+# Step 5: update the feed:
+echo "Updating RSS feed..."
+./genfeed blog/*/index.md
+
+# Step 6: update the sitemap:
+echo "Updating sitemap..."
+./makesitemap
+
+echo "Finished!"

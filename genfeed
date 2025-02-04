@@ -22,7 +22,7 @@ from markdown import markdown
 # --- SETTINGS --- 
 # Change this to your site's domain (no http, etc):
 # Example: DOMAIN = "tilde.town/~kzimmermann"
-DOMAIN = "www.raspberrypibrasil.com"
+DOMAIN = "raspibrasil.github.io"
 
 # change this to where you'd like to save the final feed file
 PUB_DIR = "./"

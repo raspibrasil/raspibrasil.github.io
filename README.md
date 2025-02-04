@@ -13,6 +13,8 @@ These tools require Python 3.7 or above to work, plus the `python-markdown` modu
 
 ## Publishing procedures
 
+> TL;DR: run the newest `updatesite` script to have the entire site updated every time you change something. However, you will need to know how to apply the metadata (date, categories, etc) to new blog posts, so do read that section below.
+
 ### Publishing a single page
 
  1. Edit `template.html` to taste (structure, styling, etc). Make sure to leave exactly three "holes" with `%s` within it, as per the example. These will be filled by the page's title, description tag and contents, respectively.
